@@ -7,12 +7,24 @@ env:
 
 jobs:
     include:
-    - stage: build docker image
+    - stage: Build and deploy gateway
       script:
         - cd Gateway
         - docker build -t gateway .
         - docker tag gateway caspha17/gateway:${VERSION}
-    - stage: test
-      script:
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/gateway:${VERSION} 
+    - stage: Build and deploy spa
+      script:
+        - cd SPA
+        - docker build -t spa . 
+        - docker tag spa caspha17/spa:${VERSION}
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/spa:${VERSION} 
+    - stage: Build and deploy worker2
+        - cd worker2
+        - docker build -t worker2 . 
+        - docker tag worker2 caspha17/worker2:${VERSION}
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/worker2:${VERSION} 
+

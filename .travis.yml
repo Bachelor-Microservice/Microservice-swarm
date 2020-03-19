@@ -5,4 +5,4 @@ services:
 
 before_install:
     - cd Gateway
-    - docker build --no-cache -t test:1.0 .
+    - docker build -t test:1.0 .

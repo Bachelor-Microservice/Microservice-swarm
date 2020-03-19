@@ -6,20 +6,16 @@ env:
       - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
 
 services:
-  - docker
-before_install:
-    - cd Gateway
-    - docker build -t gateway .
-    - docker tag gateway caspha17/gateway:${VERSION}
-    - cd ..
-    - cd SPA
-    - docker build -t spa . 
-    - docker tag spa caspha17/spa:${VERSION}
-    - cd .. 
-    - cd example-worker2
-    - docker build -t worker2 . 
-    - docker tag worker2 caspha17/worker2:${VERSION}
+    - docker
 
-after_success:
-    - docker login -u caspha17 --password $dockerLogin
-    - docker push caspha17/gateway:${VERSION} 
+jobs:
+    include:
+        - stage: build
+        script:
+            - cd Gateway
+            - docker build -t gateway .
+            - docker tag gateway caspha17/gateway:${VERSION}
+        - stage: push
+        script: 
+                - docker login -u caspha17 --password $dockerLogin
+                - docker push caspha17/gateway:${VERSION} 

@@ -1,11 +1,6 @@
 version: '3.0'
 
 services: 
-    worker1:
-        build:
-            context: ./example_worker/
-        environment: 
-            - ASPNETCORE_URLS=http://+:5001
     worker2:
         build: 
             context: ./example-worker2/

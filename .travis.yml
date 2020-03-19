@@ -10,8 +10,8 @@ services:
 
 before_install:
     - cd Gateway
-    - docker build -t ${PWD##*/} .
-    - docker tag $TRAVIS_BUILD_DIR caspha17/${PWD##*/}:${VERSION}
+    - docker build -t test .
+    - docker tag test caspha17/${PWD##*/}:${VERSION}
 deploy:
     - docker login -u caspha17 --password $dockerLogin
     - docker push caspha17/${PWD##*/}:${VERSION} 

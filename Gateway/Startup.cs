@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace example_worker2
+namespace Gateway
 {
     public class Startup
     {
@@ -36,7 +36,7 @@ namespace example_worker2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(e => e.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

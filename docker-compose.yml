@@ -5,15 +5,21 @@ services:
         build:
             context: ./example_worker/
         environment: 
-            - ASPNETCORE_URLS=http://+:5000
-        ports: 
-            - 5000:5000
+            - ASPNETCORE_URLS=http://+:5001
     worker2:
         build: 
             context: ./example-worker2/
         environment: 
-            - ASPNETCORE_URLS=http://+:5001
+            - ASPNETCORE_URLS=http://+:5002
+    gateway:
+        build: 
+            context: ./Gateway
+        environment: 
+            - ASPNETCORE_URLS=http://+:5000
         ports: 
-            - 5001:5001
-        
-
+            - 5000:5000
+    frontend:
+        build: 
+            context: ./SPA/
+        ports: 
+            - 80:80

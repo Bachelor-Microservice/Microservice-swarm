@@ -20,6 +20,6 @@ before_install:
     - docker build -t worker2 . 
     - docker tag worker2 caspha17/worker2:${VERSION}
 
-deploy:
+after_success:
     - docker login -u caspha17 --password $dockerLogin
     - docker push caspha17/gateway:${VERSION} 

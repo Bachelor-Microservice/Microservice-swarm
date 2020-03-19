@@ -13,4 +13,4 @@ before_install:
     - docker tag test caspha17/test:${VERSION}
 after_succes:
     - docker login -u caspha17 --password $dockerLogin
-    - docker push caspha17/test:${VERSION}
+    - docker push caspha17/test:${VERSION} 

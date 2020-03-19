@@ -5,4 +5,8 @@ services:
 
 before_install:
     - cd Gateway
-    - docker build -t test:1.0 .
+    - docker build -t test .
+    - docker tag test caspha17/test:1.0
+after_succes:
+    - docker login -u caspha17 -p $dockerHubPassword
+    - docker push caspha17/test:1.0

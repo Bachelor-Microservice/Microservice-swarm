@@ -27,4 +27,10 @@ jobs:
         - docker tag worker2 caspha17/worker2:latest
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/worker2:latest 
+    - stage: Build and deploy worker2
+      script:
+          - docker build -t proxy . 
+          - docker tag proxy caspha17/proxy:latest
+          - docker login -u caspha17 --password $dockerLogin
+          - docker push caspha17/proxy:latest 
 

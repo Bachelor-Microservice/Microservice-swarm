@@ -15,6 +15,6 @@ export class AppComponent {
   }
 
   GetData(){
-    this.http.get('http://34.68.96.166:5000/weather').subscribe(e => this.temperature = e);
+    this.http.get('http:/34.68.96.166/api/weather').subscribe(e => this.temperature = e);
   }
 }

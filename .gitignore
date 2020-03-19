@@ -1,3 +1,5 @@
 example_worker/obj
 example-worker2/obj
 Gateway/obj
+Gateway/bin
+example-worker2/bin

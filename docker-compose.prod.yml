@@ -6,14 +6,12 @@ services:
         environment: 
             - ASPNETCORE_URLS=http://+:5002
     gateway:
-        build: 
-            context: ./Gateway/
+        image: caspha17/gateway:latest
         environment: 
             - ASPNETCORE_URLS=http://+:5000
     frontend:
         image: caspha17/spa:latest
     proxy:
-        build:
-            context: .
+        image: caspha17/proxy:latest
         ports: 
             - 80:80

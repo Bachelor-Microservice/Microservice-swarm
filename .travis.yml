@@ -3,14 +3,15 @@ language: bash
 env:
     global:
       - VERSION=1.${TRAVIS_BUILD_NUMBER}
+      - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
 
 services:
   - docker
 
 before_install:
     - cd Gateway
-    - docker build -t $TRAVIS_BUILD_DIR .
-    - docker tag $TRAVIS_BUILD_DIR caspha17/$TRAVIS_BUILD_DIR:${VERSION}
-after_succes:
+    - docker build -t ${DOCKER_LOCAL} .
+    - docker tag $TRAVIS_BUILD_DIR caspha17/${DOCKER_LOCAL}:${VERSION}
+deploy:
     - docker login -u caspha17 --password $dockerLogin
-    - docker push caspha17/$TRAVIS_BUILD_DIR:${VERSION} 
+    - docker push caspha17/${DOCKER_LOCAL}:${VERSION} 

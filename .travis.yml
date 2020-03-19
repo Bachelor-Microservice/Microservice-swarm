@@ -22,6 +22,7 @@ jobs:
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/spa:${VERSION} 
     - stage: Build and deploy worker2
+      script:
         - cd worker2
         - docker build -t worker2 . 
         - docker tag worker2 caspha17/worker2:${VERSION}

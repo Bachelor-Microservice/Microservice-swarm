@@ -5,17 +5,14 @@ env:
       - VERSION=2.${TRAVIS_BUILD_NUMBER}
       - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
 
-services:
-    - docker
-
 jobs:
     include:
-        - stage: build
-        script:
-            - cd Gateway
-            - docker build -t gateway .
-            - docker tag gateway caspha17/gateway:${VERSION}
-        - stage: push
-        script: 
-                - docker login -u caspha17 --password $dockerLogin
-                - docker push caspha17/gateway:${VERSION} 
+    - stage: build docker image
+      script:
+        - cd Gateway
+        - docker build -t gateway .
+        - docker tag gateway caspha17/gateway:${VERSION}
+    - stage: test
+      script:
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/gateway:${VERSION} 

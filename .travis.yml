@@ -1,12 +1,16 @@
 language: bash
 
+env:
+    global:
+      - VERSION=1.${TRAVIS_BUILD_NUMBER}
+
 services:
   - docker
 
 before_install:
     - cd Gateway
     - docker build -t test .
-    - docker tag test caspha17/test:$COMMIT
+    - docker tag test caspha17/test:${VERSION}
 after_succes:
     - docker login -u caspha17 --password $dockerLogin
-    - docker push caspha17/test:$COMMIT
+    - docker push caspha17/test:${VERSION}

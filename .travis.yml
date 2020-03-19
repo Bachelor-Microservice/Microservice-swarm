@@ -1,5 +1,4 @@
 language: bash
-cdælmæadfl
 env:
     global:
       - VERSION=2.${TRAVIS_BUILD_NUMBER}
@@ -11,21 +10,21 @@ jobs:
       script:
         - cd Gateway
         - docker build -t gateway .
-        - docker tag gateway caspha17/gateway:${VERSION}
+        - docker tag gateway caspha17/gateway:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/gateway:${VERSION} 
+        - docker push caspha17/gateway:latest
     - stage: Build and deploy spa
       script:
         - cd SPA
         - docker build -t spa . 
-        - docker tag spa caspha17/spa:${VERSION}
+        - docker tag spa caspha17/spa:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/spa:${VERSION} 
+        - docker push caspha17/spa:latest
     - stage: Build and deploy worker2
       script:
         - cd example-worker2
         - docker build -t worker2 . 
-        - docker tag worker2 caspha17/worker2:${VERSION}
+        - docker tag worker2 caspha17/worker2:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/worker2:${VERSION} 
+        - docker push caspha17/worker2:latest 
 

@@ -2,16 +2,16 @@ version: '3.0'
 
 services: 
     worker2:
-        image: caspha17/worker2:2.21
+        image: caspha17/worker2:latest
         environment: 
             - ASPNETCORE_URLS=http://+:5002
     gateway:
-        image: caspha17/gateway:2.21
+        image: caspha17/gateway:latest
         environment: 
             - ASPNETCORE_URLS=http://+:5000
         ports: 
             - 5000:5000
     frontend:
-        image: caspha17/spa:2.21
+        image: caspha17/spa:latest
         ports: 
             - 80:80 

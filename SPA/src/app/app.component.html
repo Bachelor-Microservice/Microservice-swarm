@@ -317,7 +317,7 @@
   <button (click)="GetData()" class="btn">Get Data</button>
 
   <li *ngFor="let temp of temperature">
-    {{temp.date | date:'shortDate'}}  ---- {{temp.temperatureC}}  
+    {{temp.date | date:'shortDate'}}  ---- {{temp.temperatureC}} --- {{temp.summary}}
   </li>
 </div>
 

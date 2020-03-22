@@ -54,5 +54,5 @@ jobs:
           - gcloud auth activate-service-account $Account --key-file <(echo $KEY | base64 --decode)
           - gcloud config set project test-220812
           - gcloud compute ssh bachelor --zone europe-west1-b --command 'cd Microservice-swarm/ '
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo git clone'
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo docker stack deploy --compose-file docker-compose.prod.yml '
+          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo git pull'
+          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo docker stack deploy --compose-file docker-compose.prod.yml bachelor'

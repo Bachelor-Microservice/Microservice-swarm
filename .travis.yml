@@ -18,33 +18,33 @@ cache:
 
 jobs:
     include:
-    - stage: Build and deploy gateway
-      script:
-        - cd Gateway
-        - docker build -t gateway .
-        - docker tag gateway caspha17/gateway:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/gateway:latest
-    - stage: Build and deploy spa
-      script:
-        - cd SPA
-        - docker build -t spa -f prod.Dockerfile .
-        - docker tag spa caspha17/spa:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/spa:latest
-    - stage: Build and deploy worker2
-      script:
-        - cd example-worker2
-        - docker build -t worker2 . 
-        - docker tag worker2 caspha17/worker2:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/worker2:latest 
-    - stage: Build and deploy proxy
-      script:
-          - docker build -t proxy . 
-          - docker tag proxy caspha17/proxy:latest
-          - docker login -u caspha17 --password $dockerLogin
-          - docker push caspha17/proxy:latest 
+#    - stage: Build and deploy gateway
+#      script:
+#        - cd Gateway
+#        - docker build -t gateway .
+#        - docker tag gateway caspha17/gateway:latest
+#        - docker login -u caspha17 --password $dockerLogin
+#        - docker push caspha17/gateway:latest
+#    - stage: Build and deploy spa
+#      script:
+#        - cd SPA
+#        - docker build -t spa -f prod.Dockerfile .
+#        - docker tag spa caspha17/spa:latest
+#        - docker login -u caspha17 --password $dockerLogin
+#        - docker push caspha17/spa:latest
+#    - stage: Build and deploy worker2
+#      script:
+#        - cd example-worker2
+#        - docker build -t worker2 . 
+#        - docker tag worker2 caspha17/worker2:latest
+#        - docker login -u caspha17 --password $dockerLogin
+#        - docker push caspha17/worker2:latest 
+#    - stage: Build and deploy proxy
+#      script:
+#          - docker build -t proxy . 
+#          - docker tag proxy caspha17/proxy:latest
+#          - docker login -u caspha17 --password $dockerLogin
+#          - docker push caspha17/proxy:latest 
     - stage: Deploy Cloud
       script:
           - gcloud version || true
@@ -53,6 +53,4 @@ jobs:
           - gcloud version 
           - gcloud auth activate-service-account $Account --key-file <(echo $KEY | base64 --decode)
           - gcloud config set project test-220812
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'cd Microservice-swarm/ '
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo git pull'
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'sudo docker stack deploy --compose-file docker-compose.prod.yml bachelor'
+          - gcloud compute ssh bachelor --zone europe-west1-b --command 'cd Microservice-swarm/  sudo git pull sudo docker stack deploy --compose-file docker-compose.prod.yml bachelor'

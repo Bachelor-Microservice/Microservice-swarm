@@ -18,33 +18,33 @@ cache:
 
 jobs:
     include:
-#    - stage: Build and deploy gateway
-#      script:
-#        - cd Gateway
-#        - docker build -t gateway .
-#        - docker tag gateway caspha17/gateway:latest
-#        - docker login -u caspha17 --password $dockerLogin
-#        - docker push caspha17/gateway:latest
-#    - stage: Build and deploy spa
-#      script:
-#        - cd SPA
-#        - docker build -t spa -f prod.Dockerfile .
-#        - docker tag spa caspha17/spa:latest
-#        - docker login -u caspha17 --password $dockerLogin
-#        - docker push caspha17/spa:latest
-#    - stage: Build and deploy worker2
-#      script:
-#        - cd example-worker2
-#        - docker build -t worker2 . 
-#        - docker tag worker2 caspha17/worker2:latest
-#        - docker login -u caspha17 --password $dockerLogin
-#        - docker push caspha17/worker2:latest 
-#    - stage: Build and deploy proxy
-#      script:
-#          - docker build -t proxy . 
-#          - docker tag proxy caspha17/proxy:latest
-#          - docker login -u caspha17 --password $dockerLogin
-#          - docker push caspha17/proxy:latest 
+    - stage: Build and deploy gateway
+      script:
+        - cd Gateway
+        - docker build -t gateway .
+        - docker tag gateway caspha17/gateway:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/gateway:latest
+    - stage: Build and deploy spa
+      script:
+        - cd SPA
+        - docker build -t spa -f prod.Dockerfile .
+        - docker tag spa caspha17/spa:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/spa:latest
+    - stage: Build and deploy worker2
+      script:
+        - cd example-worker2
+        - docker build -t worker2 . 
+        - docker tag worker2 caspha17/worker2:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/worker2:latest 
+    - stage: Build and deploy proxy
+      script:
+          - docker build -t proxy . 
+          - docker tag proxy caspha17/proxy:latest
+          - docker login -u caspha17 --password $dockerLogin
+          - docker push caspha17/proxy:latest 
     - stage: Deploy Cloud
       script:
           - gcloud version || true

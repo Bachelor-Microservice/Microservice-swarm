@@ -16,8 +16,8 @@ cache:
     directories:
       - "$HOME/google-cloud-sdk/"
 
-#jobs:
-#    include:
+jobs:
+    include:
 #    - stage: Build and deploy gateway
 #      script:
 #        - cd Gateway

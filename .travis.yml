@@ -1,8 +1,20 @@
 language: bash
 env:
     global:
+      - PATH=$PATH:$HOME/gcloud/google-cloud-sdk/bin
       - VERSION=2.${TRAVIS_BUILD_NUMBER}
       - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
+
+
+addons:
+    apt:
+      packages:
+        - coreutils
+        - rsync
+      
+cache:
+    directories:
+      - "$HOME/google-cloud-sdk/"
 
 jobs:
     include:
@@ -39,3 +51,6 @@ jobs:
           - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
           - source /home/travis/google-cloud-sdk/path.bash.inc
           - gcloud version 
+          - gcloud auth activate-service-account $Account --key-file <(echo $KEY | base64 --decode)
+          - gcloud config set project test-220812
+          - gcloud compute ssh bachelor --command ls

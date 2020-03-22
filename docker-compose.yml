@@ -2,7 +2,8 @@ version: '3.0'
 
 services: 
     worker2:
-        image: caspha17/worker2:latest
+        build: 
+            context: ./example-worker2/
         environment: 
             - ASPNETCORE_URLS=http://+:5002
     gateway:
@@ -11,7 +12,8 @@ services:
         environment: 
             - ASPNETCORE_URLS=http://+:5000
     frontend:
-        image: caspha17/spa:latest
+        build:
+            context: ./SPA/
     proxy:
         build:
             context: .

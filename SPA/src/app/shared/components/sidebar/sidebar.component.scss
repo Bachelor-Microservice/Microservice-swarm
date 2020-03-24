@@ -1,0 +1,51 @@
+:host {
+    mat-icon {
+        vertical-align: middle;
+    }
+}
+
+a {
+    padding: 0px;
+}
+
+mat-nav-list {
+    background-color: #f4f5f7;
+    height: 100%;
+}
+
+
+mat-list-item-content {
+    padding: 0px;
+}
+
+
+
+
+.profile-card {
+    text-align: center;
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+.pt-3 {
+    padding-top: 3px !important;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.arrow {
+    margin-left: 30px !important;
+}
+
+.nav-item {
+    background-color: #d0e6e6;
+    margin: 10px;
+    border-radius: 10px;
+}
+.green-icon {
+    color: #009688;
+    margin-right: 5px;
+}

@@ -1,0 +1,41 @@
+<mat-toolbar >
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span> Dashboard</span>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end"> 
+        <ul fxLayout="row" fxLayoutGap="10px">
+
+            <li>
+                <button mat-icon-button>
+                    <mat-icon class="icon-color">star_outline</mat-icon>
+                </button>
+               
+            </li>
+            <li>
+                <div></div>
+                <mat-divider style="height:70%" [vertical]="true"> </mat-divider>
+            </li>
+            <li>
+
+                
+
+                <button mat-icon-button>
+                    <mat-icon class="icon-color">mail_outline</mat-icon>
+                </button>
+                
+
+            </li>
+            <li>
+                <button mat-icon-button>
+                    <mat-icon class="icon-color">help_outline</mat-icon>
+                </button>
+            </li>
+
+        </ul>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>

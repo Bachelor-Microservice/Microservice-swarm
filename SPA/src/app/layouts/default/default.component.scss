@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+mat-drawer {
+    width: 60px;
+}
+
+mat-drawer-container {
+    height: 100%;
+}
+
+
+mat-drawer-content {
+    background-color: white;
+
+
+}
+
+.content {
+    margin: 20px;
+}
+
+.header {
+    height: 56px;
+}

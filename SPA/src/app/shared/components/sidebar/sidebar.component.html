@@ -18,4 +18,18 @@
       </div>
     </a>
   </div>
+
+  <div class="nav-item">
+    <a mat-list-item [routerLink]="['/back']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> Backend   </span>
+        <div class="arrow">
+          
+        </div>
+      </div>
+    </a>
+  </div>
 </mat-nav-list>

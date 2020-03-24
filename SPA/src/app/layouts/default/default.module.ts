@@ -11,13 +11,17 @@ import { SidenavService } from 'src/app/services/sidenav.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApiComponent } from 'src/app/modules/api/api.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
-    DashboardComponent,
-    PostsComponent
+    DashboardComponent, 
+    PostsComponent,
+    ApiComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     BrowserAnimationsModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ],
-  providers: [ SidenavService ],
+  providers: [ SidenavService, ApiService ],
 })
 export class DefaultModule { }

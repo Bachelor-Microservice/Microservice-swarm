@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+      <div class="col col-6">
+          <div class="card">
+              <div class="card-body">
+                  <div class="container">
+                    <button mat-raised-button (click)="GetApi()" >Call APi</button>
+                  </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="col col-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="container">
+                  <li *ngFor="let temp of temperature">
+                    {{temp.date | date:'shortDate'}}  ---- {{temp.temperatureC}} --- {{temp.summary}}
+                  </li>
+                </div>
+            </div>
+          </div>
+    </div>
+
+      
+  </div>
+</div>

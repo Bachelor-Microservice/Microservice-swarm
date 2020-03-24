@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
+import { ApiComponent } from './modules/api/api.component';
 
 
 
 
 @NgModule({
    declarations: [
-      AppComponent,
+      AppComponent
    ],
    imports: [
       BrowserModule,

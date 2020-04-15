@@ -29,7 +29,10 @@ $SPA-theme: mat-light-theme($SPA-primary, $SPA-accent, $SPA-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+*:focus {
+    outline: none !important;
+    border: 0 !important;
+}
 
 
 

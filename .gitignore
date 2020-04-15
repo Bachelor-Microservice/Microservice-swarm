@@ -3,3 +3,5 @@ example-worker2/obj
 Gateway/obj
 Gateway/bin
 example-worker2/bin
+PriceCalendarService/bin
+PriceCalendarService/obj

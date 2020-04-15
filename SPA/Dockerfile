@@ -1,9 +1,9 @@
 ### STAGE 1: Build ###
 FROM johnpapa/angular-cli AS build
-WORKDIR /usr/src/app
-COPY package.json ./
+WORKDIR /usr/app
+COPY package.json /usr/app/package.json
 RUN npm install
-COPY . .
+COPY . /usr/app
 RUN ng build 
 
 
@@ -14,7 +14,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # copy artifact build from the 'build environment'
 COPY  nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/dist/SPA /usr/share/nginx/html
+COPY --from=build /usr/app/dist/SPA /usr/share/nginx/html
 # expose port 80
 EXPOSE 80
 

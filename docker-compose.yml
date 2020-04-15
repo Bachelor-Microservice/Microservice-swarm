@@ -1,9 +1,9 @@
 version: '3.0'
 
 services: 
-    worker2:
+    pricecalendarservice:
         build: 
-            context: ./example-worker2/
+            context: ./PriceCalendarService
         environment: 
             - ASPNETCORE_URLS=http://+:5002
     gateway:

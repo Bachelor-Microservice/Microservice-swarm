@@ -9,16 +9,17 @@ export class ApiService {
 
   constructor(private http: HttpClient ) { }
 
+  pricecalendarApi = environment.api + 'pricecalender';
+  
 
   get(): Promise<any> {
-    //Change get to apiVM if on toolbox docker VM
-    return this.http.get(environment.apiVM)
+    return this.http.get(this.pricecalendarApi)
     .toPromise()
     .then(res => {
       return res;
     })
     .catch(err => {
-      console.log(err)
+      console.log(err);
     });
   }
 

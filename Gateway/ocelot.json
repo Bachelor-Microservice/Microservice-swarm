@@ -1,15 +1,15 @@
 {
     "ReRoutes": [
         {
-        "DownstreamPathTemplate": "/WeatherForecast",
+        "DownstreamPathTemplate": "/PriceCalendar",
         "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
             {
-                "Host": "worker2",
+                "Host": "pricecalendarservice",
                 "Port": 5002
             }
         ],
-        "UpstreamPathTemplate": "/api/weather",
+        "UpstreamPathTemplate": "/api/pricecalender",
         "UpstreamHttpMethod": [ "Get" ]
         }
     ],

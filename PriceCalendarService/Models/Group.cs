@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace PriceCalendarService.Models
 {
     public class Group

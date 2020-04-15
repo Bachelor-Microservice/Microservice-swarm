@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ApiComponent implements OnInit {
 
-  public temperature: any;
+  public priceCalender: any;
 
 
   constructor(private api: ApiService) { }
@@ -19,7 +19,11 @@ export class ApiComponent implements OnInit {
 
 
   GetApi() {
-    this.api.get().then(res => this.temperature = res);
+    this.api.get().then((res) => 
+    {
+      this.priceCalender = res;
+      console.log(this.priceCalender);
+    });
   }
 
 }

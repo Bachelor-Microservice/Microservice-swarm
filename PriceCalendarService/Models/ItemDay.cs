@@ -1,3 +1,5 @@
+using System;
+
 namespace PriceCalendarService.Models
 {
     public class ItemDay

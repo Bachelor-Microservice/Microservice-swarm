@@ -11,7 +11,8 @@ export class ApiService {
 
 
   get(): Promise<any> {
-    return this.http.get(environment.api)
+    //Change get to apiVM if on toolbox docker VM
+    return this.http.get(environment.apiVM)
     .toPromise()
     .then(res => {
       return res;

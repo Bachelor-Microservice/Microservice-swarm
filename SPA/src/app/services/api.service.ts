@@ -13,6 +13,8 @@ export class ApiService {
   
 
   get(): Promise<any> {
+    console.log(this.pricecalendarApi);
+    
     return this.http.get(this.pricecalendarApi)
     .toPromise()
     .then(res => {

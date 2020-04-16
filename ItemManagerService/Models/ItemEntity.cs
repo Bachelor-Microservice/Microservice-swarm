@@ -1,3 +1,5 @@
+using System;
+
 namespace ItemManagerService.Models
 {
     public class ItemEntity : SimpleItem

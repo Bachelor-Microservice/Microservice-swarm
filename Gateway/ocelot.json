@@ -11,6 +11,18 @@
         ],
         "UpstreamPathTemplate": "/api/pricecalender",
         "UpstreamHttpMethod": [ "Get" ]
+        },
+        {
+                "DownstreamPathTemplate": "/ItemManager",
+                "DownstreamScheme": "http",
+                "DownstreamHostAndPorts": [
+                    {
+                        "Host": "itemmanagerservice",
+                        "Port": 5003
+                    }
+                ],
+                "UpstreamPathTemplate": "/api/itemmanager",
+                "UpstreamHttpMethod": [ "Get" ]
         }
     ],
     "GlobalConfiguration": {

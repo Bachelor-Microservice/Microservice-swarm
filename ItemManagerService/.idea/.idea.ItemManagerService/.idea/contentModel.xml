@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\skakk\.Rider2018.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\skakk\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\skakk\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\skakk\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_ItemManagerService.1998487026.00" t="ExcludeRecursive" />
+    <e p="C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemManagerService" t="IncludeRecursive">
+      <e p="ItemManagerService.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>

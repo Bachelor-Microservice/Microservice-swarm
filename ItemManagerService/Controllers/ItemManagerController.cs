@@ -1,14 +1,15 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PriceCalendarService.Models;
+using ItemManagerService.Models;
+using System;
 
 namespace ItemManagerService.Controllers
 {
-    [APIController]
+    [ApiController]
     [Route("[controller]")]
     public class ItemManagerController : ControllerBase
     {
-        Public ItemManagerController(){}
+        public ItemManagerController(){}
 
         [HttpGet]
         [Route("")]
@@ -16,7 +17,7 @@ namespace ItemManagerService.Controllers
         {
             var itemEntity = new ItemEntity();
             itemEntity.Id = 999999;
-            return OK(itemEntity);
+            return Ok(itemEntity);
         }
     }
 }

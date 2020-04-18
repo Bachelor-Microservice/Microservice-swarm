@@ -19,7 +19,7 @@ export class ApiComponent implements OnInit {
 
 
   GetApi() {
-    this.api.get().then((res) =>
+    this.api.get().subscribe((res) =>
     {
       this.priceCalender = res;
       console.log(this.priceCalender);

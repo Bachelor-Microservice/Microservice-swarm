@@ -37,7 +37,7 @@ namespace PriceCalendarService
             }
 
 
-
+            app.UseCors( e=> e.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
 
 

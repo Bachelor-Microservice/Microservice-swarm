@@ -14,25 +14,36 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ApiComponent } from 'src/app/modules/api/api.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ApiService } from 'src/app/services/api.service';
-
+import { AgGridModule } from 'ag-grid-angular';
+import { PriceCalendarComponent } from 'src/app/modules/price-calendar/price-calendar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     DefaultComponent,
-    DashboardComponent, 
+    DashboardComponent,
     PostsComponent,
-    ApiComponent
+    ApiComponent,
+    PriceCalendarComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    MatNativeDateModule ,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
     BrowserAnimationsModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    AgGridModule.withComponents([])
   ],
   providers: [ SidenavService, ApiService ],
 })

@@ -10,7 +10,7 @@
             }
         ],
         "UpstreamPathTemplate": "/api/pricecalender",
-        "UpstreamHttpMethod": [ "Get" ]
+        "UpstreamHttpMethod": [ ]
         }
     ],
     "GlobalConfiguration": {

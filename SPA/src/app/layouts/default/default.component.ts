@@ -14,6 +14,7 @@ export class DefaultComponent implements OnInit {
   public sideNav: boolean = true;
 
 
+
   constructor(private _sidenavService: SidenavService ) {
     this._sidenavService.sideNavState$.subscribe(res => {
       console.log(res);

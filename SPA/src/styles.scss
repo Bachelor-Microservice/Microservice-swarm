@@ -3,6 +3,7 @@
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -45,3 +46,13 @@ body { margin: 0; font-size: 14px; font-family: Roboto, "Helvetica Neue", sans-s
 $grid-width: 114rem;
 $gutter-vertical: 8rem;
 $gutter-horizontal: 6rem;
+
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+    @include ag-theme-alpine();
+}
+.priceChanged {
+    font-weight: 600 !important;
+  }

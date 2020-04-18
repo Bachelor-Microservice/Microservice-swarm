@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+<mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input    formControlName="from" matInput [matDatepicker]="start">
+    <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+    <mat-datepicker #start></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="ml-3">
+    <mat-label>Choose a date</mat-label>
+    <input matInput  [matDatepicker]="end"  formControlName="to">
+    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+    <mat-datepicker  #end></mat-datepicker>
+</mat-form-field>
+  <button (click)="onSubmit()" class="ml-5" mat-raised-button>Submit</button>
+
+</form>
+<div class="d-flex justify-content-end">
+<button mat-raised-button 
+class="mr-5 mb-3" 
+(click)="submitGrid()" > Send data</button>
+</div>
+<ag-grid-angular
+    style="width: 80%; height: 500px;"
+    class="ag-theme-alpine"
+    agGrid={}
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [rowClassRules]="rowClassRules"
+    (gridReady)="onGridReady($event)"
+    [defaultColDef]="defaultColDef"
+    >
+</ag-grid-angular>

@@ -4,6 +4,7 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { ApiComponent } from './modules/api/api.component';
+import { PriceCalendarComponent } from './modules/price-calendar/price-calendar.component';
 
 
 const routes: Routes = [{
@@ -17,6 +18,10 @@ const routes: Routes = [{
   path: 'back',
   component: ApiComponent
 
+  },
+  {
+    path: 'pricecalendar',
+  component: PriceCalendarComponent
   }]
 }];
 

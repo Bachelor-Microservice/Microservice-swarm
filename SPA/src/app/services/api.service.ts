@@ -13,9 +13,16 @@ export class ApiService {
 
   pricecalendarApi = environment.api ;
 
-  get(): Observable<ItemPriceAndCurrencyResponse> {
-    console.log(this.pricecalendarApi);
-    return this.http.get<ItemPriceAndCurrencyResponse>(this.pricecalendarApi);
+  get(): Promise<any> {
+    //Change get to apiVM if on toolbox docker VM
+    return this.http.get(environment.apiVM)
+    .toPromise()
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 
 }

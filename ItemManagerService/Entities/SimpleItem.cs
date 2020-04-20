@@ -1,4 +1,4 @@
-namespace ItemManagerService.Models
+namespace ItemManagerService.Entities
 {
     public class SimpleItem
     {

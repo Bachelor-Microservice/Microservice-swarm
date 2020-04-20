@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace PriceCalendarService.Models
 {
@@ -7,5 +8,7 @@ namespace PriceCalendarService.Models
         public Guid id { get; set; }
 
         public string Description { get; set; }
+
+        public List<Group> Groups { get; set; }
     }
 }

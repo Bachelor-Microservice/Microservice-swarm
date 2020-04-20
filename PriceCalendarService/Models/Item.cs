@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace PriceCalendarService.Models
 {
@@ -12,5 +14,6 @@ namespace PriceCalendarService.Models
         public decimal Price { get; set; }
 
         public List<ItemDay> ItemDays {get;set;}
+
     }
 }

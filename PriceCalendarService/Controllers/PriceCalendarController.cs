@@ -2,6 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PriceCalendarService.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using PriceCalendarService.Services.ItemPriceAndCurrencyResponseService;
 
 namespace PriceCalendarService.Controllers
 {
@@ -10,9 +14,22 @@ namespace PriceCalendarService.Controllers
     [Route("[controller]")]
     public class PriceCalendarController : ControllerBase
     {
-        public PriceCalendarController() 
-        {
+        private readonly IItemPriceAndCurrencyResponseService _service;
 
+        public PriceCalendarController(IItemPriceAndCurrencyResponseService service) 
+        {
+            _service = service;
+        }
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> Get() 
+        {
+            return Ok(await _service.GetAll());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSingle(Guid id)
+        {
+            return Ok(await _service.GetById(id));
         }
 
 

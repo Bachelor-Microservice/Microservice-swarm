@@ -14,7 +14,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                 {{priceCalender.currency}}
+                 <div *ngIf="priceCalender != null">
+                  {{priceCalender.currency}}
+                 </div>
                 </div>
             </div>
           </div>

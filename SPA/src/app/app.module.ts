@@ -11,7 +11,6 @@ import { ApiComponent } from './modules/api/api.component';
 
 
 
-
 @NgModule({
    declarations: [
       AppComponent

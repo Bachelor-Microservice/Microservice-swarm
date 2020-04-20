@@ -10,7 +10,7 @@
             }
         ],
         "UpstreamPathTemplate": "/api/pricecalender",
-        "UpstreamHttpMethod": [ "Get" ]
+        "UpstreamHttpMethod": []
         },
         {
                 "DownstreamPathTemplate": "/ItemManager",
@@ -22,7 +22,7 @@
                     }
                 ],
                 "UpstreamPathTemplate": "/api/itemmanager",
-                "UpstreamHttpMethod": [ "Get" ]
+                "UpstreamHttpMethod": []
         }
     ],
     "GlobalConfiguration": {

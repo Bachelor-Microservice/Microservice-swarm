@@ -34,14 +34,14 @@ jobs:
         - docker push caspha17/spa:latest
     - stage: Build and deploy itemmanagerservice
       script:
-        - cd itemmanagerservice
+        - cd ItemManagerService
         - docker build -t itemmanagerservice . 
         - docker tag itemmanagerservice caspha17/itemmanagerservice:latest
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/itemmanagerservice:latest 
     - stage: Build and deploy PriceCalendarService
       script:
-        - cd pricecalendarservice
+        - cd PriceCalendarService
         - docker build -t pricecalendarservice . 
         - docker tag pricecalendarservice caspha17/pricecalendarservice:latest
         - docker login -u caspha17 --password $dockerLogin

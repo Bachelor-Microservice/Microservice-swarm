@@ -32,20 +32,20 @@ jobs:
         - docker tag spa caspha17/spa:latest
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/spa:latest
-    - stage: Build and deploy ItemManagerService
+    - stage: Build and deploy itemmanagerservice
       script:
-        - cd ItemManagerService
-        - docker build -t ItemManagerService . 
-        - docker tag ItemManagerService caspha17/ItemManagerService:latest
+        - cd itemmanagerservice
+        - docker build -t itemmanagerservice . 
+        - docker tag itemmanagerservice caspha17/itemmanagerservice:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/ItemManagerService:latest 
+        - docker push caspha17/itemmanagerservice:latest 
     - stage: Build and deploy PriceCalendarService
       script:
-        - cd PriceCalendarService
-        - docker build -t PriceCalendarService . 
-        - docker tag PriceCalendarService caspha17/PriceCalendarService:latest
+        - cd pricecalendarservice
+        - docker build -t pricecalendarservice . 
+        - docker tag pricecalendarservice caspha17/pricecalendarservice:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/PriceCalendarService:latest 
+        - docker push caspha17/pricecalendarservice:latest 
     - stage: Build and deploy proxy
       script:
           - docker build -t proxy . 

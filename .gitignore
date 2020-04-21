@@ -5,15 +5,12 @@ Gateway/bin
 example-worker2/bin
 PriceCalendarService/bin
 PriceCalendarService/obj
-SPA/src/environments/environment.ts
+
 ItemManagerService/obj
-SPA/src/environments/environment.ts
-SPA/src/environments/environment.ts
 PriceCalendarService/.vscode
 PriceCalendarService/.vs
 ItemManagerService/.vs
 ItemManagerService/.vs
 ItemManagerService/bin
-SPA/src/environments/environment.ts
 ItemManagerService/.idea
 ItemManagerService/bin

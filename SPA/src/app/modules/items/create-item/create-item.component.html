@@ -2,15 +2,15 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Favorite Animal</mat-label>
-        <input matInput [(ngModel)]="data.item.id">
+        <mat-label>Id</mat-label>
+        <input matInput [(ngModel)]="data.item.itemNo">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Favorite Animal</mat-label>
+        <mat-label>Navn</mat-label>
         <input matInput [(ngModel)]="data.item.name">
       </mat-form-field>
     </div>
@@ -18,7 +18,15 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Favorite Animal</mat-label>
+        <mat-label>Pris</mat-label>
+        <input matInput [(ngModel)]="data.item.price">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Pris model</mat-label>
         <input matInput [(ngModel)]="data.item.priceModel">
       </mat-form-field>
     </div>
@@ -26,13 +34,13 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Favorite Animal</mat-label>
-        <input matInput [(ngModel)]="data.item.itemNo">
+        <mat-label>Varekode</mat-label>
+        <input matInput [(ngModel)]="data.item.itemCode">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
-    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Close</button>
+    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Tilføj</button>
   </div>
 </div>
 

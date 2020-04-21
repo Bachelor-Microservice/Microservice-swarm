@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateItemComponent } from './create-item/create-item.component';
-import { SimpleItem } from 'src/app/_models/SimpleItem.model';
+import { Items } from 'src/app/_models/ItemEntity.model';
 
 @Component({
   selector: 'app-items',
@@ -25,26 +25,20 @@ rowData = [
 ];
   constructor(public dialog: MatDialog) { }
 
-  createItem: SimpleItem;
+  createItem: Items;
 
   ngOnInit() {
-    this.createItem = new SimpleItem();
+    this.createItem = new Items();
   }
 
   openCreate() {
     const createMenuref = this.dialog.open(CreateItemComponent , {
-      width: '70%',
+      width: '30%',
       data: {item: this.createItem}
     });
 
-    createMenuref.afterClosed().subscribe(result => {
+    createMenuref.afterClosed().subscribe((result: Items) => {
       console.log(result);
-    });
-
-    createMenuref.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      
     });
   }
 

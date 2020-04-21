@@ -1,14 +1,15 @@
-import { SimpleItem } from './SimpleItem.model';
-
-export class ItemEntity extends SimpleItem {
-    id: number | null;
+export class Items {
+    itemNo: string;
+    name: string;
+    itemCode: string;
+    id: number;
     unit: string;
     price: number | null;
     priceModel: string;
-    quickPost: boolean | null;
+    quickPost: boolean;
     quickPostAmount: number | null;
     priceModelFrom: string;
-    vat: boolean | null;
+    vat: boolean;
     articleGroup: number | null;
     statisticsQuantity: number | null;
     overBidderQuantity: number | null;
@@ -38,8 +39,8 @@ export class ItemEntity extends SimpleItem {
     clips2: number | null;
     clips3: number | null;
     compuMatValue: number | null;
-    offsetFrom: string | null;
-    offsetTo: string | null;
+    offsetFrom: number | null;
+    offsetTo: number | null;
     color: string;
     tags: string;
     switches: string;

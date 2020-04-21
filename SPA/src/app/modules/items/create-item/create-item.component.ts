@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
-import { SimpleItem } from 'src/app/_models/SimpleItem.model';
+import { Items } from 'src/app/_models/ItemEntity.model';
 
 @Component({
   selector: 'app-create-item',
@@ -17,7 +17,6 @@ export class CreateItemComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close(this.data);
-    console.log(this.data);
   }
   ngOnInit() {
   }

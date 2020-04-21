@@ -1,19 +1,21 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace PriceCalendarService.Models
 {
-    public class Item
+    public partial class Item
     {
-        public Guid Id { get; set; }
+        public Item()
+        {
+            ItemDay = new HashSet<ItemDay>();
+        }
 
+        public string Id { get; set; }
         public string Name { get; set; }
+        public double? Price { get; set; }
+        public int? GroupId { get; set; }
 
-        public decimal Price { get; set; }
-
-        public List<ItemDay> ItemDays {get;set;}
-
+        public virtual Groups Group { get; set; }
+        public virtual ICollection<ItemDay> ItemDay { get; set; }
     }
 }

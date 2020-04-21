@@ -20,6 +20,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { ItemsComponent } from 'src/app/modules/items/items.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreateItemComponent } from 'src/app/modules/items/create-item/create-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +31,16 @@ import {MatInputModule} from '@angular/material/input';
     DashboardComponent,
     PostsComponent,
     ApiComponent,
-    PriceCalendarComponent
+    PriceCalendarComponent,
+    ItemsComponent,
+    CreateItemComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     MatNativeDateModule ,
+    MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,

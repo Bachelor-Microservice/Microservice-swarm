@@ -1,0 +1,46 @@
+import { SimpleItem } from './SimpleItem.model';
+
+export class ItemEntity extends SimpleItem {
+    id: number | null;
+    unit: string;
+    price: number | null;
+    priceModel: string;
+    quickPost: boolean | null;
+    quickPostAmount: number | null;
+    priceModelFrom: string;
+    vat: boolean | null;
+    articleGroup: number | null;
+    statisticsQuantity: number | null;
+    overBidderQuantity: number | null;
+    minQuantity: number | null;
+    maxQuantity: number | null;
+    distributionTo: string;
+    amount: number | null;
+    customerId: number | null;
+    accountNo: string;
+    costCenter: string;
+    supplierNo: string;
+    cashDiscount: boolean | null;
+    weight: number | null;
+    supplierCountry: string;
+    profileId: number | null;
+    relationNo: number | null;
+    costPrice: number | null;
+    stock: number | null;
+    minStock: number | null;
+    ticketForm: string;
+    ticketType: string;
+    fee: number | null;
+    itemFee: string;
+    catalogNo: string;
+    supplierId: number | null;
+    clips1: number | null;
+    clips2: number | null;
+    clips3: number | null;
+    compuMatValue: number | null;
+    offsetFrom: string | null;
+    offsetTo: string | null;
+    color: string;
+    tags: string;
+    switches: string;
+}

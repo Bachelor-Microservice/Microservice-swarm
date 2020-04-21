@@ -5,6 +5,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { ApiComponent } from './modules/api/api.component';
 import { PriceCalendarComponent } from './modules/price-calendar/price-calendar.component';
+import { ItemsComponent } from './modules/items/items.component';
 
 
 const routes: Routes = [{
@@ -22,7 +23,12 @@ const routes: Routes = [{
   {
     path: 'pricecalendar',
   component: PriceCalendarComponent
-  }]
+  },
+  {
+    path: 'items',
+    component: ItemsComponent
+  }
+]
 }];
 
 @NgModule({

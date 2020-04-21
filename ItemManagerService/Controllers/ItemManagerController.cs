@@ -18,7 +18,7 @@ namespace ItemManagerService.Controllers
             _itemservice = service;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> GetItemEntities()
         {
             return Ok(await _itemservice.GetItems());
@@ -31,7 +31,7 @@ namespace ItemManagerService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddItem(Items item)
+        public async Task<IActionResult> AddItem([FromBody]Items item)
         {
             return Ok(await _itemservice.AddItem(item));
         }
@@ -42,7 +42,7 @@ namespace ItemManagerService.Controllers
             return Ok(await _itemservice.UpdateItems(item));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
             return Ok(await _itemservice.DeleteItem(id));

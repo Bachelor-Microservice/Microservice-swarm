@@ -51,6 +51,8 @@ namespace ItemManagerService
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
             });
 
+            app.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

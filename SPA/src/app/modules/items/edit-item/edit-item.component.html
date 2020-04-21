@@ -4,7 +4,7 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Id</mat-label>
-        <input type="number" matInput [(ngModel)]="data.id">
+        <input disabled type="number" matInput [(ngModel)]="data.id">
       </mat-form-field>
     </div>
   </div>
@@ -57,7 +57,8 @@
     </div>
   </div>
   <div class="row">
-    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Tilføj</button>
+    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Opdater</button>
+    <button  (click)="deleteItem()" class="ml-5" mat-raised-button color="warn" >Slet</button>
   </div>
 </div>
 

@@ -13,6 +13,9 @@
     class="ag-theme-alpine"
     agGrid={}
     [rowData]="rowData"
-    [columnDefs]="columnDefs">
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+    (rowClicked)="onRowClicked($event)"
+    >
   </ag-grid-angular>
 

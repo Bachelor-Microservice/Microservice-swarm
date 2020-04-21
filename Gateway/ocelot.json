@@ -13,17 +13,31 @@
         "UpstreamHttpMethod": []
         },
         {
-                "DownstreamPathTemplate": "/ItemManager",
-                "DownstreamScheme": "http",
-                "DownstreamHostAndPorts": [
-                    {
-                        "Host": "itemmanagerservice",
-                        "Port": 5003
-                    }
-                ],
-                "UpstreamPathTemplate": "/api/itemmanager",
-                "UpstreamHttpMethod": []
+        "DownstreamPathTemplate": "/ItemManager/",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "itemmanagerservice",
+                "Port": 5003
+            }
+        ],
+        "UpstreamPathTemplate": "/api/itemmanager/",
+        "UpstreamHttpMethod": []
         }
+        ,
+        {
+        "DownstreamPathTemplate": "/ItemManager/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "itemmanagerservice",
+                "Port": 5003
+            }
+        ],
+        "UpstreamPathTemplate": "/api/itemmanager/{id}",
+        "UpstreamHttpMethod": []
+        }
+    
     ],
     "GlobalConfiguration": {
     }

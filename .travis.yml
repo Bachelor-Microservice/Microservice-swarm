@@ -25,5 +25,4 @@ jobs:
           - gcloud version 
           - gcloud auth activate-service-account $Account --key-file <(echo $KEY1 | base64 --decode)
           - gcloud config set project test-220812
-          - gcloud -q components update
-          - gcloud compute ssh --zone "europe-west1-b" "bachelor" --project "test-220812" --command 'ls'
+          - gcloud compute ssh test@bachelor --command "mkdir x && ls"

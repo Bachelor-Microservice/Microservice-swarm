@@ -18,41 +18,6 @@ cache:
 
 jobs:
     include:
-    - stage: Build and deploy gateway
-      script:
-        - cd Gateway
-        - docker build -t gateway .
-        - docker tag gateway caspha17/gateway:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/gateway:latest
-    - stage: Build and deploy spa
-      script:
-        - cd SPA
-        - docker build -t spa -f prod.Dockerfile .
-        - docker tag spa caspha17/spa:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/spa:latest
-    - stage: Build and deploy itemmanagerservice
-      script:
-        - cd ItemManagerService
-        - docker build -t itemmanagerservice . 
-        - docker tag itemmanagerservice caspha17/itemmanagerservice:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/itemmanagerservice:latest 
-    - stage: Build and deploy PriceCalendarService
-      script:
-        - cd PriceCalendarService
-        - docker build -t pricecalendarservice . 
-        - docker tag pricecalendarservice caspha17/pricecalendarservice:latest
-        - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/pricecalendarservice:latest 
-    - stage: Build and deploy proxy
-      script:
-          - docker build -t proxy . 
-          - docker tag proxy caspha17/proxy:latest
-          - docker login -u caspha17 --password $dockerLogin
-          - docker push caspha17/proxy:latest 
-    - stage: Deploy Cloud
       script:
           - gcloud version || true
           - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi

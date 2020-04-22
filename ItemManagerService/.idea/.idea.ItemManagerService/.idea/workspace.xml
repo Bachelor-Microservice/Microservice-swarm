@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f55f0f0e-2ac2-48e8-b514-ef426c760c80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ItemManagerService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ItemManagerService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +37,7 @@
         <option value="$PROJECT_DIR$/Controllers/ItemManagerController.cs" />
         <option value="$PROJECT_DIR$/Services/ItemService.cs" />
         <option value="$PROJECT_DIR$/Startup.cs" />
+        <option value="$PROJECT_DIR$/Services/IItemService.cs" />
       </list>
     </option>
   </component>
@@ -102,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587480853257</updated>
       <workItem from="1587480855482" duration="4269000" />
-      <workItem from="1587548552223" duration="794000" />
+      <workItem from="1587548552223" duration="1410000" />
     </task>
     <servers />
   </component>

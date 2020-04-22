@@ -30,7 +30,7 @@ namespace ItemManagerService
             services.AddControllers();
             services.AddTransient<IItemService, ItemService>();
             services.AddTransient<ItemManagerServiceContext>();
-
+            
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });

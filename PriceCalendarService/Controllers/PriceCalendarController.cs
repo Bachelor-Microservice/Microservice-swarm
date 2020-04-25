@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PriceCalendarService.Models;
+using PriceCalendarService.Services;
+using PriceCalendarService.Dtos;
+using AutoMapper;
 
 namespace PriceCalendarService.Controllers
 {
@@ -12,40 +16,41 @@ namespace PriceCalendarService.Controllers
     [Route("[controller]")]
     public class PriceCalendarController : ControllerBase
     {
-
-        public PriceCalendarController()
+        private readonly IItemPriceAndCurrencyResponseService _service;
+        public PriceCalendarController(IItemPriceAndCurrencyResponseService service)
         {
+            _service = service;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> Get() 
         {
-            return Ok("");
+            return Ok(await _service.GetAll());
         }
 
-        [HttpGet("GetSingle")]
-        public async Task<IActionResult> GetSingle(Guid id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSingle(int id)
         {
-            return Ok();
+            return Ok(await _service.Get(id));
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> getInInterval() 
+        public async Task<IActionResult> Add(ItemPriceAndCurrencyResponseDTO dto) 
         {
-            return null;
+            return Ok(await _service.Add(dto));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update()
+        public async Task<IActionResult> Update(ItemPriceAndCurrencyResponseDTO cmd)
         {
-            return null;
+            return Ok(await _service.Update(cmd));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete()
+        public async Task<IActionResult> Delete(int id)
         {
-            return null;
+            return Ok(await _service.Delete(id));
         }
     
     }

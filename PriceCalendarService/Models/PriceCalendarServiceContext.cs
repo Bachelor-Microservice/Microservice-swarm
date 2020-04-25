@@ -42,7 +42,8 @@ namespace PriceCalendarService.Models
                 entity.HasOne(d => d.Currency)
                     .WithMany(p => p.Groups)
                     .HasForeignKey(d => d.CurrencyId)
-                    .HasConstraintName("PF_ItemPriceAndCurrencyResponse");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_GroupsToItemPriceAndCurrencyResponse");
             });
 
             modelBuilder.Entity<Item>(entity =>
@@ -58,7 +59,8 @@ namespace PriceCalendarService.Models
                 entity.HasOne(d => d.Group)
                     .WithMany(p => p.Item)
                     .HasForeignKey(d => d.GroupId)
-                    .HasConstraintName("FK_Group");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_ItemToGroups");
             });
 
             modelBuilder.Entity<ItemDay>(entity =>
@@ -90,7 +92,8 @@ namespace PriceCalendarService.Models
                 entity.HasOne(d => d.Item)
                     .WithMany(p => p.ItemDay)
                     .HasForeignKey(d => d.ItemId)
-                    .HasConstraintName("FK_Item");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_ItemDayToItem");
             });
 
             modelBuilder.Entity<ItemPriceAndCurrencyResponse>(entity =>

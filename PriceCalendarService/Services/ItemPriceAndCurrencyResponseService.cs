@@ -88,6 +88,7 @@ namespace PriceCalendarService.Services
                         var mItemDay = _mapper.Map<ItemDay>(itemDay);
                         mItemDay.Item = mItem;
                         mItemDay.ItemId = mItem.Id;
+                        mItem.ItemDay.Add(mItemDay);
                     }
                 }
             }

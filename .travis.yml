@@ -32,13 +32,20 @@ jobs:
         - docker tag spa caspha17/spa:latest
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/spa:latest
-    - stage: Build and deploy worker2
+    - stage: Build and deploy itemmanagerservice
       script:
-        - cd example-worker2
-        - docker build -t worker2 . 
-        - docker tag worker2 caspha17/worker2:latest
+        - cd ItemManagerService
+        - docker build -t itemmanagerservice . 
+        - docker tag itemmanagerservice caspha17/itemmanagerservice:latest
         - docker login -u caspha17 --password $dockerLogin
-        - docker push caspha17/worker2:latest 
+        - docker push caspha17/itemmanagerservice:latest 
+    - stage: Build and deploy PriceCalendarService
+      script:
+        - cd PriceCalendarService
+        - docker build -t pricecalendarservice . 
+        - docker tag pricecalendarservice caspha17/pricecalendarservice:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/pricecalendarservice:latest 
     - stage: Build and deploy proxy
       script:
           - docker build -t proxy . 
@@ -51,6 +58,6 @@ jobs:
           - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
           - source /home/travis/google-cloud-sdk/path.bash.inc
           - gcloud version 
-          - gcloud auth activate-service-account $Account --key-file <(echo $KEY | base64 --decode)
+          - gcloud auth activate-service-account $Account --key-file <(echo $KEY1 | base64 --decode)
           - gcloud config set project test-220812
-          - gcloud compute ssh bachelor --zone europe-west1-b --command 'cd Microservice-swarm/ && sudo git pull && sudo docker stack deploy --compose-file docker-compose.prod.yml bachelor'
+          - gcloud compute ssh test@bachelor --zone europe-west1-b --command 'cd Microservice-swarm/ && sudo git pull && sudo docker stack deploy --compose-file docker-compose.prod.yml bachelor'

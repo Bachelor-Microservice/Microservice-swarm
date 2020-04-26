@@ -5,33 +5,6 @@
     <h3 *ngIf="status" >CompuSuite</h3>
   </div>
 
-  <div class="nav-item">
-    <a mat-list-item [routerLink]="['/']" routerLinkActive="list-item-active">
-      <div class="d-flex">
-          
-        <mat-icon class="green-icon">dashboard</mat-icon>
-
-        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> Dashboard</span>
-        <div class="arrow">
-          <mat-icon >keyboard_arrow_down</mat-icon>
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <div class="nav-item">
-    <a mat-list-item [routerLink]="['/back']" routerLinkActive="list-item-active">
-      <div class="d-flex">
-          
-        <mat-icon class="green-icon">dashboard</mat-icon>
-
-        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> Backend   </span>
-        <div class="arrow">
-          
-        </div>
-      </div>
-    </a>
-  </div>
 
   <div class="nav-item">
     <a mat-list-item [routerLink]="['/pricecalendar']" routerLinkActive="list-item-active">
@@ -46,4 +19,20 @@
       </div>
     </a>
   </div>
+
+  <div class="nav-item">
+    <a mat-list-item [routerLink]="['/items']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> Items</span>
+        <div class="arrow">
+          <mat-icon >keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
 </mat-nav-list>

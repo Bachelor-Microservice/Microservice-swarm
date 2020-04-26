@@ -8,14 +8,14 @@ namespace ItemManagerService.Services
 {
     public interface IItemService
     {
-        public Task<ServiceResponse<List<Items>>> GetItems();
+        Task<ServiceResponse<List<Items>>> GetItems();
 
-        public Task<ServiceResponse<Items>> GetSingle(int id);
+        Task<ServiceResponse<Items>> GetSingle(int id);
 
-        public Task<ServiceResponse<Items>> AddItem(Items item);
+        Task<ServiceResponse<Items>> AddItem(Items item);
 
-        public Task<ServiceResponse<Items>> UpdateItems(Items item);
+        Task<ServiceResponse<Items>> UpdateItems(Items item);
 
-        public Task<ServiceResponse<Items>> DeleteItem(int Id);
+        Task<ServiceResponse<Items>> DeleteItem(int Id);
     }
 }

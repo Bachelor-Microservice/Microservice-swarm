@@ -30,7 +30,7 @@ namespace ItemManagerService
             services.AddControllers();
             services.AddTransient<IItemService, ItemService>();
             services.AddTransient<ItemManagerServiceContext>();
-
+            
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
@@ -50,6 +50,8 @@ namespace ItemManagerService
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
             });
+
+            app.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
 
             app.UseRouting();
 

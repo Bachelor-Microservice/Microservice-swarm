@@ -43,7 +43,11 @@ namespace PriceCalendarService.Services
         public async Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAll()
         {
             var serviceResponse = new ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>();
-            var model = await _context.ItemPriceAndCurrencyResponse.ToListAsync();
+            var model = await _context.ItemPriceAndCurrencyResponse
+                .Include(i => i.Groups)
+                .ThenInclude(g => g.Item)
+                .ThenInclude(o => o.ItemDay)
+                .ToListAsync();
             serviceResponse.Data = new List<ItemPriceAndCurrencyResponseDTO>();
             foreach (var item in model) serviceResponse.Data.Add(this.MapManuallyFromModelToDto(item));
             return serviceResponse;
@@ -101,10 +105,12 @@ namespace PriceCalendarService.Services
             foreach (var group in model.Groups)
             {
                 var groupDTO = _mapper.Map<GroupsDTO>(group);
+                if(group.Item != null) groupDTO.Items = new List<ItemDTO>();
                 dto.Groups.Add(groupDTO);
                 foreach (var item in group.Item)
                 {
                     var itemDTO = _mapper.Map<ItemDTO>(item);
+                    if (item.ItemDay != null) itemDTO.ItemDays = new List<ItemDayDTO>();
                     groupDTO.Items.Add(itemDTO);
                     foreach (var itemDay in itemDTO.ItemDays)
                     {

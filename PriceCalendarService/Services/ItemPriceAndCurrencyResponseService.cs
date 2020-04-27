@@ -106,6 +106,7 @@ namespace PriceCalendarService.Services
         private ItemPriceAndCurrencyResponseDTO MapManuallyFromModelToDto(ItemPriceAndCurrencyResponse model)
         {
             var dto = _mapper.Map<ItemPriceAndCurrencyResponseDTO>(model);
+            if(model.Groups!= null) dto.Groups = new List<GroupsDTO>();
             foreach (var group in model.Groups)
             {
                 var groupDTO = _mapper.Map<GroupsDTO>(group);
@@ -116,7 +117,7 @@ namespace PriceCalendarService.Services
                     var itemDTO = _mapper.Map<ItemDTO>(item);
                     if (item.ItemDay != null) itemDTO.ItemDays = new List<ItemDayDTO>();
                     groupDTO.Items.Add(itemDTO);
-                    foreach (var itemDay in itemDTO.ItemDays)
+                    foreach (var itemDay in item.ItemDay)
                     {
                         var itemDayDTO = _mapper.Map<ItemDayDTO>(itemDay);
                         itemDTO.ItemDays.Add(itemDayDTO);

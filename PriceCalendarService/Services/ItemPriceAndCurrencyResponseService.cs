@@ -56,7 +56,11 @@ namespace PriceCalendarService.Services
         public async Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Get(int id)
         {
             var serviceResponse = new ServiceResponse<ItemPriceAndCurrencyResponseDTO>();
-            var model = await _context.ItemPriceAndCurrencyResponse.FirstOrDefaultAsync(c => c.Id == id);
+            var model = await _context.ItemPriceAndCurrencyResponse
+                .Include(o => o.Groups)
+                .ThenInclude(g => g.Item)
+                .ThenInclude(i => i.ItemDay)
+                .FirstOrDefaultAsync(c => c.Id == id);
             serviceResponse.Data = this.MapManuallyFromModelToDto(model);
             return serviceResponse;
         }

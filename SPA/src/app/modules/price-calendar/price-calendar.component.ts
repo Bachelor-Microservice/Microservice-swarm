@@ -22,7 +22,7 @@ export class PriceCalendarComponent implements OnInit {
 
   constructor(private priceCalendarService: PriceCalendarService) { }
 
-  priceCalendar: ItemPriceAndCurrencyResponse;
+  priceCalendar: ItemPriceAndCurrencyResponse[];
 
   private gridApi;
   private gridColumnApi;
@@ -46,8 +46,12 @@ export class PriceCalendarComponent implements OnInit {
   }
 
   onSubmit( ) {
-    this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe(e => {
-      this.priceCalendar = e as ItemPriceAndCurrencyResponse;
+    this.priceCalendar = [];
+    this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe((e: any) => {
+      e.data.forEach(element => {
+        this.priceCalendar.push(element);
+      });
+      console.log(this.priceCalendar);
       this.setData();
       this.defaultColDef = {
         editable: true,
@@ -141,7 +145,8 @@ export class PriceCalendarComponent implements OnInit {
   });
 
     this.rowData = [];
-    this.priceCalendar.groups.forEach((group: Group) => {
+    this.priceCalendar.forEach(element => {
+    element.groups.forEach((group: Group) => {
       this.columnDefs.push({field: 'GroupID', hide: true})
       group.items.forEach((item: Item) => {
         let element = new rowData();
@@ -166,6 +171,7 @@ export class PriceCalendarComponent implements OnInit {
         this.rowData.push(element);
       });
     }); 
+  });
   }
 
 

@@ -9,7 +9,7 @@ import { ItemPriceDTO } from '../_models/itemPriceDTO.model';
 })
 export class PriceCalendarService {
 
-  pricecalendarApi = environment.api + 'PriceCalendar' ;
+  pricecalendarApi = environment.api + 'pricecalendar' ;
 
   constructor(private http: HttpClient) { }
 

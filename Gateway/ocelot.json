@@ -1,7 +1,7 @@
 {
     "ReRoutes": [
         {
-            "DownstreamPathTemplate": "/PriceCalendar",
+            "DownstreamPathTemplate": "/api/pricecalendar",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -9,11 +9,11 @@
                     "Port": 5002
                 }
             ],
-            "UpstreamPathTemplate": "/api/pricecalender",
+            "UpstreamPathTemplate": "/api/pricecalendar",
             "UpstreamHttpMethod": []
         },
         {
-            "DownstreamPathTemplate": "/PriceCalendar/{id}",
+            "DownstreamPathTemplate": "/api/pricecalendar/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -21,11 +21,11 @@
                     "Port": 5002
                 }
             ],
-            "UpstreamPathTemplate": "/api/pricecalender/{id}",
+            "UpstreamPathTemplate": "/api/pricecalendar/{id}",
             "UpstreamHttpMethod": []
         },
         {
-            "DownstreamPathTemplate": "/ItemManager/",
+            "DownstreamPathTemplate": "/api/itemmanager/",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -37,7 +37,7 @@
             "UpstreamHttpMethod": []
         },
         {
-            "DownstreamPathTemplate": "/ItemManager/{id}",
+            "DownstreamPathTemplate": "/api/itemmanager/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {

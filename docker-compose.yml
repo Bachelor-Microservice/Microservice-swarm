@@ -22,6 +22,6 @@ services:
             - ASPNETCORE_URLS=http://+:5003
     proxy:
         build:
-            context: .
+            context: ./proxy
         ports: 
             - 80:80

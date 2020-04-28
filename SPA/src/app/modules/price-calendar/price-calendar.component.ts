@@ -36,16 +36,28 @@ export class PriceCalendarComponent implements OnInit {
   rowData: rowData[];
   gridOptions: GridOptions;
 
+  // This method when the component is started
   ngOnInit() {
-    var d = new Date();
-    d.setDate(d.getDate() + 3);
+    const InitialDateEndDate = this.setDefaultDateRangeInForm();
+    this.setInitialForm(InitialDateEndDate);
+  }
+
+  setInitialForm(date: Date) {
     this.form = new FormGroup({
       from: new FormControl(new Date()),
-      to: new FormControl(d)
+      to: new FormControl(date)
     });
   }
 
-  onSubmit( ) {
+  setDefaultDateRangeInForm() {
+    const InitalDateRange = new Date();
+    InitalDateRange.setDate(InitalDateRange.getDate() + 3);
+    return InitalDateRange;
+  }
+
+
+
+  OnGetDateRange( ) {
     this.priceCalendar = [];
     this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe((e: any) => {
       e.data.forEach(element => {
@@ -55,16 +67,15 @@ export class PriceCalendarComponent implements OnInit {
       this.setData();
       this.defaultColDef = {
         editable: true,
-      }
+      };
     });
   }
 
 
   submitGrid(){
     const ItemPriceAndCurrencyCommand = new ItemPriceAndCurrencyResponse();
-    ItemPriceAndCurrencyCommand.currency = this.priceCalendar.currency;
-    
-    
+    //ItemPriceAndCurrencyCommand.currency = this.priceCalendar.currency;
+
     this.gridOptions.rowData.forEach((row, index) => {
       var newGroup = new Group();
       if (!ItemPriceAndCurrencyCommand.groups.some(e => e.id === row.GroupID) ) {
@@ -76,12 +87,9 @@ export class PriceCalendarComponent implements OnInit {
         newGroup.id = row.GroupID;
         ItemPriceAndCurrencyCommand.groups.push(newGroup);
       };
-     
     });
-    
     this.gridOptions.rowData.forEach((row, index) => {
       var group = ItemPriceAndCurrencyCommand.groups.find(e => e.id === row.GroupID);
-      
       var keys = Object.keys(row);
       var item = new Item();
       for(var i = 4; i < keys.length; i++) {
@@ -101,6 +109,7 @@ export class PriceCalendarComponent implements OnInit {
     console.log(ItemPriceAndCurrencyCommand);
     
   }
+
 
   setData() {
     /*
@@ -170,18 +179,18 @@ export class PriceCalendarComponent implements OnInit {
         });
         this.rowData.push(element);
       });
-    }); 
+    });
   });
   }
 
 
+  // This method is invoked when the ag-grid is ready
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridOptions = this.gridColumnApi.columnController.gridOptionsWrapper.gridOptions;
     this.gridOptions.api.refreshCells();
   }
-
 
 }
 

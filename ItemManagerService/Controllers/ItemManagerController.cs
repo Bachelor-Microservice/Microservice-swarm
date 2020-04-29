@@ -8,7 +8,7 @@ using ItemManagerService.Models;
 namespace ItemManagerService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ItemManagerController : ControllerBase
     {
         private readonly IItemService _itemservice;

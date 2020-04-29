@@ -1,44 +1,53 @@
 {
     "ReRoutes": [
         {
-        "DownstreamPathTemplate": "/PriceCalendar",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-            {
-                "Host": "pricecalendarservice",
-                "Port": 5002
-            }
-        ],
-        "UpstreamPathTemplate": "/api/pricecalender",
-        "UpstreamHttpMethod": []
+            "DownstreamPathTemplate": "/api/pricecalendar",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/pricecalendar",
+            "UpstreamHttpMethod": []
         },
         {
-        "DownstreamPathTemplate": "/ItemManager/",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-            {
-                "Host": "itemmanagerservice",
-                "Port": 5003
-            }
-        ],
-        "UpstreamPathTemplate": "/api/itemmanager/",
-        "UpstreamHttpMethod": []
-        }
-        ,
+            "DownstreamPathTemplate": "/api/pricecalendar/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/pricecalendar/{id}",
+            "UpstreamHttpMethod": []
+        },
         {
-        "DownstreamPathTemplate": "/ItemManager/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-            {
-                "Host": "itemmanagerservice",
-                "Port": 5003
-            }
-        ],
-        "UpstreamPathTemplate": "/api/itemmanager/{id}",
-        "UpstreamHttpMethod": []
+            "DownstreamPathTemplate": "/api/itemmanager/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "itemmanagerservice",
+                    "Port": 5003
+                }
+            ],
+            "UpstreamPathTemplate": "/api/itemmanager/",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/api/itemmanager/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "itemmanagerservice",
+                    "Port": 5003
+                }
+            ],
+            "UpstreamPathTemplate": "/api/itemmanager/{id}",
+            "UpstreamHttpMethod": []
         }
-    
     ],
-    "GlobalConfiguration": {
-    }
+    "GlobalConfiguration": {}
 }

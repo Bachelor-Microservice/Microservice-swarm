@@ -48,6 +48,7 @@ jobs:
         - docker push caspha17/pricecalendarservice:latest 
     - stage: Build and deploy proxy
       script:
+          - cd proxy
           - docker build -t proxy . 
           - docker tag proxy caspha17/proxy:latest
           - docker login -u caspha17 --password $dockerLogin

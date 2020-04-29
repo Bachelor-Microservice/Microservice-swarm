@@ -13,7 +13,7 @@ namespace PriceCalendarService.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PriceCalendarController : ControllerBase
     {
         private readonly IItemPriceAndCurrencyResponseService _service;

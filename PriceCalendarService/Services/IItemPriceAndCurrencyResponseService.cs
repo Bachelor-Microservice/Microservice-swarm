@@ -9,14 +9,14 @@ namespace PriceCalendarService.Services
 {
     public interface IItemPriceAndCurrencyResponseService
     {
-        public Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAll();
+        Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAll();
 
-        public Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Get(int id);
+        Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Get(int id);
 
-        public Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Add(ItemPriceAndCurrencyResponseDTO cmd);
+        Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Add(ItemPriceAndCurrencyResponseDTO cmd);
 
-        public Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Update(ItemPriceAndCurrencyResponseDTO cmd);
+        Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Update(ItemPriceAndCurrencyResponseDTO cmd);
 
-        public Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Delete(int Id);
+        Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Delete(int Id);
     }
 }

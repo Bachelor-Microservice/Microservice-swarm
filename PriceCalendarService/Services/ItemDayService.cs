@@ -47,7 +47,10 @@ namespace PriceCalendarService.Services
 
         public async Task<ServiceResponse<List<ItemDayDTO>>> GetAll()
         {
-            throw new NotImplementedException();
+            var itemDays = await _context.ItemDay.ToListAsync();
+            var dtos = new List<ItemDayDTO>();
+            foreach (var item in itemDays) dtos.Add(_mapper.Map<ItemDayDTO>(item));
+            return new ServiceResponse<List<ItemDayDTO>> { Data = dtos};
         }
     }
 }

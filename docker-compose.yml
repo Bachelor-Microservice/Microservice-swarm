@@ -14,7 +14,7 @@ services:
     frontend:
         build:
             context: ./SPA/
-            dockerfile: Dockerfile
+            dockerfile: staging.dockerfile
     itemmanagerservice: 
         build:
             ./ItemManagerService

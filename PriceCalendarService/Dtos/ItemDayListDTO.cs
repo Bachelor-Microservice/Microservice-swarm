@@ -7,6 +7,6 @@ namespace PriceCalendarService.Dtos
 {
     public class ItemDayListDTO
     {
-        List<ItemDayDTO> ItemDays { get; set; }
+        public List<ItemDayDTO> ItemDays { get; set; }
     }
 }

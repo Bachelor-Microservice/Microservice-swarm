@@ -30,7 +30,7 @@ namespace PriceCalendarService.Controllers
 
 
         [HttpPost]
-        [Route("[AddOrUpdate]")]
+        [Route("AddOrUpdate")]
         public async Task<IActionResult> AddOrUpdate(ItemDayListDTO dto)
         {
             return Ok(await _service.Add(dto));

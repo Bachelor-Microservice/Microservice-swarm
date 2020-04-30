@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop.Infrastructure;
 using PriceCalendarService.Dtos;
 using PriceCalendarService.Models;
 using System;
@@ -28,19 +29,29 @@ namespace PriceCalendarService.Services
             
             foreach(var dto in cmd.ItemDays)
             {
-                var model = _mapper.Map<ItemDay>(dto);
-                if(existing.Exists(x => x.Id == model.Id))
+                var existingItem = existing.Find(x => x.Id == dto.Id);
+                if(existingItem != null)
                 {
-                    toUpdate.Add(model);
+                    if(dto.Price != 0) existingItem.Price = dto.Price;
+                    if (!String.IsNullOrWhiteSpace(dto.PricePackage)) existingItem.PricePackage = dto.PricePackage;
+                    if(!String.IsNullOrWhiteSpace(dto.Priority)) existingItem.Priority = dto.Priority;
+                    if(dto.Date != null) existingItem.Date = dto.Date;
+                    if(!String.IsNullOrWhiteSpace(dto.CustomerDescription)) existingItem.CustomerDescription = dto.CustomerDescription;
+                    toUpdate.Add(existingItem);
                 }
                 else
                 {
+                    var model = _mapper.Map<ItemDay>(dto);
+                    Random rnd = new Random();
+                    model.Id = rnd.Next(1000000, 999999999);
+
                     toCreate.Add(model);
                 }
+                
             }
 
-            await _context.ItemDay.AddRangeAsync(toCreate);
-            _context.ItemDay.UpdateRange(toUpdate);
+            if(toCreate.Count != 0) await _context.ItemDay.AddRangeAsync(toCreate);
+            if(toUpdate.Count != 0) _context.ItemDay.UpdateRange(toUpdate);
             await _context.SaveChangesAsync();
             return new ServiceResponse<ItemDayListDTO>{ Data = cmd };
         }

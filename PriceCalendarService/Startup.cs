@@ -31,6 +31,7 @@ namespace PriceCalendarService
         {
             services.AddControllers();
             services.AddTransient<PriceCalendarServiceContext>();
+            services.AddTransient<IItemDayService, ItemDayService>();
             services.AddScoped<IItemPriceAndCurrencyResponseService, ItemPriceAndCurrencyResponseService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(swagger =>

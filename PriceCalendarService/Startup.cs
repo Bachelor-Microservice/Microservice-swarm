@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using PriceCalendarService.Models;
 using PriceCalendarService.Services;
 using AutoMapper;
+using PriceCalendarService.Hubs;
 
 namespace PriceCalendarService
 {
@@ -30,6 +31,7 @@ namespace PriceCalendarService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSignalR();
             services.AddTransient<PriceCalendarServiceContext>();
             services.AddTransient<IItemDayService, ItemDayService>();
             services.AddScoped<IItemPriceAndCurrencyResponseService, ItemPriceAndCurrencyResponseService>();
@@ -38,6 +40,14 @@ namespace PriceCalendarService
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "PriceCalendarService" });
             });
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials();
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,13 +64,15 @@ namespace PriceCalendarService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors( e=> e.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            
+            app.UseCors("CorsPolicy");
             app.UseRouting();
 
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hub");
             });
         }
     }

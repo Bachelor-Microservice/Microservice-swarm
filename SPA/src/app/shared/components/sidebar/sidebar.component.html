@@ -34,5 +34,19 @@
     </a>
   </div>
 
+  <div class="nav-item">
+    <a mat-list-item [routerLink]="['/signal']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> SignalR Test</span>
+        <div class="arrow">
+          <mat-icon >keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+
 
 </mat-nav-list>

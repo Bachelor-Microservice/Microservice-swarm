@@ -6,6 +6,7 @@ import { PostsComponent } from './modules/posts/posts.component';
 
 import { PriceCalendarComponent } from './modules/price-calendar/price-calendar.component';
 import { ItemsComponent } from './modules/items/items.component';
+import { SignalRComponent } from './modules/signalR/signalR.component';
 
 
 const routes: Routes = [{
@@ -24,6 +25,10 @@ const routes: Routes = [{
   {
     path: 'items',
     component: ItemsComponent
+  }, 
+  {
+    path: 'signal',
+    component: SignalRComponent
   }
 ]
 }];

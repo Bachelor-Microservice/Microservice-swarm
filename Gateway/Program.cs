@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Microsoft.OpenApi.Models;
 
 namespace Gateway
 {
@@ -31,13 +32,23 @@ namespace Gateway
                .ConfigureServices(s =>
                {
                    s.AddOcelot();
+                   s.AddSwaggerGen(swagger =>
+            {
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "PriceCalendarService" });
+            });
                  
                    
                })
                 .Configure(a =>
                 {
-
+                    
+                    a.UseWebSockets();
                     a.UseOcelot().Wait();
+                    a.UseSwagger();
+                    a.UseSwaggerUI(c =>
+                    {
+                        c.SwaggerEndpoint("/swagger/v1/swagger.json", "PriceCalendarService");
+                    });
                 })
                 .Build();
     }

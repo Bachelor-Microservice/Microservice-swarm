@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "@aspnet/signalr": "^1.1.4",
     "ag-grid-angular": "^23.0.3",
     "ag-grid-community": "^23.0.2",
     "minimist": "^1.2.5",

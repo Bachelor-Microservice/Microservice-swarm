@@ -3,13 +3,14 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ItemPriceAndCurrencyResponse } from '../_models/ItemPriceAndCurrencyResponse.model';
 import { ItemPriceDTO } from '../_models/itemPriceDTO.model';
+import { ItemDayDTO } from '../_models/ItemDayDTO.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PriceCalendarService {
 
-  pricecalendarApi = environment.api + 'pricecalendar' ;
+  pricecalendarApi = environment.api + 'pricecalendar';
 
   constructor(private http: HttpClient) { }
 

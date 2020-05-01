@@ -23,6 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { CreateItemComponent } from 'src/app/modules/items/create-item/create-item.component';
 import { FormsModule } from '@angular/forms';
 import { EditItemComponent } from 'src/app/modules/items/edit-item/edit-item.component';
+import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EditItemComponent } from 'src/app/modules/items/edit-item/edit-item.com
     PriceCalendarComponent,
     ItemsComponent,
     CreateItemComponent,
-    EditItemComponent
+    EditItemComponent,
+    SignalRComponent
   ],
   imports: [
     CommonModule,

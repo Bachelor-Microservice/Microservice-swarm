@@ -8,8 +8,8 @@ namespace PriceCalendarService.Services
 {
     public interface IItemDayService
     {
-        public Task<ServiceResponse<List<ItemDayDTO>>> GetAll();
+        Task<ServiceResponse<List<ItemDayDTO>>> GetAll();
 
-        public Task<ServiceResponse<ItemDayListDTO>> Add(ItemDayListDTO cmd);
+        Task<ServiceResponse<ItemDayDTO>> Add(ItemDayDTO cmd);
     }
 }

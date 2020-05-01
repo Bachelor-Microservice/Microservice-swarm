@@ -37,6 +37,7 @@ namespace PriceCalendarService.Services
                     if(!String.IsNullOrWhiteSpace(dto.Priority)) existingItem.Priority = dto.Priority;
                     if(dto.Date != null) existingItem.Date = dto.Date;
                     if(!String.IsNullOrWhiteSpace(dto.CustomerDescription)) existingItem.CustomerDescription = dto.CustomerDescription;
+                    if (!String.IsNullOrWhiteSpace(dto.ItemId)) existingItem.ItemId = dto.ItemId;
                     toUpdate.Add(existingItem);
                 }
                 else

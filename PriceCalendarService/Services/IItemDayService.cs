@@ -10,6 +10,6 @@ namespace PriceCalendarService.Services
     {
         Task<ServiceResponse<List<ItemDayDTO>>> GetAll();
 
-        Task<ServiceResponse<ItemDayDTO>> Add(ItemDayDTO cmd);
+        Task<ServiceResponse<ItemDayListDTO>> Add(ItemDayListDTO cmd);
     }
 }

@@ -10,26 +10,18 @@ services:
     pricecalendarservice:
         build: 
             context: ./PriceCalendarService
+        ports:
+            - "5002"
         environment: 
             - ASPNETCORE_URLS=http://+:5002
         depends_on: 
             - rabbitmq
-    gateway:
-        build: 
-            context: ./Gateway/
-        environment: 
-            - ASPNETCORE_URLS=http://+:5000
-    frontend:
-        build:
-            context: ./SPA/
-            dockerfile: staging.dockerfile
     itemmanagerservice: 
         build:
             ./ItemManagerService
+        ports:
+            - "5003"
         environment: 
             - ASPNETCORE_URLS=http://+:5003
-    proxy:
-        build:
-            context: ./proxy
-        ports: 
-            - 80:80
+        depends_on:
+            - rabbitmq

@@ -5,8 +5,17 @@ using PriceCalendarService.Dtos;
 using PriceCalendarService.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Hangfire;
+using Microsoft.AspNetCore.SignalR;
+using PriceCalendarService.Hubs;
+using Groups = PriceCalendarService.Models.Groups;
+using Item = PriceCalendarService.Models.Item;
+
 
 namespace PriceCalendarService.Services
 {
@@ -14,11 +23,13 @@ namespace PriceCalendarService.Services
     {
         private readonly PriceCalendarServiceContext _context;
         private readonly IMapper _mapper;
+        private readonly IHubContext<ChatHub> _hubContext;
 
-        public ItemPriceAndCurrencyResponseService(PriceCalendarServiceContext context, IMapper mapper)
+        public ItemPriceAndCurrencyResponseService(PriceCalendarServiceContext context, IMapper mapper, IHubContext<ChatHub> hubContext)
         {
             _context = context;
             _mapper = mapper;
+            _hubContext = hubContext;
         }
         public async Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Add(ItemPriceAndCurrencyResponseDTO dto)
         {
@@ -38,6 +49,102 @@ namespace PriceCalendarService.Services
             await _context.SaveChangesAsync();
             serviceResponse.Data = this.MapManuallyFromModelToDto(toBeDeleted);
             return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<string>> ExportToExcel(DateTime @from, DateTime to)
+        {
+            BackgroundJob.Schedule( () =>  LongFormattingMethod(from , to), TimeSpan.FromSeconds(0));
+            var serviceResponse = new ServiceResponse<string>();
+            serviceResponse.Success = true;
+            return serviceResponse;
+        }
+        
+        public async Task LongFormattingMethod(DateTime @from, DateTime to)
+        {
+            
+            System.IO.Stream spreadsheetStream = new System.IO.MemoryStream();
+            var wb = new XLWorkbook();
+            IXLWorksheet worksheet = wb.Worksheets.Add("test");
+
+            var ItemPriceAndCurrencyResponseList = await _context.ItemPriceAndCurrencyResponse
+                .Include(i => i.Groups)
+                .ThenInclude(g => g.Item)
+                .ThenInclude(o => o.ItemDay)
+                .ToListAsync();
+            
+            var items = new List<Item>();
+            worksheet.Cell(1, 1).SetValue("Id");
+            worksheet.Cell(1, 2).SetValue("Navn");
+            worksheet.Cell(1, 3).SetValue("Pris");
+            int cellY = 2;
+            int cellX = 1;
+            foreach (var itemPriceAndCurrency in ItemPriceAndCurrencyResponseList)
+            {
+                foreach (var group in itemPriceAndCurrency.Groups)
+                {
+                    foreach (var item in group.Item)
+                    {
+
+                        worksheet.Cell(cellY, cellX++).SetValue(item.Id);
+                        worksheet.Cell(cellY, cellX++).SetValue(item.Name);
+                        worksheet.Cell(cellY, cellX++).SetValue(item.Price);
+                        items.Add(item);
+                        cellY++;
+                        cellX = 1;
+
+                    }
+                }
+            }
+
+
+
+            cellX = 3;
+            var isItemPrice = true;
+            for (var day = from.Date; day <= to; day = day.AddDays(1))
+            {
+                cellX++;
+                cellY = 1;
+                
+                worksheet.Cell(cellY++, cellX).SetValue(day.ToString("d"));
+                foreach (var item in items)
+                {
+                    foreach (var itemDay in item.ItemDay)
+                    {
+                        isItemPrice = true;
+                        if (itemDay.Date.Value == day.Date && item.Id == itemDay.ItemId)
+                        {
+                            worksheet.Cell(cellY, cellX).SetValue(itemDay.Price);
+                            worksheet.Cell(cellY++, cellX).Style.Font.Bold = true; 
+                            isItemPrice = false;
+                            break;
+
+                        } 
+                    }
+
+                    if (isItemPrice)
+                    {
+                        worksheet.Cell(cellY++, cellX).SetValue(item.Price);
+                       
+                    }
+                    
+                }
+            }
+            
+        
+
+
+            worksheet.ColumnWidth = 20;
+            wb.SaveAs(spreadsheetStream);
+            spreadsheetStream.Position = 0;
+            var fileName = "Ordre_FRA_"  + "_TIL_" ;
+            var workbookBytes = new byte[0];
+            await using (var ms = new MemoryStream())
+            {
+                wb.SaveAs(ms);
+                workbookBytes = ms.ToArray();
+            }
+
+            await _hubContext.Clients.All.SendAsync("HELLO", workbookBytes);
         }
 
         public async Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAll()
@@ -127,4 +234,6 @@ namespace PriceCalendarService.Services
             return dto;
         }
     }
+
+   
 }

@@ -1,30 +1,6 @@
 {
     "ReRoutes": [
-        {
-            "DownstreamPathTemplate": "/{catchAll}",
-            "DownstreamScheme": "ws",
-            "DownstreamHostAndPorts": [
-              {
-                "Host": "pricecalendarservice",
-                "Port": 5002
-              }
-            ],
-            "UpstreamPathTemplate": "/api/{catchAll}",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          },
-          {
-            "DownstreamPathTemplate": "/{catchAll}/{id}",
-            "DownstreamScheme": "ws",
-            "DownstreamHostAndPorts": [
-              {
-                "Host": "pricecalendarservice",
-                "Port": 5002
-              }
-            ],
-            "UpstreamPathTemplate": "/api/{catchAll}/{id}",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          },
-        {
+         {
             "DownstreamPathTemplate": "/api/pricecalendar",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -71,7 +47,31 @@
             ],
             "UpstreamPathTemplate": "/api/itemmanager/{id}",
             "UpstreamHttpMethod": []
-        }
+        },
+        {
+            "DownstreamPathTemplate": "/api/{catchAll}",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/{catchAll}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+          } ,
+           {
+            "DownstreamPathTemplate": "/{catchAll}/{id}",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/{catchAll}/{id}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+          }
 
     ],
     "GlobalConfiguration": {}

@@ -14,6 +14,9 @@ using Microsoft.OpenApi.Models;
 using PriceCalendarService.Models;
 using PriceCalendarService.Services;
 using AutoMapper;
+using Hangfire;
+using Hangfire.MemoryStorage;
+using Hangfire.SqlServer;
 using PriceCalendarService.Hubs;
 
 namespace PriceCalendarService
@@ -36,6 +39,10 @@ namespace PriceCalendarService
             services.AddTransient<IItemDayService, ItemDayService>();
             services.AddScoped<IItemPriceAndCurrencyResponseService, ItemPriceAndCurrencyResponseService>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddHangfire(config =>
+            {
+                config.UseMemoryStorage();
+            });
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "PriceCalendarService" });
@@ -47,7 +54,7 @@ namespace PriceCalendarService
                         .AllowAnyMethod()
                         .SetIsOriginAllowed((host) => true)
                         .AllowCredentials();
-                }));
+                })); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +71,9 @@ namespace PriceCalendarService
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseHangfireServer();
+            app.UseHangfireDashboard();
             
             app.UseCors("CorsPolicy");
             app.UseRouting();
@@ -72,7 +82,7 @@ namespace PriceCalendarService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/hub");
+                endpoints.MapHub<ChatHub>("/api/hub");
             });
         }
     }

@@ -13,7 +13,7 @@ namespace PriceCalendarService.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ItemDayController : ControllerBase
     {
         private readonly IItemDayService _service;
@@ -30,7 +30,6 @@ namespace PriceCalendarService.Controllers
 
 
         [HttpPost]
-        [Route("AddOrUpdate")]
         public async Task<IActionResult> AddOrUpdate(ItemDayListDTO dto)
         {
             return Ok(await _service.Add(dto));

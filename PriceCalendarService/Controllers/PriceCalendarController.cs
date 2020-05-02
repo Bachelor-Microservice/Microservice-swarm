@@ -1,13 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using PriceCalendarService.Models;
 using PriceCalendarService.Services;
 using PriceCalendarService.Dtos;
 using AutoMapper;
+using ClosedXML.Excel;
+using Hangfire;
+using Microsoft.AspNetCore.SignalR;
+using PriceCalendarService.Hubs;
 
 namespace PriceCalendarService.Controllers
 {
@@ -17,6 +17,7 @@ namespace PriceCalendarService.Controllers
     public class PriceCalendarController : ControllerBase
     {
         private readonly IItemPriceAndCurrencyResponseService _service;
+
         public PriceCalendarController(IItemPriceAndCurrencyResponseService service)
         {
             _service = service;
@@ -52,6 +53,16 @@ namespace PriceCalendarService.Controllers
         {
             return Ok(await _service.Delete(id));
         }
+
+        [HttpGet]
+        [Route("excel")]
+        public async Task<IActionResult> Excel( DateTime from , DateTime to)
+        {
+            return Ok(await _service.ExportToExcel(from, to));
+        }
+
+        
+        
     
     }
 }

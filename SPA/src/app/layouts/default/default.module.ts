@@ -24,7 +24,8 @@ import { CreateItemComponent } from 'src/app/modules/items/create-item/create-it
 import { FormsModule } from '@angular/forms';
 import { EditItemComponent } from 'src/app/modules/items/edit-item/edit-item.component';
 import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
-
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ExcelDownloadComponent } from 'src/app/modules/price-calendar/ExcelDownload/ExcelDownload.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -34,14 +35,14 @@ import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
     ItemsComponent,
     CreateItemComponent,
     EditItemComponent,
-    SignalRComponent
+    SignalRComponent,
+    ExcelDownloadComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     MatNativeDateModule ,
-    MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
@@ -49,6 +50,7 @@ import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
     MatSidenavModule,
     MatDividerModule,
     BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,

@@ -1,5 +1,5 @@
 export class ItemDayDTO {
-    date: Date | null;
+    date: string | null;
     id: number;
     price: number | null;
     priority: string;

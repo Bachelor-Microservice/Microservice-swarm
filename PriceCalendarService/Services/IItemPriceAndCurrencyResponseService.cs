@@ -18,5 +18,7 @@ namespace PriceCalendarService.Services
         Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Update(ItemPriceAndCurrencyResponseDTO cmd);
 
         Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Delete(int Id);
+        
+        Task<ServiceResponse<string>> ExportToExcel(DateTime from, DateTime to);
     }
 }

@@ -64,5 +64,10 @@ namespace PriceCalendarService.Services
             foreach (var item in itemDays) dtos.Add(_mapper.Map<ItemDayDTO>(item));
             return new ServiceResponse<List<ItemDayDTO>> { Data = dtos};
         }
+
+        public Task<ServiceResponse<ItemDayDTO>> Add(ItemDayDTO cmd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

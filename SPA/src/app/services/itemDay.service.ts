@@ -13,7 +13,7 @@ export class ItemDayService {
 
   AddItemDays(itemDayListDTO) {
     console.log(itemDayListDTO);
-    // return this.http.post(this.pricecalendarApi , itemDayListDTO);
+    return this.http.post(this.pricecalendarApi , itemDayListDTO);
   }
 
 }

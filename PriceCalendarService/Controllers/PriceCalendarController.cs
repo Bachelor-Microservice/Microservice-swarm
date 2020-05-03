@@ -58,6 +58,7 @@ namespace PriceCalendarService.Controllers
         [Route("excel")]
         public async Task<IActionResult> Excel( DateTime from , DateTime to)
         {
+            
             return Ok(await _service.ExportToExcel(from, to));
         }
 

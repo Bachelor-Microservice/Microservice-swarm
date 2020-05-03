@@ -6,6 +6,7 @@ services:
             context: ./PriceCalendarService
         environment: 
             - ASPNETCORE_URLS=http://+:5002
+            - RedisConnection=redis
     gateway:
         build: 
             context: ./Gateway/
@@ -25,3 +26,6 @@ services:
             context: ./proxy
         ports: 
             - 80:80
+    redis:
+        # Pull the image from Docker Hub
+        image: redis

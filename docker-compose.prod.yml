@@ -7,7 +7,7 @@ services:
             - ASPNETCORE_URLS=http://+:5002
         deploy:
             mode: replicated
-            replicas: 1
+            replicas: 10
     itemmanagerservice:
         image: caspha17/itemmanagerservice:latest
         environment: 
@@ -22,3 +22,6 @@ services:
         image: caspha17/proxy:latest
         ports: 
             - 80:80
+    redis:
+        # Pull the image from Docker Hub
+        image: redis

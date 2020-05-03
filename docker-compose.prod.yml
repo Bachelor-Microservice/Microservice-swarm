@@ -5,6 +5,7 @@ services:
         image: caspha17/pricecalendarservice:latest
         environment: 
             - ASPNETCORE_URLS=http://+:5002
+            - RedisConnection=redis
         deploy:
             mode: replicated
             replicas: 10

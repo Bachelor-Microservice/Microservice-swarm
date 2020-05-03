@@ -9,7 +9,7 @@ import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
 import moment from 'moment';
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import signalR, { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component';

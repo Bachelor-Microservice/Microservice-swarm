@@ -26,3 +26,5 @@ services:
     redis:
         # Pull the image from Docker Hub
         image: redis
+        ports: 
+            - 6379:6379

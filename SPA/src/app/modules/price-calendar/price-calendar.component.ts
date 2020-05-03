@@ -44,7 +44,10 @@ export class PriceCalendarComponent implements OnInit {
   // This method when the component is started
   ngOnInit() {
      
-    this._hubConnection = new HubConnectionBuilder().withUrl(environment.api + 'hub')
+    this._hubConnection = new HubConnectionBuilder().withUrl(environment.api + 'hub' , {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
     .build();
 
     this._hubConnection.on('Send', (data: any) => {

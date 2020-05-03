@@ -61,7 +61,7 @@
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
           } ,
            {
-            "DownstreamPathTemplate": "/{catchAll}/{id}",
+            "DownstreamPathTemplate": "/api/{catchAll}/{id}",
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
               {

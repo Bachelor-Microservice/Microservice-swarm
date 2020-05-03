@@ -7,7 +7,7 @@ services:
             - ASPNETCORE_URLS=http://+:5002
         deploy:
             mode: replicated
-            replicas: 10
+            replicas: 1
     itemmanagerservice:
         image: caspha17/itemmanagerservice:latest
         environment: 

@@ -10,7 +10,7 @@ import { ItemDayDTO } from '../_models/ItemDayDTO.model';
 })
 export class PriceCalendarService {
 
-  pricecalendarApi = environment.api + 'pricecalendar/';
+  pricecalendarApi = environment.api + 'pricecalendar';
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class PriceCalendarService {
     let params = new HttpParams();
     params = params.append('from' , formData.from.toISOString());
     params = params.append('to' , formData.to.toISOString());
-    return this.http.get(this.pricecalendarApi + 'excel'  , {responseType: 'blob' , params: params});
+    return this.http.get(this.pricecalendarApi + '/excel'  , {responseType: 'blob' , params: params});
   }
 
 

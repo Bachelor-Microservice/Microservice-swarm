@@ -35,7 +35,10 @@ namespace PriceCalendarService
         {
             string redisConnectionString = Environment.GetEnvironmentVariable("RedisConnection", EnvironmentVariableTarget.Process);
             services.AddControllers();
-            services.AddSignalR().AddStackExchangeRedis(redisConnectionString + ":6379");
+            System.Console.WriteLine(redisConnectionString);
+            services.AddSignalR().AddStackExchangeRedis(redisConnectionString+":6379", options => {
+        options.Configuration.ChannelPrefix = "MyApp";
+    });
             services.AddTransient<PriceCalendarServiceContext>();
             services.AddTransient<IItemDayService, ItemDayService>();
             services.AddScoped<IItemPriceAndCurrencyResponseService, ItemPriceAndCurrencyResponseService>();

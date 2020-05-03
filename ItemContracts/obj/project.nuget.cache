@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HVntQ606i1PA3LLs9+ncTsO7hZSFrPo7ONLPDUhcLLtyq1fOxJgAFcRjRh79dj9jXwCcnK3dzX0FlVRN8dz4ow==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemContracts\\ItemContracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,9 @@
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\bin\Debug\netstandard2.0\ItemContracts.deps.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\bin\Debug\netstandard2.0\ItemContracts.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\bin\Debug\netstandard2.0\ItemContracts.pdb
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.csprojAssemblyReference.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.AssemblyInfoInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.AssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemContracts\obj\Debug\netstandard2.0\ItemContracts.pdb

@@ -18,6 +18,7 @@ using Hangfire;
 using Hangfire.MemoryStorage;
 using Hangfire.SqlServer;
 using PriceCalendarService.Hubs;
+using Microsoft.AspNetCore.Http.Connections;
 
 namespace PriceCalendarService
 {
@@ -37,7 +38,10 @@ namespace PriceCalendarService
             services.AddControllers();
             System.Console.WriteLine(redisConnectionString);
             services.AddSignalR().AddStackExchangeRedis(redisConnectionString+":6379", options => {
-        options.Configuration.ChannelPrefix = "MyApp";
+             options.Configuration.ChannelPrefix = "MyApp";
+              
+    }).AddJsonProtocol(options => {
+        options.PayloadSerializerOptions.PropertyNamingPolicy = null;
     });
             services.AddTransient<PriceCalendarServiceContext>();
             services.AddTransient<IItemDayService, ItemDayService>();
@@ -86,7 +90,11 @@ namespace PriceCalendarService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/api/hub");
+                endpoints.MapHub<ChatHub>("/api/hub" , options => {
+                    options.Transports =
+                    HttpTransportType.WebSockets |
+                    HttpTransportType.LongPolling;
+                });
             });
         }
     }

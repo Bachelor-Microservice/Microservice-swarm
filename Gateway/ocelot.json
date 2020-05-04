@@ -71,9 +71,7 @@
             ],
             "UpstreamPathTemplate": "/api/{catchAll}/{id}",
             "LoadBalancerOptions": {
-                "Type": "CookieStickySessions",
-                "Key": "ASP.NET_SessionId",
-                "Expiry": 1800000
+                "Type": "LeastConnection"
             },
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
           }

@@ -9,7 +9,7 @@ import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
 import moment from 'moment';
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import * as signalR from "@aspnet/signalr";
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component';
@@ -40,11 +40,14 @@ export class PriceCalendarComponent implements OnInit {
   firstRun = true;
   columnDefs;
   rowData: rowData[];
-  private _hubConnection: HubConnection;
+  private _hubConnection: signalR.HubConnection;
   // This method when the component is started
   ngOnInit() {
      
-    this._hubConnection = new HubConnectionBuilder().withUrl(environment.api + 'hub' )
+    this._hubConnection = new signalR.HubConnectionBuilder().withUrl(environment.api + 'hub' , {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    }).configureLogging(signalR.LogLevel.Information)
     .build();
 
     this._hubConnection.on('Send', (data: any) => {

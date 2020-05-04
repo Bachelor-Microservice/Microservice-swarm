@@ -9,6 +9,9 @@ services:
         deploy:
             mode: replicated
             replicas: 10
+        labels:
+            - "com.docker.lb.hosts=demo.local"
+            - "com.docker.lb.sticky_session_cookie=session" 
     itemmanagerservice:
         image: caspha17/itemmanagerservice:latest
         environment: 

@@ -1,6 +1,6 @@
 namespace Shared.MassTransit.Contracts
 {
-    public class ItemEntityCreated
+    public class ItemEntityCreated : ItemContracts.ItemEntityCreated
     {
         public string ItemNo { get; set; }
         public string Name { get; set; }

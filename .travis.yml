@@ -54,7 +54,7 @@ jobs:
           - docker login -u caspha17 --password $dockerLogin
           - docker push caspha17/proxy:latest 
     - stage: Build and deploy identity
-       script:
+      script:
           - cd IdentityServer/IdentityServer
           - docker build -t identity . 
           - docker tag identity caspha17/identity:latest

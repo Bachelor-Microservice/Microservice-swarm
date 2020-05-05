@@ -17,3 +17,7 @@ ItemManagerService/bin
 PriceCalendarService/.idea
 ItemManagerService/bin
 .vscode
+IdentityServer/.idea
+IdentityServer/IdentityServer/bin
+IdentityServer/IdentityServer/.DS_Store
+IdentityServer/IdentityServer/obj

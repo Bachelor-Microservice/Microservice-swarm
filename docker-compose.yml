@@ -6,6 +6,7 @@ services:
             context: ./PriceCalendarService
         environment: 
             - ASPNETCORE_URLS=http://+:5002
+            - RedisConnection=redis
     gateway:
         build: 
             context: ./Gateway/
@@ -13,15 +14,28 @@ services:
             - ASPNETCORE_URLS=http://+:5000
     frontend:
         build:
-            context: ./SPA/
+            context: ./SPA
             dockerfile: staging.dockerfile
     itemmanagerservice: 
         build:
             ./ItemManagerService
         environment: 
             - ASPNETCORE_URLS=http://+:5003
+    identityservice:
+        build:
+            context: ./IdentityServer/IdentityServer
+        environment: 
+            - DEV_URL=http://localhost:4200
+            - ASPNETCORE_ENVIRONMENT=Developmnet
+            - ASPNETCORE_URLS=http://+:5010
+            - IDENTITY_ISSUER=http://localhost/auth
     proxy:
         build:
             context: ./proxy
         ports: 
             - 80:80
+    redis:
+                # Pull the image from Docker Hub
+        image: redis
+        ports: 
+            - 6379:6379

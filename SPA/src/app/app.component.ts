@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { authConfig } from './auth/auth-config';
 
 
 @Component({
@@ -11,8 +13,11 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
 
   temperature: any = []
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, private authService: OAuthService) {
+    this.authService.configure(authConfig);
+    this.authService.loadDiscoveryDocument().then( e => {
+      console.log(e);
+    });
   }
 
   GetData(){

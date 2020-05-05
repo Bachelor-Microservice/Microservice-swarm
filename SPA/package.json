@@ -27,6 +27,8 @@
     "ag-grid-angular": "^23.1.0",
     "ag-grid-community": "^23.1.0",
     "angular-notifier": "^6.0.1",
+    "angular-oauth2-oidc": "^9.2.1",
+    "angular-oauth2-oidc-jwks": "^9.0.0",
     "angular2-notifications": "^9.0.0",
     "minimist": "^1.2.5",
     "moment": "^2.25.1",

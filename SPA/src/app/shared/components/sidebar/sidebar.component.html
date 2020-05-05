@@ -33,8 +33,9 @@
       </div>
     </a>
   </div>
+  
 
-  <div class="nav-item">
+  <div *ngIf="isLoggedIn()" class="nav-item">
     <a mat-list-item [routerLink]="['/signal']" routerLinkActive="list-item-active">
       <div class="d-flex">
           

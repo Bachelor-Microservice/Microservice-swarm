@@ -13,6 +13,8 @@ import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { SidenavService } from '../services/sidenav.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from '../services/auth.service';
+
 
 
 
@@ -34,7 +36,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent , FooterComponent , SidebarComponent
   ],
   providers: [
-    SidenavService
+    SidenavService,
+    AuthService
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  
+  
+ }

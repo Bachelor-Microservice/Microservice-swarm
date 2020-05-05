@@ -7,6 +7,7 @@ import { PostsComponent } from './modules/posts/posts.component';
 import { PriceCalendarComponent } from './modules/price-calendar/price-calendar.component';
 import { ItemsComponent } from './modules/items/items.component';
 import { SignalRComponent } from './modules/signalR/signalR.component';
+import { SilentRefreshComponent } from './silent-refresh/silent-refresh.component';
 
 
 const routes: Routes = [{
@@ -27,9 +28,14 @@ const routes: Routes = [{
     component: ItemsComponent
   }, 
   {
+    path: 'silent-refresh',
+    component: SilentRefreshComponent
+  },
+  {
     path: 'signal',
     component: SignalRComponent
-  }
+  },
+  { path: '**', redirectTo: '' },
 ]
 }];
 

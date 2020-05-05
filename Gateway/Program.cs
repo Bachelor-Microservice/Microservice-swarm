@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.HttpsPolicy;
 
 namespace Gateway
 {
@@ -42,7 +45,14 @@ namespace Gateway
                 .Configure(a =>
                 {
                     
-                    a.UseWebSockets();
+                    var fordwardedHeaderOptions = new ForwardedHeadersOptions
+                    {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                        } ;
+                    fordwardedHeaderOptions.KnownNetworks.Clear();
+                    fordwardedHeaderOptions.KnownProxies.Clear();
+
+                    a.UseForwardedHeaders(fordwardedHeaderOptions);
                     a.UseOcelot().Wait();
                     a.UseSwagger();
                     a.UseSwaggerUI(c =>

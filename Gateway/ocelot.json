@@ -1,5 +1,18 @@
 {
     "ReRoutes": [
+        
+        {
+            "DownstreamPathTemplate": "/api/hub",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/hub",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+          } ,
         {
             "DownstreamPathTemplate": "/lib/{catchAll}",
             "DownstreamScheme": "http",
@@ -133,18 +146,7 @@
             "UpstreamPathTemplate": "/api/itemmanager/{id}",
             "UpstreamHttpMethod": []
         },
-        {
-            "DownstreamPathTemplate": "/api/{catchAll}",
-            "DownstreamScheme": "ws",
-            "DownstreamHostAndPorts": [
-              {
-                "Host": "pricecalendarservice",
-                "Port": 5002
-              }
-            ],
-            "UpstreamPathTemplate": "/api/{catchAll}",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          } ,
+        
            {
             "DownstreamPathTemplate": "/api/{catchAll}/{id}",
             "DownstreamScheme": "ws",

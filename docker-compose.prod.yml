@@ -8,7 +8,7 @@ services:
             - RedisConnection=redis
         deploy:
             mode: replicated
-            replicas: 10
+            replicas: 1
         labels:
             - "com.docker.lb.hosts=demo.local"
             - "com.docker.lb.sticky_session_cookie=session" 
@@ -16,6 +16,13 @@ services:
         image: caspha17/itemmanagerservice:latest
         environment: 
             - ASPNETCORE_URLS=http://+:5003
+    identityservice:
+        image: caspha17/identity:latest
+        environment: 
+             - DEV_URL=http://34.77.231.255
+             - ASPNETCORE_ENVIRONMENT=Developmnet
+             - ASPNETCORE_URLS=http://+:5010
+             - IDENTITY_ISSUER=http://34.77.231.255/auth
     gateway:
         image: caspha17/gateway:latest
         environment: 

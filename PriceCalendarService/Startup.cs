@@ -92,11 +92,7 @@ namespace PriceCalendarService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/api/hub" , options => {
-                    options.Transports =
-                    HttpTransportType.WebSockets |
-                    HttpTransportType.LongPolling;
-                });
+                endpoints.MapHub<ChatHub>("/api/hub" );
             });
         }
     }

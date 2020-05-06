@@ -61,7 +61,8 @@ namespace PriceCalendarService.Services
         
         public async Task LongFormattingMethod(DateTime @from, DateTime to)
         {
-            
+            System.Console.WriteLine("DATES");
+            System.Console.WriteLine(from.ToString() , to);
             System.IO.Stream spreadsheetStream = new System.IO.MemoryStream();
             var wb = new XLWorkbook();
             IXLWorksheet worksheet = wb.Worksheets.Add("test");
@@ -136,7 +137,6 @@ namespace PriceCalendarService.Services
             worksheet.ColumnWidth = 20;
             wb.SaveAs(spreadsheetStream);
             spreadsheetStream.Position = 0;
-            var fileName = "Ordre_FRA_"  + "_TIL_" ;
             var workbookBytes = new byte[0];
             await using (var ms = new MemoryStream())
             {
@@ -144,6 +144,7 @@ namespace PriceCalendarService.Services
                 workbookBytes = ms.ToArray();
             }
 
+            System.Console.WriteLine(_hubContext);
             await _hubContext.Clients.All.SendAsync("HELLO", workbookBytes);
         }
 

@@ -45,6 +45,7 @@ namespace Gateway
                 .Configure(a =>
                 {
                     
+                    /*
                     var fordwardedHeaderOptions = new ForwardedHeadersOptions
                     {
                     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -53,6 +54,8 @@ namespace Gateway
                     fordwardedHeaderOptions.KnownProxies.Clear();
 
                     a.UseForwardedHeaders(fordwardedHeaderOptions);
+                    */
+                    a.UseWebSockets();
                     a.UseOcelot().Wait();
                     a.UseSwagger();
                     a.UseSwaggerUI(c =>

@@ -1,5 +1,6 @@
 ﻿using ItemContracts;
 using MassTransit;
+using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         public Task Consume(ConsumeContext<ItemEntityCreated> context)
         {
             Console.WriteLine($"CREATE: Receive message value: {context.Message.Id}");
+            
             return Task.CompletedTask;
         }
     }

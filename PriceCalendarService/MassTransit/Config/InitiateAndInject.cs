@@ -1,5 +1,7 @@
-﻿using MassTransit;
+﻿using ItemContracts;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using PriceCalendarService.MassTransit.Consumers;
 using System;
 using System.Collections.Generic;
@@ -30,11 +32,20 @@ namespace PriceCalendarService.MassTransit.Config
                         ep.ConfigureConsumer<CreationOfItemEntityConsumer>(provider);
                         ep.ConfigureConsumer<DeletionOfItemEntityConsumers>(provider);
                         ep.ConfigureConsumer<UpdateOfItemEntityConsumer>(provider);
+
+                        ep.Handler<ItemEntityCreated>(context =>
+                        {
+                            return Console.Out.WriteLineAsync($"Received: {context.Message.Id}");
+                        });
                     });
+
+                    
+
                 }));
             });
 
             services.AddSingleton<IBus>(provider => provider.GetRequiredService<IBusControl>());
+            services.AddSingleton<IHostedService, BusService>();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace PriceCalendarService.MassTransit.Config
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<CreationOfItemEntityConsumer>();
-                x.AddConsumer<DeletionOfItemEntityConsumers>();
+                x.AddConsumer<DeletionOfItemEntityConsumer>();
                 x.AddConsumer<UpdateOfItemEntityConsumer>();
 
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
@@ -30,7 +30,7 @@ namespace PriceCalendarService.MassTransit.Config
                     cfg.ReceiveEndpoint(ep =>
                     {
                         ep.ConfigureConsumer<CreationOfItemEntityConsumer>(provider);
-                        ep.ConfigureConsumer<DeletionOfItemEntityConsumers>(provider);
+                        ep.ConfigureConsumer<DeletionOfItemEntityConsumer>(provider);
                         ep.ConfigureConsumer<UpdateOfItemEntityConsumer>(provider);
 
                         ep.Handler<ItemEntityCreated>(context =>

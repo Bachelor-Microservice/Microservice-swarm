@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PriceCalendarService.MassTransit.Consumers
 {
-    public class DeletionOfItemEntityConsumer : IConsumer<ItemContracts.ItemEntityDeleted>
+    public class DeletionOfItemEntityConsumer : IConsumer<ItemEntityDeleted>
     {
         private readonly PriceCalendarServiceContext _serviceContext;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         public Task Consume(ConsumeContext<ItemEntityDeleted> context)
         {
             Console.WriteLine("Received deleted event...");
-            //_serviceContext.Item.FirstOrDefault(x => x.Id == context.Message.Id)
+            //_serviceContext.Item.FirstOrDefault(x => x.Id == context.Message)
             return Task.CompletedTask;
         }
     }

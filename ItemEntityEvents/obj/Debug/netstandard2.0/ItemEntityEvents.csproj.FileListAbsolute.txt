@@ -1,0 +1,9 @@
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\bin\Debug\netstandard2.0\ItemEntityEvents.deps.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\bin\Debug\netstandard2.0\ItemEntityEvents.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\bin\Debug\netstandard2.0\ItemEntityEvents.pdb
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.csprojAssemblyReference.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.AssemblyInfoInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.AssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\ItemEntityEvents\obj\Debug\netstandard2.0\ItemEntityEvents.pdb

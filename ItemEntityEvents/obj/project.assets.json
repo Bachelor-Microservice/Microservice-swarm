@@ -183,13 +183,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.2.0",
+    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemContracts\\ItemContracts.csproj",
-      "projectName": "ItemMessagingContracts",
-      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemContracts\\ItemContracts.csproj",
+      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemEntityEvents\\ItemEntityEvents.csproj",
+      "projectName": "IItemEntityEvents",
+      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemEntityEvents\\ItemEntityEvents.csproj",
       "packagesPath": "C:\\Users\\skakk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemContracts\\obj\\",
+      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemEntityEvents\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

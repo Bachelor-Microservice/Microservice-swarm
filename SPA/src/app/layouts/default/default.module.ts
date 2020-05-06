@@ -29,6 +29,8 @@ import { ExcelDownloadComponent } from 'src/app/modules/price-calendar/ExcelDown
 import { OAuthStorage, AuthConfig, OAuthModuleConfig, ValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from 'src/app/auth/auth-config';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
+import { HomeComponent } from 'src/app/home/home.component';
+import { AuthGuard } from 'src/app/auth/auth-guard.service';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -43,7 +45,8 @@ export function storageFactory(): OAuthStorage {
     CreateItemComponent,
     EditItemComponent,
     SignalRComponent,
-    ExcelDownloadComponent
+    ExcelDownloadComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +66,7 @@ export function storageFactory(): OAuthStorage {
     MatButtonModule,
     AgGridModule.withComponents([])
   ],
-  providers: [ SidenavService],
+  providers: [ SidenavService , AuthGuard],
 })
 export class DefaultModule { 
   static forRoot(): ModuleWithProviders<DefaultModule> {

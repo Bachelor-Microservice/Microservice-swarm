@@ -30,7 +30,7 @@ export class AuthService {
 
   private navigateToLoginPage() {
     // TODO: Remember current URL
-    this.router.navigateByUrl('/should-login');
+    this.router.navigateByUrl('/');
   }
 
   constructor (
@@ -40,9 +40,9 @@ export class AuthService {
     // Useful for debugging:
     this.oauthService.events.subscribe(event => {
       if (event instanceof OAuthErrorEvent) {
-        console.error(event);
+        //console.error(event);
       } else {
-        console.warn(event);
+        //console.warn(event);
       }
     });
 
@@ -81,8 +81,8 @@ export class AuthService {
 
   public runInitialLoginSequence(): Promise<void> {
     if (location.hash) {
-      console.log('Encountered hash fragment, plotting as table...');
-      console.table(location.hash.substr(1).split('&').map(kvp => kvp.split('=')));
+      //console.log('Encountered hash fragment, plotting as table...');
+      //console.table(location.hash.substr(1).split('&').map(kvp => kvp.split('=')));
     }
 
     // 0. LOAD CONFIG:

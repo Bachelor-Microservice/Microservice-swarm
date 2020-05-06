@@ -25,7 +25,7 @@ services:
         build:
             context: ./IdentityServer/IdentityServer
         environment: 
-            - DEV_URL=http://localhost:4200
+            - DEV_URL=http://localhost
             - ASPNETCORE_ENVIRONMENT=Developmnet
             - ASPNETCORE_URLS=http://+:5010
             - IDENTITY_ISSUER=http://localhost/auth

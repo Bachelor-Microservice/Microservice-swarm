@@ -49,7 +49,7 @@ namespace IdentityServer
             
             var config = new Config();
 
-            config.Environment = "http://localhost";
+            config.Environment = devEnv;
            
                 
             services.AddIdentityServer(options => {

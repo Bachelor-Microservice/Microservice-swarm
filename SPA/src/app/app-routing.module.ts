@@ -8,20 +8,20 @@ import { PriceCalendarComponent } from './modules/price-calendar/price-calendar.
 import { ItemsComponent } from './modules/items/items.component';
 import { SignalRComponent } from './modules/signalR/signalR.component';
 import { SilentRefreshComponent } from './silent-refresh/silent-refresh.component';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth/auth-guard.service';
+
 
 
 const routes: Routes = [{
-  path: '',
+  path: 'app',
   component: DefaultComponent,
+  canActivate: [AuthGuard],
   children: [
-    {
-      pathMatch: 'full',
-      path: '',
-      redirectTo: 'pricecalendar'
-    },
   {
     path: 'pricecalendar',
-  component: PriceCalendarComponent
+  component: PriceCalendarComponent,
+  canActivate: [AuthGuard]
   },
   {
     path: 'items',
@@ -37,7 +37,12 @@ const routes: Routes = [{
   },
   { path: '**', redirectTo: '' },
 ]
-}];
+},
+{
+  path: '',
+  component: HomeComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

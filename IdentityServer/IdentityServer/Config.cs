@@ -122,25 +122,25 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
                     AllowOfflineAccess = true,
-                    
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
                     {
                        
-                         Environment 
-                       // "http://localhost" + "/index.html",
+                         Environment ,
+                        // "http://localhost:4200" 
                        // "http://localhost" + "/silent-refresh.html"
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
                         
                         Environment + "" ,
-                        //"http://localhost:4200"
+                       // "http://localhost:4200"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
                         
-                        Environment
+                        Environment,
+                       // "http://localhost:4200"
                     },
                     AllowedScopes = new List<string>
                     {

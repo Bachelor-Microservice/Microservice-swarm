@@ -17,19 +17,11 @@ export class HeaderComponent implements OnInit {
 
 
   @Output() toggleSidebarEvent: EventEmitter<any> = new EventEmitter();
-  isAuthenticated: Observable<boolean>;
-  isDoneLoading: Observable<boolean>;
-  canActivateProtectedRoutes: Observable<boolean>;
 
   public sideNavState: boolean = true;
   public linkText: boolean = true;
 
   constructor(private _sidenavService: SidenavService, private authService: AuthService , private router: Router) {
-    this.isAuthenticated = this.authService.isAuthenticated$;
-    this.isDoneLoading = this.authService.isDoneLoading$;
-    this.canActivateProtectedRoutes = this.authService.canActivateProtectedRoutes$;
-
-    this.authService.runInitialLoginSequence();
    }
 
   ngOnInit(): void {
@@ -44,9 +36,6 @@ export class HeaderComponent implements OnInit {
     this._sidenavService.sideNavState$.next(this.sideNavState);
   }
 
-  OnLogin() {
-    this.authService.login();
-  }
 
   OnLogout() {
     this.authService.logout();

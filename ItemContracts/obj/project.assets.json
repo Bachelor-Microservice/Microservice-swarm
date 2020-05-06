@@ -183,7 +183,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\ItemContracts\\ItemContracts.csproj",
       "projectName": "ItemMessagingContracts",

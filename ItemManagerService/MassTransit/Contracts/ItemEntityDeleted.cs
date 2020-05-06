@@ -1,6 +1,8 @@
+using ItemContracts;
+
 namespace Shared.MassTransit.Contracts
 {
-    public class ItemEntityDeleted : ItemContracts.ItemEntityDeleted
+    public class ItemEntityDeletedContract : ItemEntityDeleted
     {
         public int Id { get; set; }
     }

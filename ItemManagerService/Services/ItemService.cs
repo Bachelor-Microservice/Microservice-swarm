@@ -4,22 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MassTransit;
+using ItemContracts;
+using Shared.MassTransit.Contracts;
+using AutoMapper;
+using ItemManagerService.MassTransit.Publishers;
 
 namespace ItemManagerService.Services
 {
     public class ItemService : IItemService
     {
-        /*using (var context = new ItemManagerServiceContext())
-        {
-            var result = await context.Items.AddAsync(item);
-            var saveResult = context.SaveChanges();
-        }*/
-
         private readonly ItemManagerServiceContext _context;
+        private readonly IBus _bus;
+        private readonly IMapper _mapper;
+        private readonly IPublishItemCrud _publisher;
 
-        public ItemService(ItemManagerServiceContext context)
+        public ItemService(ItemManagerServiceContext context, IBus bus, IMapper mapper, IPublishItemCrud publisher)
         {
             _context = context;
+            _bus = bus;
+            _mapper = mapper;
+            _publisher = publisher;
         }
 
         public async Task<ServiceResponse<Items>> AddItem(Items item)
@@ -28,6 +33,7 @@ namespace ItemManagerService.Services
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
             serviceResponse.Data = item;
+            _publisher.Created(item);
             return serviceResponse;
         }
 
@@ -37,6 +43,8 @@ namespace ItemManagerService.Services
             var toBeDeleted = await _context.Items.FirstAsync(c => c.Id == Id);
             _context.Items.Remove(toBeDeleted);
             await _context.SaveChangesAsync();
+
+            _publisher.Deleted(Id);
 
             serviceResponse.Data = toBeDeleted;
             return serviceResponse;
@@ -65,6 +73,9 @@ namespace ItemManagerService.Services
             {
                 Data = item
             };
+
+            _publisher.Updated(item);
+
             return serviceResponse;
         }
     }

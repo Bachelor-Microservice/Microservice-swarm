@@ -1,6 +1,8 @@
+using ItemContracts;
+
 namespace Shared.MassTransit.Contracts
 {
-    public class ItemEntityUpdated : ItemContracts.ItemEntityUpdated
+    public class ItemEntityUpdatedContract : ItemEntityUpdated
     {
         public string ItemNo { get; set; }
         public string Name { get; set; }

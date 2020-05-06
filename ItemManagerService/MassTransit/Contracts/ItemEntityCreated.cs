@@ -1,6 +1,8 @@
+using ItemContracts;
+
 namespace Shared.MassTransit.Contracts
 {
-    public class ItemEntityCreated : ItemContracts.ItemEntityCreated
+    public class ItemEntityCreatedContact : ItemEntityCreated
     {
         public string ItemNo { get; set; }
         public string Name { get; set; }

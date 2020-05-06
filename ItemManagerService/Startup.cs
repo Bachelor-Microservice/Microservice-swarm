@@ -13,6 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MassTransit;
+using ItemContracts;
+using ItemManagerService.MassTransit.Config;
+using AutoMapper;
+using ItemManagerService.MassTransit.Publishers;
 
 namespace ItemManagerService
 {
@@ -36,6 +40,22 @@ namespace ItemManagerService
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
             });
+
+            //MASSTRANSIT
+            //services.AddScoped<OrderConsumer>();
+            /*services.AddMassTransit(x =>
+            {
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
+                {
+                    cfg.Host("rabbitmq");
+                }));
+            });
+
+            services.AddSingleton<IBus>(provider => provider.GetRequiredService<IBusControl>());
+            services.AddSingleton<IHostedService, BusService>();*/
+            services.AddAutoMapper(typeof(Startup));
+            InitiateAndInject.ConnectToQueue(services);
+            services.AddTransient<IPublishItemCrud, PublishItemCrud>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

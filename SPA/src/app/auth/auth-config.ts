@@ -12,8 +12,8 @@ export const authConfig: AuthConfig = {
     scope: 'openid profile',
     silentRefreshTimeout: 500000, // For faster testing
      // For faster testing
+     requireHttps: false,
     sessionChecksEnabled: true,
     showDebugInformation: true, // Also requires enabling "Verbose" level in devtools
     clearHashAfterLogin: false, // https://github.com/manfredsteyer/angular-oauth2-oidc/issues/457#issuecomment-431807040
   };
-  

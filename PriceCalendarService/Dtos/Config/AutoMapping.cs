@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ItemContracts;
 using Microsoft.AspNetCore.Routing.Constraints;
 using PriceCalendarService.Models;
 using System;
@@ -18,6 +19,7 @@ namespace PriceCalendarService.Dtos.Config
             CreateMap<ItemDayDTO, ItemDay>().ReverseMap();
             CreateMap<Item, ItemDTO>().ReverseMap();
             CreateMap<Groups, GroupsDTO>().ReverseMap();
+            //CreateMap<ItemEntityCreated>
         }
     }
 }

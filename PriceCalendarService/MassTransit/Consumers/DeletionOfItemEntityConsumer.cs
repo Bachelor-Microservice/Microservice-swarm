@@ -23,6 +23,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         public Task Consume(ConsumeContext<ItemEntityDeleted> context)
         {
             Console.WriteLine("Received deleted event...");
+            //_serviceContext.Item.FirstOrDefault(x => x.Id == context.Message.Id)
             return Task.CompletedTask;
         }
     }

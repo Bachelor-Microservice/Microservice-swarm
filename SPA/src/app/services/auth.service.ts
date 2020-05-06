@@ -10,6 +10,9 @@ export class AuthService {
   private isAuthenticatedSubject$ = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
 
+  private isDoneSubject$ = new BehaviorSubject<boolean>(false);
+  public isDone$ = this.isDoneSubject$.asObservable();
+
   private isDoneLoadingSubject$ = new ReplaySubject<boolean>();
   public isDoneLoading$ = this.isDoneLoadingSubject$.asObservable();
 
@@ -23,14 +26,14 @@ export class AuthService {
    * - the latest known state of whether the user is authorized
    * - whether the ajax calls for initial log in have all been done
    */
-  public canActivateProtectedRoutes$: Observable<boolean> = combineLatest([
+  public canActivateProtectedRoutes$: Observable<boolean> = combineLatest(
     this.isAuthenticated$,
     this.isDoneLoading$
-  ]).pipe(map(values => values.every(b => b)));
+  ).pipe(map(values => values.every(b => b)));
 
   private navigateToLoginPage() {
     // TODO: Remember current URL
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/should-login');
   }
 
   constructor (
@@ -40,9 +43,9 @@ export class AuthService {
     // Useful for debugging:
     this.oauthService.events.subscribe(event => {
       if (event instanceof OAuthErrorEvent) {
-        //console.error(event);
+        console.error(event);
       } else {
-        //console.warn(event);
+        console.warn(event);
       }
     });
 
@@ -81,8 +84,8 @@ export class AuthService {
 
   public runInitialLoginSequence(): Promise<void> {
     if (location.hash) {
-      //console.log('Encountered hash fragment, plotting as table...');
-      //console.table(location.hash.substr(1).split('&').map(kvp => kvp.split('=')));
+      console.log('Encountered hash fragment, plotting as table...');
+      console.table(location.hash.substr(1).split('&').map(kvp => kvp.split('=')));
     }
 
     // 0. LOAD CONFIG:
@@ -91,21 +94,22 @@ export class AuthService {
     return this.oauthService.loadDiscoveryDocument()
 
       // For demo purposes, we pretend the previous call was very slow
-      .then(() => new Promise(resolve => setTimeout(() => resolve())))
+      .then(() => new Promise(resolve => setTimeout(() => resolve(), 1000)))
 
       // 1. HASH LOGIN:
       // Try to log in via hash fragment after redirect back
       // from IdServer from initImplicitFlow:
       .then(() => this.oauthService.tryLogin())
-
+      .then(() => this.isDoneSubject$.next(true))
       .then(() => {
         if (this.oauthService.hasValidAccessToken()) {
           return Promise.resolve();
         }
 
         // 2. SILENT LOGIN:
-        // Try to log in via a refresh because then we can prevent
-        // needing to redirect the user:
+        // Try to log in via silent refresh because the IdServer
+        // might have a cookie to remember the user, so we can
+        // prevent doing a redirect:
         return this.oauthService.silentRefresh()
           .then(() => Promise.resolve())
           .catch(result => {
@@ -129,7 +133,7 @@ export class AuthService {
               // enter credentials.
               //
               // Enable this to ALWAYS force a user to login.
-               this.oauthService.initCodeFlow();
+              // this.oauthService.initImplicitFlow();
               //
               // Instead, we'll now do this:
               console.warn('User interaction is needed to log in, we will wait for the user to manually log in.');
@@ -144,26 +148,21 @@ export class AuthService {
 
       .then(() => {
         this.isDoneLoadingSubject$.next(true);
+        this.isDoneSubject$.next(true);
 
         // Check for the strings 'undefined' and 'null' just to be sure. Our current
         // login(...) should never have this, but in case someone ever calls
         // initImplicitFlow(undefined | null) this could happen.
         if (this.oauthService.state && this.oauthService.state !== 'undefined' && this.oauthService.state !== 'null') {
-          let stateUrl = this.oauthService.state;
-          if (stateUrl.startsWith('/') === false) {
-            stateUrl = decodeURIComponent(stateUrl);
-          }
-          console.log(`There was state of ${this.oauthService.state}, so we are sending you to: ${stateUrl}`);
-          this.router.navigateByUrl(stateUrl);
+          console.log('There was state, so we are sending you to: ' + this.oauthService.state);
+          //this.router.navigateByUrl(this.oauthService.state);
         }
       })
       .catch(() => this.isDoneLoadingSubject$.next(true));
   }
 
   public login(targetUrl?: string) {
-    // Note: before version 9.1.0 of the library you needed to
-    // call encodeURIComponent on the argument to the method.
-    this.oauthService.initLoginFlow(targetUrl || this.router.url);
+    this.oauthService.initImplicitFlow(encodeURIComponent(targetUrl || this.router.url));
   }
 
   public logout() { this.oauthService.logOut(); }
@@ -173,7 +172,6 @@ export class AuthService {
   // These normally won't be exposed from a service like this, but
   // for debugging it makes sense.
   public get accessToken() { return this.oauthService.getAccessToken(); }
-  public get refreshToken() { return this.oauthService.getRefreshToken(); }
   public get identityClaims() { return this.oauthService.getIdentityClaims(); }
   public get idToken() { return this.oauthService.getIdToken(); }
   public get logoutUrl() { return this.oauthService.logoutUrl; }

@@ -10,13 +10,13 @@ import { SignalRComponent } from './modules/signalR/signalR.component';
 import { SilentRefreshComponent } from './silent-refresh/silent-refresh.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth-guard.service';
+import { AppstartComponent } from './appstart/appstart.component';
 
 
 
 const routes: Routes = [{
   path: 'app',
   component: DefaultComponent,
-  canActivate: [AuthGuard],
   children: [
   {
     path: 'pricecalendar',
@@ -41,7 +41,8 @@ const routes: Routes = [{
 {
   path: '',
   component: HomeComponent
-}
+},
+
 ];
 
 @NgModule({

@@ -9,10 +9,23 @@ namespace IdentityServer
       public  class Config
     {
         public string Environment { get; set; }
+        
 
         public Config()
         {
+            
       
+        }
+
+        public void setEnvironemnt(string env)
+        {
+            Environment = env;
+            if (string.IsNullOrEmpty(Environment))
+            {
+               
+                    Environment = "http://localhost:4200";
+                
+            }
         }
         public  List<TestUser> GetUsers()
         {

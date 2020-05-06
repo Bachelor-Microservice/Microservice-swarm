@@ -31,6 +31,9 @@ import { authConfig } from 'src/app/auth/auth-config';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
 import { HomeComponent } from 'src/app/home/home.component';
 import { AuthGuard } from 'src/app/auth/auth-guard.service';
+import { AppstartComponent } from 'src/app/appstart/appstart.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TestComponent } from 'src/app/home/test/test.component';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -46,7 +49,9 @@ export function storageFactory(): OAuthStorage {
     EditItemComponent,
     SignalRComponent,
     ExcelDownloadComponent,
-    HomeComponent
+    HomeComponent,
+    AppstartComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +60,7 @@ export function storageFactory(): OAuthStorage {
     MatNativeDateModule ,
     MatInputModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatDatepickerModule,
     SharedModule,
     MatSidenavModule,

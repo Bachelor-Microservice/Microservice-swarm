@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="IdentityServer4" Version="2.5.4" />
+        <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="2.2.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="Controllers" />
+      <Folder Include="wwwroot\lib" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\css\bootstrap.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\css\bootstrap.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\css\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\js\bootstrap.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\js\bootstrap.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\css\bootstrap.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\css\bootstrap.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\css\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\js\bootstrap.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\bootstrap\js\bootstrap.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\jquery\jquery.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\jquery\jquery.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\jquery\jquery.min.map" />
+    </ItemGroup>
+
+</Project>

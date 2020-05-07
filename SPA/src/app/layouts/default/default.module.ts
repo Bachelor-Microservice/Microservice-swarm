@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
@@ -24,6 +24,20 @@ import { CreateItemComponent } from 'src/app/modules/items/create-item/create-it
 import { FormsModule } from '@angular/forms';
 import { EditItemComponent } from 'src/app/modules/items/edit-item/edit-item.component';
 import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ExcelDownloadComponent } from 'src/app/modules/price-calendar/ExcelDownload/ExcelDownload.component';
+import { OAuthStorage, AuthConfig, OAuthModuleConfig, ValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { authConfig } from 'src/app/auth/auth-config';
+import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
+import { HomeComponent } from 'src/app/home/home.component';
+import { AuthGuard } from 'src/app/auth/auth-guard.service';
+import { AppstartComponent } from 'src/app/appstart/appstart.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TestComponent } from 'src/app/home/test/test.component';
+import { authModuleConfig } from 'src/app/auth/authModuleConfig';
+export function storageFactory(): OAuthStorage {
+  return localStorage;
+}
 
 @NgModule({
   declarations: [
@@ -34,26 +48,44 @@ import { SignalRComponent } from 'src/app/modules/signalR/signalR.component';
     ItemsComponent,
     CreateItemComponent,
     EditItemComponent,
-    SignalRComponent
+    SignalRComponent,
+    ExcelDownloadComponent,
+    HomeComponent,
+    AppstartComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     MatNativeDateModule ,
-    MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatDatepickerModule,
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
     BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,
     AgGridModule.withComponents([])
   ],
-  providers: [ SidenavService],
+  providers: [ SidenavService , AuthGuard],
 })
-export class DefaultModule { }
+export class DefaultModule { 
+  static forRoot(): ModuleWithProviders<DefaultModule> {
+    return {
+      ngModule: DefaultModule,
+      providers: [
+        { provide: AuthConfig, useValue: authConfig },
+        { provide: OAuthModuleConfig, useValue: authConfig },
+        { provide: OAuthStorage, useFactory: storageFactory },
+      {provide : OAuthModuleConfig, useValue: authModuleConfig}
+      ]
+    };
+  }
+
+}

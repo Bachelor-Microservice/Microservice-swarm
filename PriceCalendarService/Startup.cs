@@ -14,7 +14,11 @@ using Microsoft.OpenApi.Models;
 using PriceCalendarService.Models;
 using PriceCalendarService.Services;
 using AutoMapper;
+using Hangfire;
+using Hangfire.MemoryStorage;
+using Hangfire.SqlServer;
 using PriceCalendarService.Hubs;
+using Microsoft.AspNetCore.Http.Connections;
 
 namespace PriceCalendarService
 {
@@ -30,12 +34,25 @@ namespace PriceCalendarService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string redisConnectionString = Environment.GetEnvironmentVariable("RedisConnection", EnvironmentVariableTarget.Process);
             services.AddControllers();
-            services.AddSignalR();
+            System.Console.WriteLine(redisConnectionString);
+            
+
+            services.AddSignalR()
+            .AddStackExchangeRedis(redisConnectionString+":6379", options => {
+        options.Configuration.ChannelPrefix = "MyApp";
+                });
+
+
             services.AddTransient<PriceCalendarServiceContext>();
             services.AddTransient<IItemDayService, ItemDayService>();
             services.AddScoped<IItemPriceAndCurrencyResponseService, ItemPriceAndCurrencyResponseService>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddHangfire(config =>
+            {
+                config.UseMemoryStorage();
+            });
             services.AddSwaggerGen(swagger =>
             {
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "PriceCalendarService" });
@@ -50,6 +67,7 @@ namespace PriceCalendarService
                 }));
 
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
+                })); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +84,9 @@ namespace PriceCalendarService
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseHangfireServer();
+            app.UseHangfireDashboard();
             
             app.UseCors("CorsPolicy");
             app.UseRouting();
@@ -74,7 +95,7 @@ namespace PriceCalendarService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/hub");
+                endpoints.MapHub<ChatHub>("/api/hub" );
             });
         }
     }

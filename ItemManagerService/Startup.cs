@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using ItemManagerService.Models;
 using ItemManagerService.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,6 +43,7 @@ namespace ItemManagerService
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
             });
 
+           
             //MASSTRANSIT
             //services.AddScoped<OrderConsumer>();
             /*services.AddMassTransit(x =>

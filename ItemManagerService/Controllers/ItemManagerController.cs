@@ -4,6 +4,7 @@ using ItemManagerService.Entities;
 using System;
 using ItemManagerService.Services;
 using ItemManagerService.Models;
+using Microsoft.AspNetCore.Authorization;
 using MassTransit;
 using Shared.MassTransit.Contracts;
 using ItemContracts;

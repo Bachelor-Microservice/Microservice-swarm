@@ -13,6 +13,7 @@
     <mat-datepicker  #end></mat-datepicker>
 </mat-form-field>
   <button (click)="OnGetDateRange()" class="ml-5" mat-raised-button>Get Data</button>
+  <button (click)="OnExportToExcel()" class="ml-5" mat-raised-button>Export to Excel</button>
 
 </form>
 <div class="d-flex justify-content-end">
@@ -31,3 +32,7 @@ class="mr-5 mb-3"
     (cellValueChanged)="onCellValueChanged($event)"
     >
 </ag-grid-angular>
+
+<simple-notifications #successNotficationExcel>
+  <p>æd,</p>
+</simple-notifications>

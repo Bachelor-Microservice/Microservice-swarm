@@ -1,7 +1,8 @@
 {
     "ReRoutes": [
+        
         {
-            "DownstreamPathTemplate": "/{catchAll}",
+            "DownstreamPathTemplate": "/api/hub",
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
               {
@@ -9,22 +10,95 @@
                 "Port": 5002
               }
             ],
-            "UpstreamPathTemplate": "/api/{catchAll}",
+            "UpstreamPathTemplate": "/api/hub",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          },
-          {
-            "DownstreamPathTemplate": "/{catchAll}/{id}",
-            "DownstreamScheme": "ws",
-            "DownstreamHostAndPorts": [
-              {
-                "Host": "pricecalendarservice",
-                "Port": 5002
-              }
-            ],
-            "UpstreamPathTemplate": "/api/{catchAll}/{id}",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          },
+          } ,
         {
+            "DownstreamPathTemplate": "/lib/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/lib/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/js/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/js/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/css/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/css/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/connect/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/connect/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/connect",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/connect/",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/Account/Logout/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/Account/Logout/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/Account/Logout",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/Account/Logout",
+            "UpstreamHttpMethod": []
+        },
+        
+         {
             "DownstreamPathTemplate": "/api/pricecalendar",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -56,9 +130,29 @@
                     "Host": "itemmanagerservice",
                     "Port": 5003
                 }
-            ],
+            ]
+            ,
             "UpstreamPathTemplate": "/api/itemmanager/",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+           
+        },
+        {
+            "DownstreamPathTemplate": "/api/itemday/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ]
+            ,
+            "UpstreamPathTemplate": "/api/itemday/",
             "UpstreamHttpMethod": []
+           
         },
         {
             "DownstreamPathTemplate": "/api/itemmanager/{id}",
@@ -70,6 +164,34 @@
                 }
             ],
             "UpstreamPathTemplate": "/api/itemmanager/{id}",
+            "UpstreamHttpMethod": []
+        },
+        
+           {
+            "DownstreamPathTemplate": "/api/{catchAll}/{id}",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/{catchAll}/{id}",
+            "LoadBalancerOptions": {
+                "Type": "LeastConnection"
+            },
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+          },
+          {
+            "DownstreamPathTemplate": "/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "identityservice",
+                    "Port": 5010
+                }
+            ],
+            "UpstreamPathTemplate": "/auth/{catchAll}",
             "UpstreamHttpMethod": []
         }
 

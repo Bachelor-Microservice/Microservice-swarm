@@ -4,11 +4,16 @@ import { ItemPriceAndCurrencyResponse } from 'src/app/_models/ItemPriceAndCurren
 import { Group } from 'src/app/_models/Group.model';
 import { Item } from 'src/app/_models/Item.model';
 import { ItemDay } from 'src/app/_models/ItemDay.model';
-import * as moment from 'moment';
-import { GridOptions } from 'ag-grid-community';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
+import * as moment from 'moment';
 import { ItemDayService } from 'src/app/services/itemDay.service';
+import { NotificationsService } from 'angular2-notifications';
+import * as signalR from "@aspnet/signalr";
+import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component';
+
 
 @Component({
   selector: 'app-price-calendar',
@@ -17,7 +22,12 @@ import { ItemDayService } from 'src/app/services/itemDay.service';
 })
 export class PriceCalendarComponent implements OnInit {
 
-  constructor(private priceCalendarService: PriceCalendarService , private itemDayService: ItemDayService) { }
+  
+  constructor(private priceCalendarService: PriceCalendarService , private itemDayService: ItemDayService, 
+    private notifier: NotificationsService, public dialog: MatDialog) {
+      
+    
+   }
 
   priceCalendar: ItemPriceAndCurrencyResponse[];
 
@@ -30,9 +40,40 @@ export class PriceCalendarComponent implements OnInit {
   firstRun = true;
   columnDefs;
   rowData: rowData[];
-
+  private _hubConnection: signalR.HubConnection;
   // This method when the component is started
   ngOnInit() {
+     
+    this._hubConnection = new signalR.HubConnectionBuilder().withUrl(environment.api + 'hub').configureLogging(signalR.LogLevel.Information)
+    .build();
+
+    this._hubConnection.on('Send', (data: any) => {
+    const received = `Received: ${data}`;
+    console.log(data);
+    });
+
+    this._hubConnection.on('HELLO' , data => {
+      console.log("RESPONSE");
+      
+      var dec = window.atob(data);
+      var myArr = new Uint8Array(dec.length)
+      for(var i = 0; i < Object.keys(dec).length; i++){
+          myArr[i] = dec.charCodeAt(i);
+      }
+      var blob = new Blob([myArr], {type: 'application/vnd.ms-excel'});
+      const dialogRef = this.dialog.open(ExcelDownloadComponent, {
+        width: '250px',
+        data: {data: blob}
+      });
+    });
+
+    this._hubConnection.start()
+    .then(() => {
+      console.log('Hub connection started');
+    })
+    .catch(err => {
+    console.log('Error while establishing connection');
+    });
     const InitialDateEndDate = this.setDefaultDateRangeInForm();
     this.setInitialForm(InitialDateEndDate);
   }
@@ -61,9 +102,22 @@ export class PriceCalendarComponent implements OnInit {
     });
   }
 
+  OnExportToExcel() {
+    this.priceCalendarService.getExcel(this.form.value).subscribe( e=> {
+      this.notifier.success('Excel export success' , 'Your file will be downloaded shortly' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+    })
+   
+  }
+
   onCellValueChanged(event) {
     var itemDay = new ItemDayDTO();
-    itemDay.date =  moment( event.colDef.field , "DD-MM-YYYY").toDate();
+    let date =  moment( event.colDef.field , "DD-MM-YYYY").toDate();
+    itemDay.itemId = event.data.id;
     itemDay.id =  this.getRandomInt();
     itemDay.price = +event.data[event.colDef.field];
 
@@ -72,26 +126,46 @@ export class PriceCalendarComponent implements OnInit {
         e.items.forEach(item => {
           item.itemDays.forEach(itemday => {
             var originalItemDay = new Date(itemday.date);
-            console.log(originalItemDay);
-            if (originalItemDay.getTime() === itemDay.date.getTime()) {
+            if (originalItemDay.getTime() === date.getTime() && itemday.id === itemDay.id) {
              itemDay.id = itemday.id;
            }
           });
-          itemDay.itemId = item.id;
+          
         });
       });
-    })
-    if (this.ItemDayDTO.some(e => e.date.getTime() === itemDay.date.getTime() && e.id === itemDay.id) ) {
-      var itemIndex = this.ItemDayDTO.findIndex(e => e.date.getTime() === itemDay.date.getTime() && e.id === itemDay.id);
+    });
+    if (this.ItemDayDTO.some(e => new Date(e.date).getTime() === date.getTime() && e.id === itemDay.id) ) {
+      var itemIndex = this.ItemDayDTO.findIndex(e => new Date(e.date).getTime() === date.getTime() && e.id === itemDay.id);
       this.ItemDayDTO[itemIndex].price = itemDay.price;
     }else{
       this.ItemDayDTO.push(itemDay);
     }
+    date.setHours(2);
+    itemDay.date = date.toISOString();
+    console.log(this.ItemDayDTO);
+    
   }
   submitGrid(){
-   console.log(this.ItemDayDTO);
-   let itemDayListDTO = {ItemDays: this.ItemDayDTO};
-   this.itemDayService.AddItemDays(itemDayListDTO); // remeber to subscribe
+   const itemDayListDTO = {ItemDays: this.ItemDayDTO};
+   console.log(itemDayListDTO);
+   itemDayListDTO.ItemDays.forEach(itemDayDTO => {
+     itemDayDTO.date
+   })
+   this.itemDayService.AddItemDays(itemDayListDTO).subscribe(e => {
+     this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe((e: any) => {
+      this.notifier.success('Updated Succesfully' , null ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+      this.priceCalendar = [];
+      e.data.forEach(element => {
+        this.priceCalendar.push(element);
+      });
+      this.setData();
+    });
+   });
   }
 
 
@@ -102,7 +176,6 @@ export class PriceCalendarComponent implements OnInit {
       {field: 'Pris'}
   ];
     const daysOfYear = this.MakeDatesFromRangeChoosen();
-
     this.AddDateToColumnHeader(daysOfYear);
 
 
@@ -113,8 +186,9 @@ export class PriceCalendarComponent implements OnInit {
       group.items.forEach((item: Item) => {
         let element = new rowData();
         element['GroupID'] = group.id;
-        element = { id: '' , Navn: item.name, Pris: item.price , GroupID: group.id};
+        element = { id: item.id , Navn: item.name, Pris: item.price , GroupID: group.id};
         item.itemDays.forEach((itemDay: ItemDay) => {
+          console.log(item.id);
           element.id = item.id;
           var date = moment(itemDay.date).format('DD-MM-YYYY');
           var dateString = date.toString();
@@ -126,7 +200,7 @@ export class PriceCalendarComponent implements OnInit {
             }
           });
         });
-        this.firstRun = false;
+        
         daysOfYear.forEach(el => {
           if(element[el] === undefined) {
             element[el] = item.price;
@@ -158,7 +232,6 @@ export class PriceCalendarComponent implements OnInit {
   }
 
   AddDynamicCellStyling(cell, date) {
-    console.log(cell.data[date]);
     if (cell.data.Pris !== +cell.data[date] ) {
       return {'font-weight': '800'}
     } else {

@@ -7,19 +7,25 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { SilentRefreshComponent } from './silent-refresh/silent-refresh.component';
+
+
 
 
 
 @NgModule({
    declarations: [
-      AppComponent
+      AppComponent,
+      SilentRefreshComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
+      OAuthModule.forRoot(),
       BrowserAnimationsModule,
-      DefaultModule
+      DefaultModule.forRoot()
    ],
    providers: [],
    bootstrap: [

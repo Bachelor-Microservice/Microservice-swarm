@@ -146,7 +146,7 @@ export class PriceCalendarComponent implements OnInit {
     
   }
   submitGrid(){
-   let itemDayListDTO = {ItemDays: this.ItemDayDTO};
+   const itemDayListDTO = {ItemDays: this.ItemDayDTO};
    console.log(itemDayListDTO);
    itemDayListDTO.ItemDays.forEach(itemDayDTO => {
      itemDayDTO.date

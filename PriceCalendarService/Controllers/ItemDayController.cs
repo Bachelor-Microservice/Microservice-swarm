@@ -32,6 +32,7 @@ namespace PriceCalendarService.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOrUpdate(ItemDayListDTO dto)
         {
+            System.Console.WriteLine("ldmld");
             return Ok(await _service.Add(dto));
         }
     }

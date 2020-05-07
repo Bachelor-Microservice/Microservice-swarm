@@ -21,7 +21,7 @@ export class ItemService {
 
   loadItems() {
     var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.authServive.accessToken);
-    this.http.get(this.itemManagerApi , {headers: headers_object}).pipe(
+    this.http.get(this.itemManagerApi ).pipe(
       map((res: any) => {
         return res.data;
       }) , tap( res => {

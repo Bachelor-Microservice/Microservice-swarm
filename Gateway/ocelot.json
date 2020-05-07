@@ -134,6 +134,24 @@
             ,
             "UpstreamPathTemplate": "/api/itemmanager/",
             "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+           
+        },
+        {
+            "DownstreamPathTemplate": "/api/itemday/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ]
+            ,
+            "UpstreamPathTemplate": "/api/itemday/",
+            "UpstreamHttpMethod": []
            
         },
         {

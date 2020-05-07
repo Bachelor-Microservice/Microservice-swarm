@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Items } from '../_models/ItemEntity.model';
 import { BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,11 @@ export class ItemService {
   _items = new BehaviorSubject<Items[]>([]);
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authServive: AuthService) { }
 
   loadItems() {
-    this.http.get(this.itemManagerApi ).pipe(
+    var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.authServive.accessToken);
+    this.http.get(this.itemManagerApi , {headers: headers_object}).pipe(
       map((res: any) => {
         return res.data;
       }) , tap( res => {

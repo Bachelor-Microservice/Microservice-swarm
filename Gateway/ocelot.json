@@ -130,9 +130,11 @@
                     "Host": "itemmanagerservice",
                     "Port": 5003
                 }
-            ],
+            ]
+            ,
             "UpstreamPathTemplate": "/api/itemmanager/",
-            "UpstreamHttpMethod": []
+            "UpstreamHttpMethod": [],
+           
         },
         {
             "DownstreamPathTemplate": "/api/itemmanager/{id}",

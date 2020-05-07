@@ -10,6 +10,7 @@ export const authConfig: AuthConfig = {
     postLogoutRedirectUri: window.location.origin,
     responseType: 'code',
     scope: 'openid profile',
+    strictDiscoveryDocumentValidation: false,
     silentRefreshTimeout: 500000, // For faster testing
      // For faster testing
      requireHttps:  false,

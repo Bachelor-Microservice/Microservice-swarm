@@ -12,6 +12,7 @@ services:
             context: ./Gateway/
         environment: 
             - ASPNETCORE_URLS=http://+:5000
+            - ID_URL=http://identityservice
     frontend:
         build:
             context: ./SPA
@@ -21,6 +22,7 @@ services:
             ./ItemManagerService
         environment: 
             - ASPNETCORE_URLS=http://+:5003
+            - IdentityUrl=http://identityservice
     identityservice:
         build:
             context: ./IdentityServer/IdentityServer
@@ -29,13 +31,16 @@ services:
             - ASPNETCORE_ENVIRONMENT=Developmnet
             - ASPNETCORE_URLS=http://+:5010
             - IDENTITY_ISSUER=http://localhost/auth
+            - RedisConnection=redis
+        ports: 
+            - 5010:5010
     proxy:
         build:
             context: ./proxy
         ports: 
             - 80:80
     redis:
-                # Pull the image from Docker Hub
         image: redis
         ports: 
             - 6379:6379
+

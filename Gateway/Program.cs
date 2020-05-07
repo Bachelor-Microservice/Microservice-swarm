@@ -1,5 +1,8 @@
+using System;
 using System.IO;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;    
@@ -12,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.IdentityModel.Logging;
 
 namespace Gateway
 {
@@ -34,6 +38,22 @@ namespace Gateway
                })
                .ConfigureServices(s =>
                {
+                   var authenticationProviderKey = "TestKey";
+                 
+                    s.AddAuthentication()
+                    .AddIdentityServerAuthentication(authenticationProviderKey, x =>
+                        {
+                            x.Authority = "http://identityservice:5010";
+                            x.RequireHttpsMetadata=false;
+                            
+                        });
+                    /*
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidAudiences = new[] {"item"}
+                    };
+                    */
+                       
                    s.AddOcelot();
                    s.AddSwaggerGen(swagger =>
             {
@@ -55,6 +75,7 @@ namespace Gateway
 
                     a.UseForwardedHeaders(fordwardedHeaderOptions);
                     */
+                    IdentityModelEventSource.ShowPII = true; 
                     a.UseWebSockets();
                     a.UseOcelot().Wait();
                     a.UseSwagger();

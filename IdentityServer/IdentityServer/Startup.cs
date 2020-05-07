@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 
 namespace IdentityServer
 {
@@ -25,12 +27,16 @@ namespace IdentityServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            string redisConnectionString = Environment.GetEnvironmentVariable("RedisConnection", EnvironmentVariableTarget.Process);
             string prodEnv = Environment.GetEnvironmentVariable("PROD_URL");
             string devEnv = Environment.GetEnvironmentVariable("DEV_URL");
             string env = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
             string issuer = Environment.GetEnvironmentVariable("IDENTITY_ISSUER");
           
+            var redis = ConnectionMultiplexer.Connect( redisConnectionString + ":6379");
+            services.AddDataProtection()
+                .PersistKeysToStackExchangeRedis( redis , "DataProtection-Keys")
+                .SetApplicationName("product");
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder

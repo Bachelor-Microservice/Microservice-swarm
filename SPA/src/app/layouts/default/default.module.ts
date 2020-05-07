@@ -34,6 +34,7 @@ import { AuthGuard } from 'src/app/auth/auth-guard.service';
 import { AppstartComponent } from 'src/app/appstart/appstart.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { TestComponent } from 'src/app/home/test/test.component';
+import { authModuleConfig } from 'src/app/auth/authModuleConfig';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -82,6 +83,7 @@ export class DefaultModule {
         { provide: AuthConfig, useValue: authConfig },
         { provide: OAuthModuleConfig, useValue: authConfig },
         { provide: OAuthStorage, useFactory: storageFactory },
+      {provide : OAuthModuleConfig, useValue: authModuleConfig}
       ]
     };
   }

@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    api: 'http://localhost/api/',
-    identity: 'http://localhost/auth'
+    api: 'http://192.168.99.100/api/',
+    identity: 'http://192.168.99.100/auth'
 };

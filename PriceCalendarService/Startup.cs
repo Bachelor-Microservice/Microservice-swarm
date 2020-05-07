@@ -66,8 +66,7 @@ namespace PriceCalendarService
                         .AllowCredentials();
                 }));
 
-            MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
-                })); 
+        MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

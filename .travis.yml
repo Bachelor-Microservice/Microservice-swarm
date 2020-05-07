@@ -5,6 +5,9 @@ env:
       - VERSION=2.${TRAVIS_BUILD_NUMBER}
       - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
 
+branches:
+  only:
+    - master 
 
 addons:
     apt:

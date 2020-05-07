@@ -41,7 +41,7 @@ namespace PriceCalendarService
 
             services.AddSignalR()
             .AddStackExchangeRedis(redisConnectionString+":6379", options => {
-        options.Configuration.ChannelPrefix = "MyApp";
+            options.Configuration.ChannelPrefix = "MyApp";
                 });
 
 

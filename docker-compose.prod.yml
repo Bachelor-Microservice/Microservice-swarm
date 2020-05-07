@@ -8,14 +8,21 @@ services:
             - RedisConnection=redis
         deploy:
             mode: replicated
-            replicas: 1
+            replicas: 10
         labels:
             - "com.docker.lb.hosts=demo.local"
             - "com.docker.lb.sticky_session_cookie=session" 
+        depends_on: 
+            - rabbitmq
     itemmanagerservice:
         image: caspha17/itemmanagerservice:latest
+        deploy:
+            mode: replicated
+            replicas: 4
         environment: 
             - ASPNETCORE_URLS=http://+:5003
+        depends_on: 
+            - rabbitmq
     identityservice:
         image: caspha17/identity:latest
         environment: 
@@ -39,3 +46,9 @@ services:
         image: redis
         ports: 
             - 6379:6379
+    rabbitmq:
+        image: rabbitmq
+        command: rabbitmq-server
+        expose:
+            - "5672"
+            - "15672"

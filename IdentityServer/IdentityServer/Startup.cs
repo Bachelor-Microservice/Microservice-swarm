@@ -32,11 +32,7 @@ namespace IdentityServer
             string devEnv = Environment.GetEnvironmentVariable("DEV_URL");
             string env = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
             string issuer = Environment.GetEnvironmentVariable("IDENTITY_ISSUER");
-          string IDENTITY_ISSUER = Configuration["IDENTITY_ISSUER"];
-            var redis = ConnectionMultiplexer.Connect( redisConnectionString + ":6379");
-            services.AddDataProtection()
-                .PersistKeysToStackExchangeRedis( redis , "DataProtection-Keys")
-                .SetApplicationName("product");
+            string IDENTITY_ISSUER = Configuration["IDENTITY_ISSUER"];
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder

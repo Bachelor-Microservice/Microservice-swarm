@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceCalendarService", "PriceCalendarService.csproj", "{6C70E05B-49FE-4138-895E-31EF6E61F6DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestPriceCalendar", "..\NUnitTestPriceCalendar\NUnitTestPriceCalendar.csproj", "{E7F6F92D-56A2-4D35-8511-3BA80760EC42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6C70E05B-49FE-4138-895E-31EF6E61F6DB} = {6C70E05B-49FE-4138-895E-31EF6E61F6DB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{6C70E05B-49FE-4138-895E-31EF6E61F6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C70E05B-49FE-4138-895E-31EF6E61F6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C70E05B-49FE-4138-895E-31EF6E61F6DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F6F92D-56A2-4D35-8511-3BA80760EC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F6F92D-56A2-4D35-8511-3BA80760EC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F6F92D-56A2-4D35-8511-3BA80760EC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F6F92D-56A2-4D35-8511-3BA80760EC42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

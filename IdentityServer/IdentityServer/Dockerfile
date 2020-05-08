@@ -8,6 +8,6 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS final
 WORKDIR /app
 COPY --from=build /app .
-ENV ASPNETCORE_URLS: http://+:5010
-EXPOSE 5010
+ENV ASPNETCORE_URLS: http://+:80
+EXPOSE 80
 ENTRYPOINT ["dotnet", "IdentityServer.dll"]

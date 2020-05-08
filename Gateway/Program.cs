@@ -43,7 +43,7 @@ namespace Gateway
                     s.AddAuthentication()
                     .AddIdentityServerAuthentication(authenticationProviderKey, x =>
                         {
-                            x.Authority = "http://identityservice:5010";
+                            x.Authority = "http://34.77.231.255/auth";
                             x.RequireHttpsMetadata=false;
                             
                         });

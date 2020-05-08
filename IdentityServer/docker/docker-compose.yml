@@ -10,7 +10,6 @@ services:
              - IDENTITY_ISSUER=http://34.77.231.255/auth
              - RedisConnection=redis
     proxy:
-        build:
-            context: ./proxy
+        image: caspha17/proxyidentity:latest
         ports: 
             - 80:80

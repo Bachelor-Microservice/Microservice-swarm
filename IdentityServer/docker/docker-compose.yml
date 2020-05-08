@@ -4,11 +4,8 @@ services:
     identityservice:
         image: caspha17/identity:latest
         environment: 
-             - DEV_URL=http://34.77.231.255
              - ASPNETCORE_ENVIRONMENT=Developmnet
              - ASPNETCORE_URLS=http://+:5010
-             - IDENTITY_ISSUER=http://34.77.231.255/auth
-             - RedisConnection=redis
     proxy:
         image: caspha17/proxyidentity:latest
         ports: 

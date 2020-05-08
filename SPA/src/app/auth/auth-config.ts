@@ -13,6 +13,7 @@ export const authConfig: AuthConfig = {
     strictDiscoveryDocumentValidation: false,
     silentRefreshTimeout: 500000, // For faster testing
      // For faster testing
+     skipIssuerCheck: true,
      requireHttps:  false,
     sessionChecksEnabled: true,
     showDebugInformation: false, // Also requires enabling "Verbose" level in devtools

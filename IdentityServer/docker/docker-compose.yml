@@ -5,7 +5,7 @@ services:
         image: caspha17/identity:latest
         environment: 
              - ASPNETCORE_ENVIRONMENT=Developmnet
-             - ASPNETCORE_URLS=http://+:5010
+             - ASPNETCORE_URLS=http://+:80
     proxy:
         image: caspha17/proxyidentity:latest
         ports: 

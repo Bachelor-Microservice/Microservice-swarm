@@ -4,7 +4,7 @@ services:
     identityservice:
         deploy:
             restart_policy:
-                condition: always
+                condition: on-failure
         image: caspha17/identity:latest
         environment: 
              - ASPNETCORE_ENVIRONMENT=Developmnet

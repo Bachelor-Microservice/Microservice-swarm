@@ -59,8 +59,6 @@ namespace IdentityServer
            
                 
             services.AddIdentityServer(options => {
-                options.PublicOrigin = "http://34.77.231.255//auth";
-                options.IssuerUri = "http://identityservice";
                 })
                 
                 .AddDeveloperSigningCredential()

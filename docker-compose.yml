@@ -1,13 +1,17 @@
-version: '3.0'
+version: '3.7'
 
 services: 
     rabbitmq:
+        networks: 
+            - microservice
         image: rabbitmq
         command: rabbitmq-server
         expose:
             - "5672"
             - "15672"
     pricecalendarservice:
+        networks: 
+            - microservice
         build: 
             context: ./PriceCalendarService
         environment: 
@@ -16,39 +20,55 @@ services:
         depends_on: 
             - rabbitmq
     gateway:
+        networks: 
+            - microservice
         build: 
             context: ./Gateway/
         environment: 
             - ASPNETCORE_URLS=http://+:5000
             - ID_URL=http://identityservice
+            - IDENTITY_AUTHORITY="http://identityservice:5000"
     frontend:
+        networks: 
+            - microservice
         build:
             context: ./SPA
             dockerfile: staging.dockerfile
     itemmanagerservice: 
+        networks: 
+            - microservice
         build:
             ./ItemManagerService
         environment: 
             - ASPNETCORE_URLS=http://+:5003
             - IdentityUrl=http://identityservice
     identityservice:
+        networks: 
+            - microservice
         build:
             context: ./IdentityServer/IdentityServer
         environment: 
             - DEV_URL=http://localhost
             - ASPNETCORE_ENVIRONMENT=Developmnet
-            - ASPNETCORE_URLS=http://+:5010
-            - IDENTITY_ISSUER=http://localhost/auth
+            - ASPNETCORE_URLS=http://+:80
+            - IDENTITY_ISSUER"http://10.0.75.1:5010"
             - RedisConnection=redis
         ports: 
             - 5010:5010
     proxy:
+        networks: 
+            - microservice
         build:
             context: ./proxy
         ports: 
             - 80:80
     redis:
+        networks: 
+            - microservice
         image: redis
         ports: 
             - 6379:6379
 
+networks: 
+    microservice:
+        name: microservice-network

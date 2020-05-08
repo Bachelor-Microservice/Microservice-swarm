@@ -19,7 +19,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/lib/{catchAll}",
@@ -31,7 +31,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/js/{catchAll}",
@@ -43,7 +43,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/css/{catchAll}",
@@ -55,7 +55,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/connect/{catchAll}",
@@ -67,7 +67,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/connect/",
@@ -79,7 +79,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/Account/Logout/{catchAll}",
@@ -91,7 +91,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/Account/Logout",
@@ -188,7 +188,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "identityservice",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/auth/{catchAll}",

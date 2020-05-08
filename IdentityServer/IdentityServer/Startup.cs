@@ -32,7 +32,7 @@ namespace IdentityServer
             string devEnv = Environment.GetEnvironmentVariable("DEV_URL");
             string env = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
             string issuer = Environment.GetEnvironmentVariable("IDENTITY_ISSUER");
-          
+          string IDENTITY_ISSUER = Configuration["IDENTITY_ISSUER"];
             var redis = ConnectionMultiplexer.Connect( redisConnectionString + ":6379");
             services.AddDataProtection()
                 .PersistKeysToStackExchangeRedis( redis , "DataProtection-Keys")
@@ -59,7 +59,8 @@ namespace IdentityServer
            
                 
             services.AddIdentityServer(options => {
-                    options.PublicOrigin = issuer;
+                options.PublicOrigin = "http://34.77.231.255//auth";
+                options.IssuerUri = "http://identityservice";
                 })
                 
                 .AddDeveloperSigningCredential()

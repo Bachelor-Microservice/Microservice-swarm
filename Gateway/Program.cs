@@ -39,11 +39,15 @@ namespace Gateway
                .ConfigureServices(s =>
                {
                    var authenticationProviderKey = "TestKey";
-                 
-                    s.AddAuthentication()
+                  var identityIssuer =  Environment.GetEnvironmentVariable("IDENTITY_AUTHORITY");
+             
+                    s.AddAuthentication(opt => {
+                        opt.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                        opt.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                    })
                     .AddIdentityServerAuthentication(authenticationProviderKey, x =>
                         {
-                            x.Authority = "http://34.77.231.255/auth";
+                            x.Authority = "http://identityservice";
                             x.RequireHttpsMetadata=false;
                             
                         });

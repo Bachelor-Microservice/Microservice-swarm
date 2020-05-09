@@ -22,6 +22,8 @@ namespace PriceCalendarService.MassTransit.Consumers
             _mapper = mapper;
         }
 
+        //public CreationOfItemEntityConsumer() { }
+
         public Task Consume(ConsumeContext<ItemEntityCreated> consumedContext)
         {
             Console.WriteLine($"Received Create Event...");
@@ -32,7 +34,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return Task.CompletedTask;
         }
 
-        private async void CreateFromContext(ConsumeContext<ItemEntityCreated> consumedContext)
+        public async void CreateFromContext(ConsumeContext<ItemEntityCreated> consumedContext)
         {
             if (!this.CanBeTranslated(consumedContext)) return;
             Console.WriteLine("Context can be translated...");
@@ -72,7 +74,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        private Item MapFromContext_ExistingFromResponse(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
+        public Item MapFromContext_ExistingFromResponse(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
         {
             var item = new Item();
             item.Id = from.Message.ItemNo;
@@ -83,7 +85,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return item;
         }
 
-        private Groups MapFromContext_ExistingFromGroups(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
+        public Groups MapFromContext_ExistingFromGroups(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
         {
             var group = new Groups
             {
@@ -106,7 +108,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return group;
         }
 
-        private ItemPriceAndCurrencyResponse MapFromContext_NonExisting(ConsumeContext<ItemEntityCreated> from)
+        public ItemPriceAndCurrencyResponse MapFromContext_NonExisting(ConsumeContext<ItemEntityCreated> from)
         {
             var itemPriceAndCurrencyResponse = new ItemPriceAndCurrencyResponse
             {
@@ -118,7 +120,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return itemPriceAndCurrencyResponse;
         }
 
-        private bool CanBeTranslated(ConsumeContext<ItemEntityCreated> context)
+        public bool CanBeTranslated(ConsumeContext<ItemEntityCreated> context)
         {
             if (context.Message.ArticleGroup == 0 || context.Message.ArticleGroup == null) return false;
             if (string.IsNullOrWhiteSpace(context.Message.ItemNo)) return false;

@@ -247,10 +247,12 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\PriceCalendarService.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\PriceCalendarService.pdb
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csprojAssemblyReference.cache
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.AssemblyInfoInputs.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.AssemblyInfo.cs
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CopyComplete
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.pdb
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.genruntimeconfig.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache

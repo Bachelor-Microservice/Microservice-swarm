@@ -3,6 +3,7 @@ using PriceCalendarService.Dtos;
 
 namespace NUnitTestPriceCalendar
 {
+    [TestFixture]
     public class Tests
     {
         [SetUp]
@@ -10,7 +11,7 @@ namespace NUnitTestPriceCalendar
         {
             var test = new GroupsDTO();
         }
-
+        
         [Test]
         public void Test1()
         {

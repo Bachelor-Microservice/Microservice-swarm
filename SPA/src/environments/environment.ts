@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://192.168.99.100:5000/api/',
-  identity: 'http://192.168.99.100:5010'
+  api: 'http://localhost:5000/api/',
+  identity: 'http://34.68.24.37'
 };
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,0 +1,18 @@
+<h2>Profile overview</h2>
+<div class="row">
+  <div class="col-xl-4">
+    <ul class="list-group">
+      <li [routerLink]="['/app/profile/detail']"  routerLinkActive="active" class="list-group-item">Profile</li>
+      <li  [routerLink]="['/app/profile/password']" routerLinkActive="active"   class="list-group-item">Password</li>
+      <li [routerLink]="['/app/profile/email']"  routerLinkActive="active"  class="list-group-item">Email</li>
+      <li *ngIf="isAdmin" [routerLink]="['/app/profile/create']"  routerLinkActive="active"  class="list-group-item">Create user <small>(admin)</small></li>
+      <li *ngIf="isAdmin" [routerLink]="['/app/profile/users']"  routerLinkActive="active"  class="list-group-item">Users<small>(admin)</small></li>
+      <li *ngIf="!isAdmin" (click)="deleteUser()" class=" text-danger list-group-item">Delete Account</li>
+
+    </ul>
+  </div>
+  
+
+  <div class="col-xl-8">
+    <router-outlet></router-outlet>
+  </div>

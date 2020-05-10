@@ -34,7 +34,7 @@
                     <mat-icon class="icon-color">person_outline</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                   
+                    <button [routerLink]="['/app/profile']"  mat-menu-item>Profile</button>
                     <button (click)="OnLogout()"  mat-menu-item>Logout</button>
                   </mat-menu>
             </li>

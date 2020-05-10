@@ -5,6 +5,9 @@ env:
       - VERSION=2.${TRAVIS_BUILD_NUMBER}
       - DOCKER_LOCAL="${LOWERCASE_REPO_SLUG}:${TRAVIS_COMMIT}"
 
+branches:
+  only:
+    - master 
 
 addons:
     apt:
@@ -53,13 +56,6 @@ jobs:
           - docker tag proxy caspha17/proxy:latest
           - docker login -u caspha17 --password $dockerLogin
           - docker push caspha17/proxy:latest 
-    - stage: Build and deploy identity
-      script:
-          - cd IdentityServer/IdentityServer
-          - docker build -t identity . 
-          - docker tag identity caspha17/identity:latest
-          - docker login -u caspha17 --password $dockerLogin
-          - docker push caspha17/identity:latest 
     - stage: Deploy Cloud
       script:
           - gcloud version || true

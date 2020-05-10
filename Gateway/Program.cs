@@ -39,20 +39,18 @@ namespace Gateway
                .ConfigureServices(s =>
                {
                    var authenticationProviderKey = "TestKey";
-                 
-                    s.AddAuthentication()
-                    .AddIdentityServerAuthentication(authenticationProviderKey, x =>
-                        {
-                            x.Authority = "http://identityservice:5010";
-                            x.RequireHttpsMetadata=false;
-                            
-                        });
-                    /*
-                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                    {
-                        ValidAudiences = new[] {"item"}
-                    };
-                    */
+                  var identityIssuer =  Environment.GetEnvironmentVariable("IDENTITY_AUTHORITY");
+                 s.AddAuthentication()
+                .AddJwtBearer("TestKey", x =>
+                {
+                    x.Authority = "http://34.68.24.37";
+                    x.RequireHttpsMetadata = false;
+                    x.Audience = "http://34.68.24.37/resources";
+                   // x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                   // {
+                      //  ValidAudiences = new[] { "orders", "basket", "locations", "marketing", "mobileshoppingagg", "webshoppingagg" }
+                   // };
+                });
                        
                    s.AddOcelot();
                    s.AddSwaggerGen(swagger =>

@@ -1,0 +1,12 @@
+version: '3.0'
+
+services: 
+    identity:
+        image: caspha17/identity:latest
+        environment: 
+             - ASPNETCORE_ENVIRONMENT=Developmnet
+             - ASPNETCORE_URLS=http://+:80
+    proxy:
+        image: caspha17/proxyidentity:latest
+        ports: 
+            - 80:80

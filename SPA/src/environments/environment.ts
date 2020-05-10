@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: 'http://localhost:5000/api/',
-  identity: 'http://localhost:5010'
+  identity: 'http://34.68.24.37'
 };
 /*
  * For easier debugging in development mode, you can import the following file

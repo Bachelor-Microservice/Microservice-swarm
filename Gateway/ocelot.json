@@ -11,7 +11,7 @@
               }
             ],
             "UpstreamPathTemplate": "/api/hub",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+            "UpstreamHttpMethod": [  ]
           } ,
         
          {
@@ -84,7 +84,7 @@
         },
         
            {
-            "DownstreamPathTemplate": "/api/{catchAll}/{id}",
+            "DownstreamPathTemplate": "/api/hub/{catchAll}",
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
               {
@@ -92,11 +92,8 @@
                 "Port": 5002
               }
             ],
-            "UpstreamPathTemplate": "/api/{catchAll}/{id}",
-            "LoadBalancerOptions": {
-                "Type": "LeastConnection"
-            },
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+            "UpstreamPathTemplate": "/api/hub/{catchAll}",
+            "UpstreamHttpMethod": [ ]
           }
 
     ],

@@ -141,24 +141,26 @@ namespace IdentityServer
                     {
                        
                          //Environment ,
-                          "http://34.77.231.255/" ,
-                        // "http://localhost" 
-                       // "http://localhost" + "/silent-refresh.html"
+                          "http://34.77.231.255" ,
+                          "http://localhost",
+                         "http://localhost:4200" 
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
                         
                         //Environment + "" ,
-                        "http://34.77.231.255/",
-                       // "http://localhost:4200" 
+                        "http://34.77.231.255",
+                        "http://localhost" ,
+                        "http://localhost:4200" 
                         
                     },
                     AllowedCorsOrigins = new List<string>
                     {
                         
                        // Environment,
-                        "hhttp://34.77.231.255/",
-                      //  "http://localhost:4200" 
+                        "http://34.77.231.255",
+                        "http://localhost",
+                       "http://localhost:4200" 
                     },
                     AllowedScopes = new List<string>
                     {

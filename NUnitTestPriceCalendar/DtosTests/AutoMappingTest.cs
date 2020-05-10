@@ -13,6 +13,7 @@ namespace NUnitTestPriceCalendar.DtosTests
         IMapper _mapper;
         public AutoMappingTest()
         {
+            var directMapper = AutoMapperDirectReference.
         }
     }
 }

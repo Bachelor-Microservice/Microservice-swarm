@@ -29,8 +29,21 @@ namespace PriceCalendarService.MassTransit.Consumers
             return Task.CompletedTask;
         }
 
+        public bool CheckForSuitability(ConsumeContext<ItemEntityUpdated> context)
+        {
+            var message = context.Message;
+            if(string.IsNullOrWhiteSpace(message.ItemNo) || 
+                message.ArticleGroup == null || message.ArticleGroup == default(int) ||
+                message.RelationNo == null || message.RelationNo == default(int))
+            {
+                return false;
+            }
+            return true;
+        }
+
         private async void UpdateFromContext(ConsumeContext<ItemEntityUpdated> consumedContext)
         {
+            if (CheckForSuitability(consumedContext) == false) return;
             var model = await _serviceContext.ItemPriceAndCurrencyResponse
                 .Include(o => o.Groups)
                 .ThenInclude(g => g.Item)
@@ -62,7 +75,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        private void MapFromContext(ConsumeContext<ItemEntityUpdated> from, ItemPriceAndCurrencyResponse to)
+        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, ItemPriceAndCurrencyResponse to)
         {
             to.Currency = from.Message.Unit;
             foreach(var group in to.Groups)
@@ -74,7 +87,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        private void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Groups to)
+        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Groups to)
         {
             //No relevant information for groups, so simply redirects
             //Included for ease in each step checking for differences
@@ -84,7 +97,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        private void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Item to)
+        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Item to)
         {
             to.Name = from.Message.Name;
             to.Price = from.Message.Price;

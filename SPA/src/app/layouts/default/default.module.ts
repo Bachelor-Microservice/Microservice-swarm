@@ -35,6 +35,14 @@ import { AppstartComponent } from 'src/app/appstart/appstart.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { TestComponent } from 'src/app/home/test/test.component';
 import { authModuleConfig } from 'src/app/auth/authModuleConfig';
+import { ProfileComponent } from 'src/app/modules/profile/profile.component';
+import {MatListModule} from '@angular/material/list';
+import { PasswordComponent } from 'src/app/modules/profile/password/password.component';
+import { DetailProfileComponent } from 'src/app/modules/profile/detail-profile/detail-profile.component';
+import { EmailComponent } from 'src/app/modules/profile/email/email.component';
+import { CreateUserComponent } from 'src/app/modules/profile/create-user/create-user.component';
+import { UsersComponent } from 'src/app/modules/profile/users/users.component';
+import { DeleteUserComponent } from 'src/app/modules/profile/delete-user/delete-user.component';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -52,7 +60,14 @@ export function storageFactory(): OAuthStorage {
     ExcelDownloadComponent,
     HomeComponent,
     AppstartComponent,
-    TestComponent
+    TestComponent,
+    ProfileComponent,
+    PasswordComponent,
+    DetailProfileComponent,
+    EmailComponent,
+    CreateUserComponent,
+    UsersComponent,
+    DeleteUserComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +80,7 @@ export function storageFactory(): OAuthStorage {
     MatDatepickerModule,
     SharedModule,
     MatSidenavModule,
+    MatListModule,
     MatDividerModule,
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),

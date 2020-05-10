@@ -42,19 +42,6 @@ services:
         environment: 
             - ASPNETCORE_URLS=http://+:5003
             - IdentityUrl=http://identityservice
-    identityservice:
-        networks: 
-            - microservice
-        build:
-            context: ./IdentityServer/IdentityServer
-        environment: 
-            - DEV_URL=http://localhost
-            - ASPNETCORE_ENVIRONMENT=Developmnet
-            - ASPNETCORE_URLS=http://+:80
-            - IDENTITY_ISSUER"http://10.0.75.1:5010"
-            - RedisConnection=redis
-        ports: 
-            - 5010:5010
     proxy:
         networks: 
             - microservice

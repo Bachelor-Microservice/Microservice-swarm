@@ -13,90 +13,6 @@
             "UpstreamPathTemplate": "/api/hub",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
           } ,
-        {
-            "DownstreamPathTemplate": "/lib/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/lib/{catchAll}",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/js/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/js/{catchAll}",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/css/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/css/{catchAll}",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/connect/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/connect/{catchAll}",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/connect",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/connect/",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/Account/Logout/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/Account/Logout/{catchAll}",
-            "UpstreamHttpMethod": []
-        },
-        {
-            "DownstreamPathTemplate": "/Account/Logout",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/Account/Logout",
-            "UpstreamHttpMethod": []
-        },
         
          {
             "DownstreamPathTemplate": "/api/pricecalendar",
@@ -136,7 +52,7 @@
             "UpstreamHttpMethod": [],
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "TestKey",
-                "AllowedScopes": []
+                "AllowedScopes": ["openid"]
             }
            
         },
@@ -181,19 +97,7 @@
                 "Type": "LeastConnection"
             },
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-          },
-          {
-            "DownstreamPathTemplate": "/{catchAll}",
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "identityservice",
-                    "Port": 80
-                }
-            ],
-            "UpstreamPathTemplate": "/auth/{catchAll}",
-            "UpstreamHttpMethod": []
-        }
+          }
 
     ],
     "GlobalConfiguration": {}

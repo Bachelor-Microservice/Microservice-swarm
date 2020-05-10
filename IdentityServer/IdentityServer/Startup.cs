@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer.Data;
+using IdentityServer.Entities;
+using IdentityServer.Services;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Logging;
 using StackExchange.Redis;
 
 namespace IdentityServer
@@ -33,6 +42,26 @@ namespace IdentityServer
             string env = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
             string issuer = Environment.GetEnvironmentVariable("IDENTITY_ISSUER");
             string IDENTITY_ISSUER = Configuration["IDENTITY_ISSUER"];
+            
+            var connectionString =
+                "Server=tcp:logistictech.database.windows.net,1433;Initial Catalog=bachelorIdentity;Persist Security Info=False;User ID=logistictech@logistictech;Password=casperOskar15;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connectionString));
+            
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                {
+                    options.Stores.MaxLengthForKeys = 128;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 2;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                
+                .AddDefaultTokenProviders();
+            IdentityModelEventSource.ShowPII = true; //Add this line
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder
@@ -52,16 +81,16 @@ namespace IdentityServer
             var config = new Config();
 
             config.setEnvironemnt(devEnv);
-           
-                
-            services.AddIdentityServer(options => {
-                })
-                
+
+            services.AddTransient<IProfileService, ProfileService>();
+
+            services.AddIdentityServer(options => { })
                 .AddDeveloperSigningCredential()
+                .AddProfileService<ProfileService>()
+                .AddAspNetIdentity<ApplicationUser>()
                 .AddInMemoryIdentityResources(config.GetIdentityResources())
                 .AddInMemoryApiResources(config.GetApis())
-                .AddInMemoryClients(config.GetClients())
-                .AddTestUsers(config.GetUsers());
+                .AddInMemoryClients(config.GetClients());
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

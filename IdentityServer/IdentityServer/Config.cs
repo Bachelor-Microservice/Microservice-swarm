@@ -134,26 +134,31 @@ namespace IdentityServer
                     RequireClientSecret = false,
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
+                    AlwaysIncludeUserClaimsInIdToken =  true,
                     AllowOfflineAccess = true,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
                     {
                        
-                         Environment ,
-                        // "http://localhost:4200" 
+                         //Environment ,
+                          "http://34.77.231.255/" ,
+                        // "http://localhost" 
                        // "http://localhost" + "/silent-refresh.html"
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
                         
-                        Environment + "" ,
-                       // "http://localhost:4200"
+                        //Environment + "" ,
+                        "http://34.77.231.255/",
+                       // "http://localhost:4200" 
+                        
                     },
                     AllowedCorsOrigins = new List<string>
                     {
                         
-                        Environment,
-                       // "http://localhost:4200"
+                       // Environment,
+                        "hhttp://34.77.231.255/",
+                      //  "http://localhost:4200" 
                     },
                     AllowedScopes = new List<string>
                     {

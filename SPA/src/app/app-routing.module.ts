@@ -11,6 +11,12 @@ import { SilentRefreshComponent } from './silent-refresh/silent-refresh.componen
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { AppstartComponent } from './appstart/appstart.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { PasswordComponent } from './modules/profile/password/password.component';
+import { EmailComponent } from './modules/profile/email/email.component';
+import { DetailProfileComponent } from './modules/profile/detail-profile/detail-profile.component';
+import { CreateUserComponent } from './modules/profile/create-user/create-user.component';
+import { UsersComponent } from './modules/profile/users/users.component';
 
 
 
@@ -32,6 +38,34 @@ const routes: Routes = [{
     component: SilentRefreshComponent
   },
   {
+    path: 'profile',
+    component: ProfileComponent,
+    children: 
+    [
+      {
+      path: 'detail',
+      component: DetailProfileComponent
+      },
+      {
+        path: 'password',
+        component: PasswordComponent
+      },
+    
+      {
+        path: 'email',
+        component: EmailComponent
+      },
+      {
+        path: 'create',
+        component: CreateUserComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
+      }
+    ]
+  },
+  {
     path: 'signal',
     component: SignalRComponent
   },
@@ -40,6 +74,7 @@ const routes: Routes = [{
 },
 {
   path: '',
+  pathMatch: 'full',
   component: HomeComponent
 },
 

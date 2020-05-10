@@ -9,11 +9,9 @@ export const authConfig: AuthConfig = {
     silentRefreshRedirectUri: window.location.origin + '',
     postLogoutRedirectUri: window.location.origin,
     responseType: 'code',
-    scope: 'openid profile',
-    strictDiscoveryDocumentValidation: false,
+    scope: 'openid profile email api roles',
     silentRefreshTimeout: 500000, // For faster testing
      // For faster testing
-     skipIssuerCheck: true,
      requireHttps:  false,
     sessionChecksEnabled: true,
     showDebugInformation: false, // Also requires enabling "Verbose" level in devtools

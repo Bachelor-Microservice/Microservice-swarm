@@ -10857,11 +10857,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\PriceCalendarService\\PriceCalendarService.csproj",
+      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\PriceCalendarService.csproj",
       "projectName": "PriceCalendarService",
-      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\PriceCalendarService\\PriceCalendarService.csproj",
+      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\PriceCalendarService.csproj",
       "packagesPath": "C:\\Users\\skakk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\PriceCalendarService\\obj\\",
+      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -19,6 +19,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [SetUp]
         public void Setup()
         {
+            Console.WriteLine("*******************************************\n*******************************************\nTESTING IS WORKING YAY\n*******************************************");
         }
 
         [Test]
@@ -37,7 +38,6 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             consumeContextMock.Setup(p => p.Message.RelationNo).Returns(3333);
             consumeContextMock.Setup(p => p.Message.Unit).Returns("Unit");
             consumeContextMock.Setup(p => p.Message.Price).Returns(1111);
-
             //Arrange Model object
             var model = new ItemPriceAndCurrencyResponse();
             model.Groups = new List<Groups>();

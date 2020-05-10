@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4sgfYMOwnXZk9BH7us/VtkST02RCI1j84E+SU9NGie6VNXMEm0I4aMr/hQRrcsZvZDU5M5nvKgzIkZPyUdu4ew==",
+  "dgSpecHash": "O7EVbJDS2uEh4WQ7i1MLIlbUxkj2a9nl1o7FfgKELdTg34yK14MP5uZVuiY4jT+mg1DFXXkqt6w29keos/QHRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
+  "projectFilePath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\skakk\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

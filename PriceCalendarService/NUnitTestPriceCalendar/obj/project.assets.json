@@ -10939,11 +10939,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
+      "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
       "projectName": "NUnitTestPriceCalendar",
-      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
+      "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
       "packagesPath": "C:\\Users\\skakk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\NUnitTestPriceCalendar\\obj\\",
+      "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\NUnitTestPriceCalendar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10962,8 +10962,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\PriceCalendarService\\PriceCalendarService.csproj": {
-              "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarAndTestService\\PriceCalendarService\\PriceCalendarService.csproj"
+            "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\PriceCalendarService.csproj": {
+              "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\PriceCalendarService.csproj"
             }
           }
         }
@@ -11005,9 +11005,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

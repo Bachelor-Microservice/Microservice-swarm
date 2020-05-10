@@ -11,8 +11,14 @@
               }
             ],
             "UpstreamPathTemplate": "/api/hub",
-            "UpstreamHttpMethod": [  ]
+            "UpstreamHttpMethod": [  ],
+            "LoadBalancerOptions": {
+                "Type": "CookieStickySessions",
+                "Key": "ASP.NET_SessionId",
+                "Expiry": 1800000
+            }
           } ,
+          
         
          {
             "DownstreamPathTemplate": "/api/pricecalendar",
@@ -93,7 +99,12 @@
               }
             ],
             "UpstreamPathTemplate": "/api/hub/{catchAll}",
-            "UpstreamHttpMethod": [ ]
+            "UpstreamHttpMethod": [ ],
+            "LoadBalancerOptions": {
+                "Type": "CookieStickySessions",
+                "Key": "ASP.NET_SessionId",
+                "Expiry": 1800000
+            }
           }
 
     ],

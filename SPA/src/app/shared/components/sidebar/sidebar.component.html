@@ -6,6 +6,20 @@
   </div>
 
 
+  <div *ngIf="isLoggedIn()" class="nav-item">
+    <a mat-list-item [routerLink]="['/app/signal']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3">Dashboard</span>
+        <div class="arrow">
+          <mat-icon >keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+
   <div class="nav-item">
     <a mat-list-item [routerLink]="['/app/pricecalendar']" routerLinkActive="list-item-active">
       <div class="d-flex">
@@ -41,7 +55,36 @@
           
         <mat-icon class="green-icon">dashboard</mat-icon>
 
-        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3"> SignalR Test</span>
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3">Book</span>
+        <div class="arrow">
+          <mat-icon >keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div *ngIf="isLoggedIn()" class="nav-item">
+    <a mat-list-item [routerLink]="['/app/signal']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3">Bookings</span>
+        <div class="arrow">
+          <mat-icon >keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div *ngIf="isLoggedIn()" class="nav-item">
+    <a mat-list-item [routerLink]="['/app/signal']" routerLinkActive="list-item-active">
+      <div class="d-flex">
+          
+        <mat-icon class="green-icon">dashboard</mat-icon>
+
+        <span [@animateText]="status ? 'show' : 'hide'" class="pt-3">customers</span>
         <div class="arrow">
           <mat-icon >keyboard_arrow_down</mat-icon>
         </div>

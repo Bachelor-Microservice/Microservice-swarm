@@ -145,7 +145,7 @@ namespace PriceCalendarService.Services
             }
 
             System.Console.WriteLine(_hubContext);
-            await _hubContext.Clients.All.SendAsync("HELLO", workbookBytes);
+            await _hubContext.Clients.All.SendAsync("Excel", workbookBytes);
         }
 
         public async Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAll()

@@ -9,7 +9,6 @@ import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
 import * as moment from 'moment';
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
-import * as signalR from "@aspnet/signalr";
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component';
@@ -43,40 +42,6 @@ export class PriceCalendarComponent implements OnInit {
   private _hubConnection: signalR.HubConnection;
   // This method when the component is started
   ngOnInit() {
-     
-    this._hubConnection = new signalR.HubConnectionBuilder().withUrl(environment.api + 'hub' , {
-      skipNegotiation: true,
-      transport: signalR.HttpTransportType.WebSockets
-    }).configureLogging(signalR.LogLevel.Information)
-    .build();
-
-    this._hubConnection.on('Send', (data: any) => {
-    const received = `Received: ${data}`;
-    console.log(data);
-    });
-
-    this._hubConnection.on('HELLO' , data => {
-      console.log("RESPONSE");
-      
-      var dec = window.atob(data);
-      var myArr = new Uint8Array(dec.length)
-      for(var i = 0; i < Object.keys(dec).length; i++){
-          myArr[i] = dec.charCodeAt(i);
-      }
-      var blob = new Blob([myArr], {type: 'application/vnd.ms-excel'});
-      const dialogRef = this.dialog.open(ExcelDownloadComponent, {
-        width: '250px',
-        data: {data: blob}
-      });
-    });
-
-    this._hubConnection.start()
-    .then(() => {
-      console.log('Hub connection started');
-    })
-    .catch(err => {
-    console.log('Error while establishing connection');
-    });
     const InitialDateEndDate = this.setDefaultDateRangeInForm();
     this.setInitialForm(InitialDateEndDate);
   }
@@ -203,7 +168,6 @@ export class PriceCalendarComponent implements OnInit {
             }
           });
         });
-        
         daysOfYear.forEach(el => {
           if(element[el] === undefined) {
             element[el] = item.price;

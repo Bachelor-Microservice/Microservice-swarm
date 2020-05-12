@@ -20,13 +20,16 @@
                 <mat-divider style="height:70%" [vertical]="true"> </mat-divider>
             </li>
             <li>
-
                 
-
-                <button mat-icon-button>
-                    <mat-icon class="icon-color">mail_outline</mat-icon>
+                <button  [matMenuTriggerFor]="notifications"  mat-icon-button>
+                    <mat-icon  matBadge="{{this.excelFiles.length > 0 ? this.excelFiles.length : null}}" matBadgeColor="warn" class="icon-color">mail_outline</mat-icon>
                 </button>
-                
+                <mat-menu  #notifications="matMenu">
+                    <div *ngFor="let item of this.excelFiles; let i = index" >
+                    <p (click)="downloadExcelfile(i)" class="notifications-bg"  mat-menu-item>New excel file. Click to download</p>
+                </div>
+                </mat-menu>
+           
 
             </li>
             <li>

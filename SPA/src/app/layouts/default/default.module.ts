@@ -43,6 +43,7 @@ import { EmailComponent } from 'src/app/modules/profile/email/email.component';
 import { CreateUserComponent } from 'src/app/modules/profile/create-user/create-user.component';
 import { UsersComponent } from 'src/app/modules/profile/users/users.component';
 import { DeleteUserComponent } from 'src/app/modules/profile/delete-user/delete-user.component';
+import {MatBadgeModule} from '@angular/material/badge';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -80,6 +81,7 @@ export function storageFactory(): OAuthStorage {
     MatDatepickerModule,
     SharedModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatListModule,
     MatDividerModule,
     BrowserAnimationsModule,

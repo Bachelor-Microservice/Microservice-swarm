@@ -161,6 +161,17 @@ namespace PriceCalendarService.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAllWithoutItems()
+        {
+            var serviceResponse = new ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>();
+            var model = await _context.ItemPriceAndCurrencyResponse
+                .Include(i => i.Groups)
+                .ToListAsync();
+            serviceResponse.Data = new List<ItemPriceAndCurrencyResponseDTO>();
+            foreach (var item in model) serviceResponse.Data.Add(this.MapManuallyFromModelToDto(item));
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Get(int id)
         {
             var serviceResponse = new ServiceResponse<ItemPriceAndCurrencyResponseDTO>();

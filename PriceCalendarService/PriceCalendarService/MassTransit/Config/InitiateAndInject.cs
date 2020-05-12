@@ -32,11 +32,6 @@ namespace PriceCalendarService.MassTransit.Config
                         ep.ConfigureConsumer<CreationOfItemEntityConsumer>(provider);
                         ep.ConfigureConsumer<DeletionOfItemEntityConsumer>(provider);
                         ep.ConfigureConsumer<UpdateOfItemEntityConsumer>(provider);
-
-                        ep.Handler<ItemEntityCreated>(context =>
-                        {
-                            return Console.Out.WriteLineAsync($"Received: {context.Message.Id}");
-                        });
                     });
 
                     

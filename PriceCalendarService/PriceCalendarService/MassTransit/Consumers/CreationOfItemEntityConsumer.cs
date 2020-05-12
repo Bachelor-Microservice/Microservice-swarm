@@ -29,20 +29,22 @@ namespace PriceCalendarService.MassTransit.Consumers
             Console.WriteLine($"Received Create Event...");
             Console.WriteLine("Context received: " + consumedContext.Message + "\nCreating....");
 
-            CreateFromContext(consumedContext);
-            
+            this.CreateFromContext(consumedContext);
+
+            Console.WriteLine("Event reaction done...");
             return Task.CompletedTask;
         }
 
-        public async void CreateFromContext(ConsumeContext<ItemEntityCreated> consumedContext)
+        public void CreateFromContext(ConsumeContext<ItemEntityCreated> consumedContext)
         {
+            Console.WriteLine("Inside db context...");
             if (!this.CanBeTranslated(consumedContext)) return;
             Console.WriteLine("Context can be translated...");
             Console.WriteLine("Checking for existing relations...");
-            var model = await _serviceContext.ItemPriceAndCurrencyResponse
+            var model = _serviceContext.ItemPriceAndCurrencyResponse
                 .Include(o => o.Groups)
                 .ThenInclude(g => g.Item)
-                .FirstOrDefaultAsync(c => c.Id == consumedContext.Message.RelationNo);
+                .FirstOrDefault(c => c.Id == consumedContext.Message.RelationNo);
             Console.WriteLine("Service context found: " + model);
             
             if(model != null && model.Groups != null)
@@ -50,8 +52,8 @@ namespace PriceCalendarService.MassTransit.Consumers
                 Console.WriteLine("Comparable response and group found...");
                 var item = this.MapFromContext_ExistingFromResponse(consumedContext, model);
                 Console.WriteLine("Item being inserted: " + item);
-                await _serviceContext.Item.AddAsync(item);
-                var stateEntries = await _serviceContext.SaveChangesAsync();
+                 _serviceContext.Item.Add(item);
+                var stateEntries =  _serviceContext.SaveChanges();
                 Console.WriteLine("State entries written: " + stateEntries);
             }
             else if(model != null && model.Groups == null)
@@ -59,8 +61,8 @@ namespace PriceCalendarService.MassTransit.Consumers
                 Console.WriteLine("Comparable response found - group null...");
                 var group = this.MapFromContext_ExistingFromGroups(consumedContext, model);
                 Console.WriteLine("Group being inserted: " + group);
-                await _serviceContext.Groups.AddAsync(group);
-                var stateEntries = await _serviceContext.SaveChangesAsync();
+                 _serviceContext.Groups.Add(group);
+                var stateEntries =  _serviceContext.SaveChanges();
                 Console.WriteLine("State entries written: " + stateEntries);
             }
             else if(model == null)
@@ -68,8 +70,8 @@ namespace PriceCalendarService.MassTransit.Consumers
                 Console.WriteLine("No comparable response found...");
                 var itemPriceAndCurrencyResponse = this.MapFromContext_NonExisting(consumedContext);
                 Console.WriteLine("Response being inserted: " + itemPriceAndCurrencyResponse);
-                var stateEntries = await _serviceContext.ItemPriceAndCurrencyResponse.AddAsync(itemPriceAndCurrencyResponse);
-                await _serviceContext.SaveChangesAsync();
+                var stateEntries = _serviceContext.ItemPriceAndCurrencyResponse.Add(itemPriceAndCurrencyResponse);
+                _serviceContext.SaveChanges();
                 Console.WriteLine("State entries written: " + stateEntries);
             }
         }

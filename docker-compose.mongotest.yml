@@ -1,0 +1,69 @@
+version: '3.1'
+
+services: 
+    rabbitmq:
+        image: rabbitmq
+        command: rabbitmq-server
+        expose:
+            - "5672"
+            - "15672"
+    pricecalendarservice:
+        build: 
+            context: ./PriceCalendarService
+        ports:
+            - "5002"
+        environment: 
+            - ASPNETCORE_URLS=http://+:5002
+        depends_on: 
+            - rabbitmq
+    itemmanagerservice: 
+        build:
+            ./ItemManagerService
+        ports:
+            - "5003"
+        environment: 
+            - ASPNETCORE_URLS=http://+:5003
+        depends_on:
+            - rabbitmq
+    mongobooking:
+        container_name: mongobooking
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/.site:/data/db
+            #- ./data:/data/db
+        ports:
+            - "27017:27017"
+    bookingservice:
+        build: ./BookingService
+        ports:
+            - "8000:80"
+            - "44348:443"
+        depends_on:
+            - mongobooking
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongobooking
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+            #- ./data:/data/db
+        ports:
+            - "27018:27017"
+    customermanagerservice:
+        build: ./Customermanagerservice
+        ports:
+            - "8080:80"
+            - "44349:443"
+        depends_on:
+            - mongo
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongo

@@ -6,10 +6,6 @@ namespace CustomerManagerService.Models
 {
     public class Booking
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-
         [BsonElement("Arrival")]
         public DateTime Arrival { get; set; }
 

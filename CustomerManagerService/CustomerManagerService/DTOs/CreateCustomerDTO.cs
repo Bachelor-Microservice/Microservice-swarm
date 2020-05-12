@@ -21,6 +21,6 @@ namespace CustomerManagerService.DTOs
 
         public string MobilePhone { get; set; }
 
-        public List<BookingDTO> Bookings { get; set; }
+        public List<CreateBookingDTO> Bookings { get; set; }
     }
 }

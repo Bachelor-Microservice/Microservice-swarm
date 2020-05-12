@@ -45,7 +45,7 @@ namespace CustomerManagerService.Services
             return s;
         }
 
-        public async Task<CustomerDTO> Create(CustomerDTO c)
+        public async Task<CreateCustomerDTO> Create(CreateCustomerDTO c)
         {
             var model = _mapper.Map<Customer>(c);
             await _customerContext.InsertOneAsync(model);

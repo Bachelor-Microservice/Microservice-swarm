@@ -16,6 +16,7 @@ namespace CustomerManagerService.DTOs.Config
                 .ReverseMap();
 
             CreateMap<Booking, BookingDTO>().ReverseMap();
+            CreateMap<Booking, CreateBookingDTO>().ReverseMap();
 
             CreateMap<Customer, CreateCustomerDTO>()
                 .ForMember(s => s.Bookings, c => c.MapFrom(m => m.Bookings))    

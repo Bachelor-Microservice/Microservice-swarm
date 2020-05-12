@@ -45,7 +45,7 @@ namespace CustomerManagerService.Controllers
         }*/
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CustomerDTO dto)
+        public async Task<IActionResult> Create([FromBody] CreateCustomerDTO dto)
         {
             var result = await _customerService.Create(dto);
             return Ok(result);

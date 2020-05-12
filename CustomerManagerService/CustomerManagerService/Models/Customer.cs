@@ -24,5 +24,17 @@ namespace CustomerManagerService.Models
 
         [BsonElement("Email")]
         public string Email { get; set; }
+
+        [BsonElement("Address")]
+        public string Address {get; set;}
+
+        [BsonElement("TelephonePrimary")]
+        public string TelephonePrimary {get; set;}
+
+        [BsonElement("MobilePhone")]
+        public string MobilePhone {get; set;}
+
+        [BsonElement("Bookings")]
+        public List<Booking> Bookings { get; set; }
     }
 }

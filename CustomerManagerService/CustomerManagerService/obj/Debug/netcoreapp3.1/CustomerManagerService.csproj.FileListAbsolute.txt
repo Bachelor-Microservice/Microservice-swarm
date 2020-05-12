@@ -19,3 +19,16 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.csproj.CopyComplete
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\staticwebassets\CustomerManagerService.StaticWebAssets.Manifest.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\staticwebassets\CustomerManagerService.StaticWebAssets.xml
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\CustomerManagerService.deps.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\CustomerManagerService.runtimeconfig.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\CustomerManagerService.runtimeconfig.dev.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\CustomerManagerService.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\CustomerManagerService.pdb
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.pdb
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.genruntimeconfig.cache

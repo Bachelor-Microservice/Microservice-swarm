@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CustomerManagerService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace CustomerManagerService
             services.AddControllers();
 
             services.AddScoped<CustomerService>();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen(swagger =>
             {

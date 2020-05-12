@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Collections.Generic;
+using CustomerManagerService.DTOs;
 
 namespace CustomerManagerService.Controllers
 {
@@ -36,10 +37,17 @@ namespace CustomerManagerService.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Create([FromBody] Customer customer)
         {
             var result = await _customerService.Create(customer);
+            return Ok(result);
+        }*/
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CustomerDTO dto)
+        {
+            var result = await _customerService.Create(dto);
             return Ok(result);
         }
 

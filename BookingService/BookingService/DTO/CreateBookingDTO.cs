@@ -8,6 +8,7 @@ namespace BookingService.DTO
     public class CreateBookingDTO
     {
         public DateTime Arrival { get; set; }
+        public string Email { get; set; }
 
         public DateTime Depature { get; set; }
 

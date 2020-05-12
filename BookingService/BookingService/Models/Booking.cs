@@ -28,6 +28,9 @@ namespace BookingService.Models
         [BsonElement("CustomerName")]
         public string CustomerName { get; set; }
 
+        [BsonElement("Email")]
+        public string Email { get; set; }
+
         [BsonElement("ItemDescription")]
         public string ItemDescription { get; set; }
 

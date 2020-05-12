@@ -21,5 +21,8 @@ namespace CustomerManagerService.Models
 
         [BsonElement("ItemNo")]
         public string ItemNo { get; set; }
+
+        [BsonElement("Price")]
+        public string Price { get; set; }
     }
 }

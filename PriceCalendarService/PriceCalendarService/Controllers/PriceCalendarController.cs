@@ -62,8 +62,12 @@ namespace PriceCalendarService.Controllers
             return Ok(await _service.ExportToExcel(from, to));
         }
 
-        
-        
-    
+        [HttpGet]
+        [Route("allwithoutitems")]
+        public async Task<IActionResult> GetAllWithOutItems()
+        {
+            return Ok(await _service.GetAllWithoutItems());
+        }
+
     }
 }

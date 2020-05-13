@@ -20,5 +20,7 @@ namespace PriceCalendarService.Services
         Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Delete(int Id);
         
         Task<ServiceResponse<string>> ExportToExcel(DateTime from, DateTime to);
+
+        Task<ServiceResponse<List<ItemPriceAndCurrencyResponseDTO>>> GetAllWithoutItems();
     }
 }

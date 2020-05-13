@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O7EVbJDS2uEh4WQ7i1MLIlbUxkj2a9nl1o7FfgKELdTg34yK14MP5uZVuiY4jT+mg1DFXXkqt6w29keos/QHRQ==",
+  "dgSpecHash": "1CH9np7652Y7R/rxOPemhVLXncly2Iks0uHaCF+UF5alruD40gd6LzUcK8/D4kjpM8IZytmW0pvGF5ueN1wP+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\NUnitTestPriceCalendar\\NUnitTestPriceCalendar.csproj",
   "expectedPackageFiles": [

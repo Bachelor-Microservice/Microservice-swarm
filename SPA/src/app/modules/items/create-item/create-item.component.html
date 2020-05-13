@@ -3,16 +3,8 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Id</mat-label>
-        <input type="number" matInput [(ngModel)]="data.id">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-form-field>
         <mat-label>Item Number</mat-label>
-        <input  matInput [(ngModel)]="data.itemNo">
+        <input type="text"  matInput [(ngModel)]="data.itemNo">
       </mat-form-field>
     </div>
   </div>
@@ -20,15 +12,15 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Navn</mat-label>
-        <input matInput [(ngModel)]="data.name">
+        <input type="text" matInput [(ngModel)]="data.name">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Enhed</mat-label>
-        <input  matInput [(ngModel)]="data.unit">
+        <mat-label>Currency</mat-label>
+        <input type="text"  matInput [(ngModel)]="data.unit">
       </mat-form-field>
     </div>
   </div>
@@ -44,7 +36,7 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Pris model</mat-label>
-        <input matInput [(ngModel)]="data.priceModel">
+        <input type="text" matInput [(ngModel)]="data.priceModel">
       </mat-form-field>
     </div>
   </div>
@@ -52,8 +44,14 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Varekode</mat-label>
-        <input matInput [(ngModel)]="data.itemCode">
+        <input type="text" matInput [(ngModel)]="data.itemCode">
       </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <mat-label>Skal vare kunne bookes</mat-label>
+        <mat-checkbox class="ml-3" [(ngModel)]="data.quickPost"></mat-checkbox>
     </div>
   </div>
   <div class="row">

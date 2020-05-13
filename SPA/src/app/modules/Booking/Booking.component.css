@@ -1,0 +1,14 @@
+.cont {
+    min-height: 350px;
+}
+
+.newPrice{
+    color: green;
+    font-size: larger;
+}
+
+.oldPrice{
+    color: red;
+    font-size: smaller;
+    text-decoration-line: line-through;
+}

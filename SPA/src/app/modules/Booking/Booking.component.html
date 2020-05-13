@@ -1,0 +1,111 @@
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [completed]="firstStepDone" [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Select Sustomer</ng-template>
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="GoNext(stepper)" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Create Customer</ng-template>
+
+<form [formGroup]="createCustomerForm" >
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="supplementName" type="text" matInput placeholder="Enter Name">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="email" type="email" matInput placeholder="Enter email">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="address"  type="text" matInput placeholder="Enter Address">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="telephonePrimary"  type="text" matInput placeholder="Enter Primary telephone">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="mobilePhone"   type="text" matInput placeholder="Enter Mobilephone">
+  </mat-form-field>
+  </div>
+  <button class="ml-5" matStepperNext mat-raised-button color="primary" >Next </button>
+</form>
+  </mat-step>
+  <mat-step [stepControl]="datesForm" >
+    <form [formGroup]="datesForm" >
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field class="ml-3">
+        <mat-label>Choose a Arrival Date</mat-label>
+        <input matInput  formControlName="arrival"  [matDatepicker]="arrival"  >
+        <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
+        <mat-datepicker  #arrival></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="ml-3">
+        <mat-label>Choose a Departue date</mat-label>
+        <input matInput formControlName="departue"   [matDatepicker]="departue"  >
+        <mat-datepicker-toggle matSuffix [for]="departue"></mat-datepicker-toggle>
+        <mat-datepicker  #departue></mat-datepicker>
+      </mat-form-field>
+      <div>
+         <button (click)="check()" >ckmnde</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step >
+    <ng-template matStepLabel>Vælg vare</ng-template>
+
+
+    <div class="row">
+      <div *ngFor="let item of items" class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card>
+          <div class="cont">
+          <img height="100%" width="100%" src="https://www.dcu.dk/sites/default/files/styles/large_2/public/dcu_mols_hytter_2016_foto_lasse_loendahl_henriksen-4_web.jpg?itok=bGv84lp5">
+          <h2>{{item.name}}</h2>
+          <p>{{this.datesForm.value.arrival | date:'shortDate'}} --> {{this.datesForm.value.departue | date:'shortDate'}} <small>(3 days)</small>  </p>
+          <div class="row d-flex justify-content-between">
+            <div>
+            <button class="ml-2" mat-raised-button color="primary">Book</button>
+          </div>
+          <div>
+            <span class="newPrice mr-2">{{item.price}}</span> <span class="oldPrice mr-2">{{item.price}}</span>
+          </div>
+          </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

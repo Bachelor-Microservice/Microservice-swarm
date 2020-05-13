@@ -1,0 +1,42 @@
+<div class="row m-4">
+Creater Customer
+<div class="col-xl-4">
+
+</div>
+<div class="col-xl-4">
+  
+
+
+<form [formGroup]="createCustomerForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="supplementName" type="text" matInput placeholder="Enter Name">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="email" type="email" matInput placeholder="Enter email">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="address"  type="text" matInput placeholder="Enter Address">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="telephonePrimary"  type="text" matInput placeholder="Enter Primary telephone">
+  </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+    <input formControlName="mobilePhone"   type="text" matInput placeholder="Enter Mobilephone">
+  </mat-form-field>
+  </div>
+  <button class="ml-5" type="submit" mat-raised-button color="primary" >Create </button>
+</form>
+</div>
+<div class="col-xl-4">
+  
+</div>
+</div>

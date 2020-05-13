@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="col-xl-4">
+    <h2>Customer information</h2>
+    <p>Id : {{this.customer.id}}</p>
+    <p>Address : {{this.customer.address}}</p>
+    <p>Email : {{this.customer.email}}</p>
+    <p>MobilePhone : {{this.customer.mobilePhone}}</p>
+    <p>RegistrationDate : {{this.customer.registrationDate}}</p>
+    <p>SupplementName : {{this.customer.supplementName}}</p>
+    <p>TelephonePrimary : {{this.customer.telephonePrimary}}</p>
+    <p>Type : {{this.customer.type}}</p>
+
+    <button mat-raised-button color="primary">Edit</button>
+    <button (click)="onDeleteCustomer()" class="ml-5" mat-raised-button color="warn">Delete</button>
+  </div>
+
+  <div class="col-xl-8">
+    <h2>Bookings</h2>
+    <ag-grid-angular
+    style="width: 80%; height: 500px;"
+    class="ag-theme-alpine"
+    agGrid={}
+    [rowData]="this.customer.bookings"
+    [columnDefs]="columnDefs"
+    (rowClicked)="onRowClicked($event)"
+    >
+</ag-grid-angular>
+  </div>
+</div>

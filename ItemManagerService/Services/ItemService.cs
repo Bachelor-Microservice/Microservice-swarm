@@ -29,6 +29,7 @@ namespace ItemManagerService.Services
 
         public async Task<ServiceResponse<Items>> AddItem(Items item)
         {
+            item.Id = GetId();
             var serviceResponse = new ServiceResponse<Items>();
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
@@ -77,6 +78,12 @@ namespace ItemManagerService.Services
             _publisher.Updated(item);
 
             return serviceResponse;
+        }
+
+        public int GetId() 
+        {
+            Random rand = new Random();
+            return rand.Next(0,999999);
         }
     }
 }

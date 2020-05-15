@@ -30,6 +30,8 @@ namespace ItemManagerService.Services
         public async Task<ServiceResponse<Items>> AddItem(Items item)
         {
             item.Id = GetId();
+            if (item.ArticleGroup == 0 || item.ArticleGroup == null) item.ArticleGroup = GetId();
+            if (item.RelationNo == 0 || item.RelationNo == null) item.RelationNo = GetId();
             var serviceResponse = new ServiceResponse<Items>();
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();

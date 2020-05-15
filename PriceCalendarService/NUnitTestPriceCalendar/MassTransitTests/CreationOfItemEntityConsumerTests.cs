@@ -133,7 +133,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             }
         }
 
-        [Test]
+        /*[Test]
         public void CanBeTranslatedTest()
         {
             //Arrange Dependencies
@@ -169,6 +169,6 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             var result = creationOfItemEntityConsumer.CanBeTranslated(consumeContextMock.Object);
 
             Assert.IsFalse(result);
-        }
+        }*/
     }
 }

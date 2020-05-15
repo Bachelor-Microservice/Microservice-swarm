@@ -39,7 +39,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         public void CreateFromContext(ConsumeContext<IItemEntityCreated> consumedContext)
         {
             Console.WriteLine("Inside db context...");
-            if (!this.CanBeTranslated(consumedContext)) return;
+            //if (!this.CanBeTranslated(consumedContext)) return;
             Console.WriteLine("Context can be translated...");
             Console.WriteLine("Checking for existing relations...");
             var model = _serviceContext.ItemPriceAndCurrencyResponse
@@ -96,7 +96,7 @@ namespace PriceCalendarService.MassTransit.Consumers
                 Currency = existing,
                 CurrencyId = existing.Id,
                 Item = new List<Item>(),
-                Description = from.Message.PriceModelFrom
+                Description = from.Message.PriceModel
             };
 
             var item = new Item
@@ -122,6 +122,12 @@ namespace PriceCalendarService.MassTransit.Consumers
             itemPriceAndCurrencyResponse.Groups = new List<Groups>();
             itemPriceAndCurrencyResponse.Groups.Add(this.MapFromContext_ExistingFromGroups(from, itemPriceAndCurrencyResponse));
             return itemPriceAndCurrencyResponse;
+        }
+
+        public int GenerateIntId()
+        {
+            Random rand = new Random();
+            return rand.Next(0, 999999);
         }
 
         public bool CanBeTranslated(ConsumeContext<IItemEntityCreated> context)

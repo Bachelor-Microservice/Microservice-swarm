@@ -41,6 +41,7 @@ services:
             - "44348:443"
         depends_on:
             - mongobooking
+            - rabbitmq
         volumes:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
@@ -62,6 +63,7 @@ services:
             - "44349:443"
         depends_on:
             - mongo
+            - rabbitmq
         volumes:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/

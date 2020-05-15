@@ -41,6 +41,18 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "Microservice_Contracts_Bach": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.4.0, )"

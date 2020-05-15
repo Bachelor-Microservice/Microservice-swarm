@@ -32,6 +32,7 @@ namespace ItemManagerService.Services
             item.Id = GetId();
             if (item.ArticleGroup == 0 || item.ArticleGroup == null) item.ArticleGroup = GetId();
             if (item.RelationNo == 0 || item.RelationNo == null) item.RelationNo = GetId();
+            if (string.IsNullOrWhiteSpace(item.ItemNo)) item.ItemNo = GenerateRandomLowerCaseNormalizedString(12);
             var serviceResponse = new ServiceResponse<Items>();
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
@@ -86,6 +87,20 @@ namespace ItemManagerService.Services
         {
             Random rand = new Random();
             return rand.Next(0,999999);
+        }
+
+        public string GenerateRandomLowerCaseNormalizedString(int length)
+        {
+            var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[length];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new String(stringChars);
         }
     }
 }

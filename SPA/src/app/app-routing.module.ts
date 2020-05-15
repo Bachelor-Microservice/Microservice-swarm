@@ -17,6 +17,11 @@ import { EmailComponent } from './modules/profile/email/email.component';
 import { DetailProfileComponent } from './modules/profile/detail-profile/detail-profile.component';
 import { CreateUserComponent } from './modules/profile/create-user/create-user.component';
 import { UsersComponent } from './modules/profile/users/users.component';
+import { CustomerComponent } from './modules/Customer/Customer.component';
+import { DetailCustomerComponent } from './modules/Customer/detail-customer/detail-customer.component';
+import { CreateCustomerComponent } from './modules/Customer/create-customer/create-customer.component';
+import { BookingComponent } from './modules/Booking/Booking.component';
+import { BookingsComponent } from './modules/Booking/bookings/bookings.component';
 
 
 
@@ -24,19 +29,38 @@ const routes: Routes = [{
   path: 'app',
   component: DefaultComponent,
   children: [
+    {
+      path: 'dashboard',
+    component: DashboardComponent
+    },
   {
     path: 'pricecalendar',
-  component: PriceCalendarComponent,
-  canActivate: [AuthGuard]
+  component: PriceCalendarComponent
   },
   {
     path: 'items',
     component: ItemsComponent
+  },
+  {
+    path: 'book',
+    component: BookingComponent
+  },
+  {
+    path: 'bookings',
+    component: BookingsComponent
+  },
+  {
+    path: 'customers',
+    component: CustomerComponent
   }, 
   {
-    path: 'silent-refresh',
-    component: SilentRefreshComponent
-  },
+    path: 'customers/:id',
+    component: DetailCustomerComponent
+  }, 
+  {
+    path: 'customer/new',
+    component: CreateCustomerComponent
+  }, 
   {
     path: 'profile',
     component: ProfileComponent,

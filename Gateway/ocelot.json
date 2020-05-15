@@ -32,6 +32,43 @@
             "UpstreamPathTemplate": "/api/pricecalendar",
             "UpstreamHttpMethod": []
         },
+
+        {
+            "DownstreamPathTemplate": "/api/customer",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerservice",
+                    "Port": 5004
+                }
+            ],
+            "UpstreamPathTemplate": "/api/customer",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerservice",
+                    "Port": 5004
+                }
+            ],
+            "UpstreamPathTemplate": "/api/customer/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/api/customer/swagger/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerservice",
+                    "Port": 5004
+                }
+            ],
+            "UpstreamPathTemplate": "/api/customer/swagger/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
         {
             "DownstreamPathTemplate": "/api/pricecalendar/{id}",
             "DownstreamScheme": "http",

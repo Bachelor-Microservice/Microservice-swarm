@@ -6,7 +6,7 @@ import { Item } from 'src/app/_models/Item.model';
 import { ItemDay } from 'src/app/_models/ItemDay.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
-import * as moment from 'moment';
+import moment from "moment";
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
 import { environment } from 'src/environments/environment';

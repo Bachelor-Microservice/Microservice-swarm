@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     this.authService.isAuthenticated$.subscribe( e=> {
       this.isReadyToShowLogin = false;
       if (e === true) {
-        this.router.navigate(['app/pricecalendar']);
+        this.router.navigate(['app/dashboard']);
       } else {
         this.isReadyToShowLogin = true;
       }

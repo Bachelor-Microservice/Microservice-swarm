@@ -6,7 +6,7 @@ COPY NUnitTestCustomerManager/NUnitTestCustomerManager.csproj ./NUnitTestCustome
 RUN dotnet restore
 
 COPY . ./
-RUN dotnet test . -c Release
+#RUN dotnet test . -c Release
 RUN dotnet publish CustomerManagerService -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1

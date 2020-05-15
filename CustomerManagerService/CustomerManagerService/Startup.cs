@@ -32,10 +32,17 @@ namespace CustomerManagerService
 
             services.AddScoped<CustomerService>();
             services.AddAutoMapper(typeof(Startup));
-
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials();
+                }));
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
+                swagger.SwaggerDoc("v2", new OpenApiInfo { Title = "My API" , Version = "v2" });
             });
         }
 
@@ -47,7 +54,7 @@ namespace CustomerManagerService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
@@ -61,7 +68,7 @@ namespace CustomerManagerService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Supplement V1");
+                c.SwaggerEndpoint("/api/customer/swagger/v2/swagger.json", "My Supplement V1");
             });
         }
     }

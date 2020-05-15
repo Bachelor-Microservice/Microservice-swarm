@@ -32,11 +32,28 @@ services:
         environment: 
             - ASPNETCORE_URLS=http://+:5003
             - IdentityUrl=http://identityservice
+    customerservice: 
+        depends_on:
+            - mongo
+        build:
+            context: ./CustomerManagerService
+        environment: 
+            - ASPNETCORE_URLS=http://+:5004
     proxy:
         build:
             context: ./proxy
         ports: 
             - 80:80
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}./site:/data/db
+            #- ./data:/data/db
+        ports:
+            - "27017:27017"
+            
     redis:
         image: redis
         ports: 

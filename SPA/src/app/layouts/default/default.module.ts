@@ -44,6 +44,17 @@ import { CreateUserComponent } from 'src/app/modules/profile/create-user/create-
 import { UsersComponent } from 'src/app/modules/profile/users/users.component';
 import { DeleteUserComponent } from 'src/app/modules/profile/delete-user/delete-user.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { CustomerComponent } from 'src/app/modules/Customer/Customer.component';
+import { DetailCustomerComponent } from 'src/app/modules/Customer/detail-customer/detail-customer.component';
+import { CreateCustomerComponent } from 'src/app/modules/Customer/create-customer/create-customer.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { BookingComponent } from 'src/app/modules/Booking/Booking.component';
+import { BookingsComponent } from 'src/app/modules/Booking/bookings/bookings.component';
+import {MatIconModule} from '@angular/material/icon';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
@@ -58,6 +69,7 @@ export function storageFactory(): OAuthStorage {
     CreateItemComponent,
     EditItemComponent,
     SignalRComponent,
+    
     ExcelDownloadComponent,
     HomeComponent,
     AppstartComponent,
@@ -68,12 +80,23 @@ export function storageFactory(): OAuthStorage {
     EmailComponent,
     CreateUserComponent,
     UsersComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    CustomerComponent,
+    DetailCustomerComponent,
+    CreateCustomerComponent,
+    BookingComponent,
+    BookingsComponent
   ],
   imports: [
+    MatAutocompleteModule,
+    MatStepperModule,
+    NgxChartsModule,
+    GoogleChartsModule.forRoot(),
+    MatIconModule,
     CommonModule,
     RouterModule,
     FormsModule,
+    MatCheckboxModule,
     MatNativeDateModule ,
     MatInputModule,
     MatFormFieldModule,

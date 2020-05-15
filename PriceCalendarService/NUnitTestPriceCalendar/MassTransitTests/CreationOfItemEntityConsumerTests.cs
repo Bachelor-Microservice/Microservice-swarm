@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ContractsV2.ItemContracts;
 using ItemContracts;
 using MassTransit;
 using Moq;
@@ -28,7 +29,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             //Arrange Dependencies
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
-            var consumeContextMock = new Mock<ConsumeContext<ItemEntityCreated>>();
+            var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
             var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
 
             //Arrange Mocked object
@@ -80,7 +81,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             //Arrange Dependencies
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
-            var consumeContextMock = new Mock<ConsumeContext<ItemEntityCreated>>();
+            var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
             var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
 
             //Arrange Mocked object
@@ -138,7 +139,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             //Arrange Dependencies
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
-            var consumeContextMock = new Mock<ConsumeContext<ItemEntityCreated>>();
+            var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
             var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
 
             //Arrange Mocked object
@@ -157,7 +158,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             //Arrange Dependencies
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
-            var consumeContextMock = new Mock<ConsumeContext<ItemEntityCreated>>();
+            var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
             var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
 
             //Arrange Mocked object

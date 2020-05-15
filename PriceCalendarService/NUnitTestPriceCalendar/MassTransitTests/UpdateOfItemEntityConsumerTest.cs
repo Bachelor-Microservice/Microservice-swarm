@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ContractsV2.ItemContracts;
 using ItemContracts;
 using MassTransit;
 using MassTransit.Courier;
@@ -24,7 +25,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         Groups DesiredGroup;
         Item DesiredItem;
         Item ArgumentItem;
-        Mock<ConsumeContext<ItemEntityUpdated>> context;
+        Mock<ConsumeContext<IItemEntityUpdated>> context;
 
         /*
          Note that setup is called before every test - meaning they wont interfere with each other.
@@ -34,7 +35,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [SetUp]
         public void SetUp()
         {
-            context = new Mock<ConsumeContext<ItemEntityUpdated>>();
+            context = new Mock<ConsumeContext<IItemEntityUpdated>>();
             context.Setup(p => p.Message.Unit).Returns("Unit");
             context.Setup(p => p.Message.ArticleGroup).Returns(222);
             context.Setup(p => p.Message.Name).Returns("Name");

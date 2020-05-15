@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ContractsV2.ItemContracts;
 using ItemContracts;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PriceCalendarService.MassTransit.Consumers
 {
-    public class UpdateOfItemEntityConsumer : IConsumer<ItemContracts.ItemEntityUpdated>
+    public class UpdateOfItemEntityConsumer : IConsumer<IItemEntityUpdated>
     {
         private readonly PriceCalendarServiceContext _serviceContext;
         private readonly IMapper _mapper;
@@ -22,14 +23,14 @@ namespace PriceCalendarService.MassTransit.Consumers
             _mapper = mapper;
         }
 
-        public Task Consume(ConsumeContext<ItemEntityUpdated> context)
+        public Task Consume(ConsumeContext<IItemEntityUpdated> context)
         {
             Console.WriteLine("Received UpdateItemEntity Event...");
             UpdateFromContext(context);
             return Task.CompletedTask;
         }
 
-        public bool CheckForSuitability(ConsumeContext<ItemEntityUpdated> context)
+        public bool CheckForSuitability(ConsumeContext<IItemEntityUpdated> context)
         {
             var message = context.Message;
             if(string.IsNullOrWhiteSpace(message.ItemNo) || 
@@ -41,41 +42,48 @@ namespace PriceCalendarService.MassTransit.Consumers
             return true;
         }
 
-        private async void UpdateFromContext(ConsumeContext<ItemEntityUpdated> consumedContext)
+        private void UpdateFromContext(ConsumeContext<IItemEntityUpdated> consumedContext)
         {
+            Console.WriteLine("Checking for suitability...");
             if (CheckForSuitability(consumedContext) == false) return;
-            var model = await _serviceContext.ItemPriceAndCurrencyResponse
+            Console.WriteLine("Message is suited...");
+            var model = _serviceContext.ItemPriceAndCurrencyResponse
                 .Include(o => o.Groups)
                 .ThenInclude(g => g.Item)
-                .FirstOrDefaultAsync(c => c.Id == consumedContext.Message.RelationNo);
+                .FirstOrDefault(c => c.Id == consumedContext.Message.RelationNo);
             if(model != null)
             {
+                Console.WriteLine("Existing model found matching...");
                 MapFromContext(consumedContext, model);
                 _serviceContext.ItemPriceAndCurrencyResponse.Update(model);
-                await _serviceContext.SaveChangesAsync();
+                _serviceContext.SaveChanges();
             }
             else
             {
-                var group = await _serviceContext.Groups
+                Console.WriteLine("No existing found");
+                var group = _serviceContext.Groups
                     .Include(o => o.Item)
-                    .FirstOrDefaultAsync(c => c.Id == consumedContext.Message.ArticleGroup);
+                    .FirstOrDefault(c => c.Id == consumedContext.Message.ArticleGroup);
                 if(group != null)
                 {
+                    Console.WriteLine("Group found (no model above)...");
                     MapFromContext(consumedContext, group);
                     _serviceContext.Groups.Update(group);
-                    await _serviceContext.SaveChangesAsync();
+                    _serviceContext.SaveChanges();
                 }
                 else
                 {
-                    var item = await _serviceContext.Item.FirstOrDefaultAsync(i => i.Id == consumedContext.Message.ItemNo);
+                    Console.WriteLine("No group or model found --> attempting to match item");
+                    var item = _serviceContext.Item.FirstOrDefault(i => i.Id == consumedContext.Message.ItemNo);
+                    if (item != null) Console.WriteLine("Item Found...");
                     MapFromContext(consumedContext, item);
                     _serviceContext.Item.Update(item);
-                    await _serviceContext.SaveChangesAsync();
+                    _serviceContext.SaveChanges();
                 }
             }
         }
 
-        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, ItemPriceAndCurrencyResponse to)
+        public void MapFromContext(ConsumeContext<IItemEntityUpdated> from, ItemPriceAndCurrencyResponse to)
         {
             to.Currency = from.Message.Unit;
             foreach(var group in to.Groups)
@@ -87,7 +95,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Groups to)
+        public void MapFromContext(ConsumeContext<IItemEntityUpdated> from, Groups to)
         {
             //No relevant information for groups, so simply redirects
             //Included for ease in each step checking for differences
@@ -97,7 +105,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        public void MapFromContext(ConsumeContext<ItemEntityUpdated> from, Item to)
+        public void MapFromContext(ConsumeContext<IItemEntityUpdated> from, Item to)
         {
             to.Name = from.Message.Name;
             to.Price = from.Message.Price;

@@ -523,9 +523,6 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\Pr
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.csprojAssemblyReference.cache
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.csproj.CoreCompileInputs.cache
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.AssemblyInfoInputs.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.AssemblyInfo.cs
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.RazorTargetAssemblyInfo.cache
@@ -535,3 +532,7 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\Pr
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.pdb
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.genruntimeconfig.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\ContractsV2.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cache

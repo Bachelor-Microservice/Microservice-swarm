@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ContractsV2.ItemContracts;
 using ItemContracts;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PriceCalendarService.MassTransit.Consumers
 {
-    public class CreationOfItemEntityConsumer : IConsumer<ItemContracts.ItemEntityCreated>
+    public class CreationOfItemEntityConsumer : IConsumer<IItemEntityCreated>
     {
         private readonly PriceCalendarServiceContext _serviceContext;
         private readonly IMapper _mapper;
@@ -24,7 +25,7 @@ namespace PriceCalendarService.MassTransit.Consumers
 
         //public CreationOfItemEntityConsumer() { }
 
-        public Task Consume(ConsumeContext<ItemEntityCreated> consumedContext)
+        public Task Consume(ConsumeContext<IItemEntityCreated> consumedContext)
         {
             Console.WriteLine($"Received Create Event...");
             Console.WriteLine("Context received: " + consumedContext.Message + "\nCreating....");
@@ -35,7 +36,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return Task.CompletedTask;
         }
 
-        public void CreateFromContext(ConsumeContext<ItemEntityCreated> consumedContext)
+        public void CreateFromContext(ConsumeContext<IItemEntityCreated> consumedContext)
         {
             Console.WriteLine("Inside db context...");
             if (!this.CanBeTranslated(consumedContext)) return;
@@ -76,7 +77,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             }
         }
 
-        public Item MapFromContext_ExistingFromResponse(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
+        public Item MapFromContext_ExistingFromResponse(ConsumeContext<IItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
         {
             var item = new Item();
             item.Id = from.Message.ItemNo;
@@ -87,14 +88,15 @@ namespace PriceCalendarService.MassTransit.Consumers
             return item;
         }
 
-        public Groups MapFromContext_ExistingFromGroups(ConsumeContext<ItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
+        public Groups MapFromContext_ExistingFromGroups(ConsumeContext<IItemEntityCreated> from, ItemPriceAndCurrencyResponse existing)
         {
             var group = new Groups
             {
                 Id = from.Message.ArticleGroup ?? default(int),
                 Currency = existing,
                 CurrencyId = existing.Id,
-                Item = new List<Item>()
+                Item = new List<Item>(),
+                Description = from.Message.PriceModelFrom
             };
 
             var item = new Item
@@ -110,7 +112,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return group;
         }
 
-        public ItemPriceAndCurrencyResponse MapFromContext_NonExisting(ConsumeContext<ItemEntityCreated> from)
+        public ItemPriceAndCurrencyResponse MapFromContext_NonExisting(ConsumeContext<IItemEntityCreated> from)
         {
             var itemPriceAndCurrencyResponse = new ItemPriceAndCurrencyResponse
             {
@@ -122,7 +124,7 @@ namespace PriceCalendarService.MassTransit.Consumers
             return itemPriceAndCurrencyResponse;
         }
 
-        public bool CanBeTranslated(ConsumeContext<ItemEntityCreated> context)
+        public bool CanBeTranslated(ConsumeContext<IItemEntityCreated> context)
         {
             if (context.Message.ArticleGroup == 0 || context.Message.ArticleGroup == null) return false;
             if (string.IsNullOrWhiteSpace(context.Message.ItemNo)) return false;

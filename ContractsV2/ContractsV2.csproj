@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <PackageId>Microservice_Contracts_Bach</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Oskar Kristiansen</Authors>
+    <Company>SDU Bachelor</Company>
+  </PropertyGroup>
+
+</Project>

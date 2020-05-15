@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SfR6yn+qfQqLNk4vfL72ieq9g7q7x6KtpTbkJ41gPmN0c4v+FO0gT7FXCQG3JyrIRifl9QVCNijxUTBEKvyenw==",
+  "dgSpecHash": "ieSarE8PY5YDx6wpUur7DyVWGt69TrnYX+HVvpKl24biMW8OmSrYsSTSga1CAtxyIkQFAEqgzB/FGQY4G1g6YQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\PriceCalendarService\\PriceCalendarService\\PriceCalendarService.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\skakk\\.nuget\\packages\\masstransit.extensions.dependencyinjection\\6.2.5\\masstransit.extensions.dependencyinjection.6.2.5.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\masstransit.rabbitmq\\6.2.5\\masstransit.rabbitmq.6.2.5.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\messagepack\\1.7.3.7\\messagepack.1.7.3.7.nupkg.sha512",
+    "C:\\Users\\skakk\\.nuget\\packages\\microservice_contracts_bach\\1.0.0\\microservice_contracts_bach.1.0.0.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\skakk\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",

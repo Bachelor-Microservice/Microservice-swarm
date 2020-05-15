@@ -515,7 +515,6 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarAndTestSer
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarAndTestService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CopyComplete
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarAndTestService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.genruntimeconfig.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csprojAssemblyReference.cache
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.AssemblyInfoInputs.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.AssemblyInfo.cs
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.dll
@@ -772,3 +771,5 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NU
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\PriceCalendarService.pdb
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CopyComplete
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.genruntimeconfig.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\ContractsV2.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache

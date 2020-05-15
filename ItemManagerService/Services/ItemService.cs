@@ -44,7 +44,7 @@ namespace ItemManagerService.Services
             _context.Items.Remove(toBeDeleted);
             await _context.SaveChangesAsync();
 
-            _publisher.Deleted(Id);
+            _publisher.Deleted(Id, toBeDeleted.ItemNo);
 
             serviceResponse.Data = toBeDeleted;
             return serviceResponse;

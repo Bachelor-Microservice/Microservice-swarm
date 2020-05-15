@@ -1,17 +1,48 @@
 
 <div class="row">
   <div class="col-xl-4">
+    <div *ngIf="!editMode">
+
     <h2>Customer information</h2>
     <p>Id : {{this.customer.id}}</p>
     <p>Address : {{this.customer.address}}</p>
     <p>Email : {{this.customer.email}}</p>
     <p>MobilePhone : {{this.customer.mobilePhone}}</p>
+    <p>TelephonePrimary : {{this.customer.telephonePrimary}}</p>
     <p>RegistrationDate : {{this.customer.registrationDate}}</p>
     <p>SupplementName : {{this.customer.supplementName}}</p>
-    <p>TelephonePrimary : {{this.customer.telephonePrimary}}</p>
     <p>Type : {{this.customer.type}}</p>
+  </div>
 
-    <button mat-raised-button color="primary">Edit</button>
+  <div *ngIf="editMode">
+
+
+  <h2>Customer information</h2>
+  <p>Id : {{this.customer.id}}</p>
+    <p>Address :  <mat-form-field>
+      <input [(ngModel)]="this.customer.address" matInput >
+    </mat-form-field></p>
+    <p>Email :  <mat-form-field>
+      <input [(ngModel)]="this.customer.email" matInput >
+    </mat-form-field></p>
+    <p>MobilePhone :  <mat-form-field>
+      <input [(ngModel)]="this.customer.mobilePhone" matInput >
+    </mat-form-field></p>
+    <p>TelephonePrimary :  <mat-form-field>
+      <input [(ngModel)]="this.customer.telephonePrimary" matInput >
+    </mat-form-field></p>
+    <p>RegistrationDate :  <mat-form-field>
+      <input [(ngModel)]="this.customer.registrationDate" matInput >
+    </mat-form-field></p>
+    <p>SupplementName :  <mat-form-field>
+      <input [(ngModel)]="this.customer.supplementName" matInput >
+    </mat-form-field></p>
+    <p>Type : <mat-form-field>
+      <input [(ngModel)]="this.customer.type" matInput >
+    </mat-form-field></p>
+  </div>
+    <button *ngIf="!editMode" (click)="onEditCustomer()" mat-raised-button color="primary">Edit</button>
+    <button  *ngIf="editMode" (click)="onApplyEditCustomer()" mat-raised-button color="primary">Apply Changes</button>
     <button (click)="onDeleteCustomer()" class="ml-5" mat-raised-button color="warn">Delete</button>
   </div>
 

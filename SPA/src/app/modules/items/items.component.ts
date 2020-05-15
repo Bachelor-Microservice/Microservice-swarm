@@ -5,6 +5,8 @@ import { Items } from 'src/app/_models/ItemEntity.model';
 import { ItemService } from 'src/app/services/item.service';
 import { rowData } from '../price-calendar/price-calendar.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { PriceCalendarService } from 'src/app/services/priceCalendar.service';
+import { ItemPriceAndCurrencyResponse } from 'src/app/_models/ItemPriceAndCurrencyResponse.model';
 
 @Component({
   selector: 'app-items',
@@ -29,10 +31,10 @@ private gridOptions;
 
   items: Items[];
   rowData: itemRowData[];
+  ItemPriceAndCurrency: ItemPriceAndCurrencyResponse[];
 
 
-
-  constructor(public dialog: MatDialog, private itemService: ItemService) { }
+  constructor(public dialog: MatDialog, private itemService: ItemService , private priceeCalendarService: PriceCalendarService) { }
 
   createItem: Items;
 
@@ -41,6 +43,10 @@ private gridOptions;
     this.itemService.getItems().subscribe((res: any) => {
       this.items = res;
       this.initTable();
+    });
+    this.priceeCalendarService.getPriceAndCurrencyWithoutItems().subscribe((e: ItemPriceAndCurrencyResponse[]) => {
+      this.ItemPriceAndCurrency = e;
+      console.log(e);
     });
   }
 
@@ -58,11 +64,15 @@ private gridOptions;
   openCreate() {
     const createMenuref = this.dialog.open(CreateItemComponent , {
       width: '30%',
-      data: {}
+      data: {data: this.ItemPriceAndCurrency}
     });
 
     createMenuref.afterClosed().subscribe((result: Items) => {
+      delete result['data'];
      this.itemService.addItem(result);
+    
+     console.log(result);
+    
     });
   }
 

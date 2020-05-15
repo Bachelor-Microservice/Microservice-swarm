@@ -17,7 +17,6 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.columnDefs = [
-      {field: 'id' },
       {field: 'supplementName' , filter: 'agTextColumnFilter' },
       {field: 'type' },
       {field: 'registrationDate' },

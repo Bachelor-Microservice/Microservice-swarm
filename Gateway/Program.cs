@@ -38,7 +38,7 @@ namespace Gateway
                })
                .ConfigureServices(s =>
                {
-                   var authenticationProviderKey = "TestKey";
+                var authenticationProviderKey = "TestKey";
                   var identityIssuer =  Environment.GetEnvironmentVariable("IDENTITY_AUTHORITY");
                  s.AddAuthentication()
                 .AddJwtBearer("TestKey", x =>
@@ -51,7 +51,7 @@ namespace Gateway
                       //  ValidAudiences = new[] { "orders", "basket", "locations", "marketing", "mobileshoppingagg", "webshoppingagg" }
                    // };
                 });
-                       
+                 s.AddCors();
                    s.AddOcelot();
                    s.AddSwaggerGen(swagger =>
             {
@@ -73,6 +73,7 @@ namespace Gateway
 
                     a.UseForwardedHeaders(fordwardedHeaderOptions);
                     */
+                    a.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
                     IdentityModelEventSource.ShowPII = true; 
                     a.UseWebSockets();
                     a.UseOcelot().Wait();

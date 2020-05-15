@@ -53,6 +53,7 @@ import { BookingsComponent } from 'src/app/modules/Booking/bookings/bookings.com
 import {MatIconModule} from '@angular/material/icon';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 export function storageFactory(): OAuthStorage {
@@ -88,6 +89,7 @@ export function storageFactory(): OAuthStorage {
     BookingsComponent
   ],
   imports: [
+    MatSelectModule,
     MatAutocompleteModule,
     MatStepperModule,
     NgxChartsModule,

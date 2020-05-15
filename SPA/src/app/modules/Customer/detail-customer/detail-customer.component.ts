@@ -11,6 +11,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 export class DetailCustomerComponent implements OnInit {
   columnDefs;
   public customer: Customer
+  public editMode = false;
   constructor(private router: Router, private route: ActivatedRoute , private customerService: CustomersService) { }
 
   ngOnInit() {
@@ -32,9 +33,15 @@ export class DetailCustomerComponent implements OnInit {
     console.log(event);
     
   }
+  onEditCustomer() {
+    this.editMode = true;
+  }
 
   onDeleteCustomer() {
     
+  }
+  onApplyEditCustomer() {
+    this.editMode = false;
   }
 
 }

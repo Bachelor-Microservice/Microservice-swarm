@@ -55,7 +55,7 @@ namespace CustomerManagerService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("CorsPolicy");
+                       app.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
 
             app.UseRouting();
 

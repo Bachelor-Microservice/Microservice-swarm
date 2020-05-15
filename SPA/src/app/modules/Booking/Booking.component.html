@@ -3,95 +3,143 @@
   <mat-step [completed]="firstStepDone" [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Select Sustomer</ng-template>
-      <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <div>
-        <button mat-button (click)="GoNext(stepper)" >Next</button>
+      <div class="row">
+        <div class="col">
+          <span>Select the customer for this booking</span>
+        </div>
       </div>
+      <div class="row mt-5">
+        <div class="col d-flex justify-content-center">
+          <mat-form-field class="example-full-width">
+            <input type="text"
+                   placeholder="Select customer"
+                   aria-label="Number"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-end">
+          
+            <button  mat-raised-button (click)="GoNext(stepper)" >Next</button>
+        </div>
+      </div>
+     
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Create Customer</ng-template>
-
-<form [formGroup]="createCustomerForm" >
-  <div class="form-group">
-    <mat-form-field>
-    <input formControlName="supplementName" type="text" matInput placeholder="Enter Name">
-  </mat-form-field>
-  </div>
-  <div class="form-group">
-    <mat-form-field>
-    <input formControlName="email" type="email" matInput placeholder="Enter email">
-  </mat-form-field>
-  </div>
-  <div class="form-group">
-    <mat-form-field>
-    <input formControlName="address"  type="text" matInput placeholder="Enter Address">
-  </mat-form-field>
-  </div>
-  <div class="form-group">
-    <mat-form-field>
-    <input formControlName="telephonePrimary"  type="text" matInput placeholder="Enter Primary telephone">
-  </mat-form-field>
-  </div>
-  <div class="form-group">
-    <mat-form-field>
-    <input formControlName="mobilePhone"   type="text" matInput placeholder="Enter Mobilephone">
-  </mat-form-field>
-  </div>
-  <button class="ml-5" matStepperNext mat-raised-button color="primary" >Next </button>
-</form>
+    <div class="row">
+      <div class="col">
+        <span>Enter the details for the new customer</span>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col d-flex justify-content-center">
+        <form [formGroup]="createCustomerForm" >
+          <div class="form-group">
+            <mat-form-field>
+            <input formControlName="supplementName" type="text" matInput placeholder="Enter Name">
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <input formControlName="email" type="email" matInput placeholder="Enter email">
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <input formControlName="address"  type="text" matInput placeholder="Enter Address">
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <input formControlName="telephonePrimary"  type="text" matInput placeholder="Enter Primary telephone">
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <input formControlName="mobilePhone"   type="text" matInput placeholder="Enter Mobilephone">
+          </mat-form-field>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-between">
+        <button  mat-raised-button (click)="GoNext(stepper)" >Back</button>
+        <button  matStepperNext mat-raised-button >Next </button>
+      </div>
+    </div>
   </mat-step>
   <mat-step [stepControl]="datesForm" >
-    <form [formGroup]="datesForm" >
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field class="ml-3">
-        <mat-label>Choose a Arrival Date</mat-label>
-        <input matInput  formControlName="arrival"  [matDatepicker]="arrival"  >
-        <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
-        <mat-datepicker  #arrival></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="ml-3">
-        <mat-label>Choose a Departue date</mat-label>
-        <input matInput formControlName="departue"   [matDatepicker]="departue"  >
-        <mat-datepicker-toggle matSuffix [for]="departue"></mat-datepicker-toggle>
-        <mat-datepicker  #departue></mat-datepicker>
-      </mat-form-field>
-      <div>
-         <button (click)="check()" >ckmnde</button>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+    <div class="row">
+      <div class="col">
+        <span>Enter the arrival and departure date for the booking</span>
       </div>
-    </form>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <form [formGroup]="datesForm" >
+          <ng-template matStepLabel>Fill out your address</ng-template>
+          <mat-form-field class="ml-3">
+            <mat-label>Choose a Arrival Date</mat-label>
+            <input matInput  formControlName="arrival"  [matDatepicker]="arrival"  >
+            <mat-datepicker-toggle matSuffix [for]="arrival"></mat-datepicker-toggle>
+            <mat-datepicker  #arrival></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="ml-3">
+            <mat-label>Choose a Departue date</mat-label>
+            <input matInput formControlName="departue"   [matDatepicker]="departue"  >
+            <mat-datepicker-toggle matSuffix [for]="departue"></mat-datepicker-toggle>
+            <mat-datepicker  #departue></mat-datepicker>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex justify-content-between">
+         <button mat-raised-button matStepperPrevious>Back</button>
+         <button mat-raised-button (click)="GoNextDays(stepper)" >Next</button>
+      </div>
+    </div>
+  
   </mat-step>
   <mat-step >
     <ng-template matStepLabel>Vælg vare</ng-template>
 
 
     <div class="row">
-      <div *ngFor="let item of items" class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+      <div *ngFor="let item of this.bookingItems" class=" mb-3 col-xl-4 col-md-6 col-sm-12">
         <mat-card>
           <div class="cont">
           <img height="100%" width="100%" src="https://www.dcu.dk/sites/default/files/styles/large_2/public/dcu_mols_hytter_2016_foto_lasse_loendahl_henriksen-4_web.jpg?itok=bGv84lp5">
-          <h2>{{item.name}}</h2>
-          <p>{{this.datesForm.value.arrival | date:'shortDate'}} --> {{this.datesForm.value.departue | date:'shortDate'}} <small>(3 days)</small>  </p>
+          <h2>{{item.itemName}}</h2>
+          <p>{{item.arrival | date:'shortDate'}} --> {{item.departue | date:'shortDate'}} <small>({{item.days}})</small>  </p>
+          <p>pris pr. dag : {{item.standardPrice}}</p>
           <div class="row d-flex justify-content-between">
             <div>
-            <button class="ml-2" mat-raised-button color="primary">Book</button>
+            <button class="ml-2" (click)="onClickBooking(item , stepper)" mat-raised-button color="primary">Book</button>
           </div>
           <div>
-            <span class="newPrice mr-2">{{item.price}}</span> <span class="oldPrice mr-2">{{item.price}}</span>
+            <div *ngIf="item.totalPrice > item.totalstandardPrice" >
+            
+              <span class="redNewPrice mr-2">{{item.totalPrice}}</span> <span class="oldPrice mr-2">{{item.totalstandardPrice}}</span>
+            </div>
+            <div *ngIf="item.totalPrice <= item.totalstandardPrice" >
+              <span class="newPrice mr-2">{{item.totalPrice}}</span> <span class="oldPrice mr-2">{{item.totalstandardPrice}}</span>
+            </div>
+          
+          
           </div>
           </div>
           </div>
@@ -102,10 +150,23 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <mat-card>
+          <h2>{{this.BookedItem?.name}} is now booked</h2>
+          <p>The duration of the stay is from {{this.datesForm.value.arrival|date:'shortDate'}} to {{this.datesForm.value.departue|date:'shortDate'}} </p>
+          <p>The total price is {{this.BookedItem?.price}} </p>
+          <p>The total price is {{this.chosenItemPriceAndCurrencyResponse?.price}} </p>
+        </mat-card>
+
+        <div *ngFor="let item of this.bookingItems" >
+          {{item.days}}
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

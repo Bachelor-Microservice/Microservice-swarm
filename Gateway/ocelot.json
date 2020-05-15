@@ -46,7 +46,7 @@
             "UpstreamHttpMethod": []
         },
         {
-            "DownstreamPathTemplate": "/{catchAll}",
+            "DownstreamPathTemplate": "/api/customer/{id}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -54,7 +54,7 @@
                     "Port": 5004
                 }
             ],
-            "UpstreamPathTemplate": "/api/customer/{catchAll}",
+            "UpstreamPathTemplate": "/api/customer/{id}",
             "UpstreamHttpMethod": []
         },
         {
@@ -69,6 +69,55 @@
             "UpstreamPathTemplate": "/api/customer/swagger/{catchAll}",
             "UpstreamHttpMethod": []
         },
+        {
+            "DownstreamPathTemplate": "/api/booking/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "bookingservice",
+                    "Port": 5005
+                }
+            ],
+            "UpstreamPathTemplate": "/api/booking/",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/swagger",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "bookingservice",
+                    "Port": 5005
+                }
+            ],
+            "UpstreamPathTemplate": "/api/booking/swagger",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/swagger/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "bookingservice",
+                    "Port": 5005
+                }
+            ],
+            "UpstreamPathTemplate": "/api/booking/swagger/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        {
+            "DownstreamPathTemplate": "/api/booking/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "bookingservice",
+                    "Port": 5005
+                }
+            ],
+            "UpstreamPathTemplate": "/api/booking/{catchAll}",
+            "UpstreamHttpMethod": []
+        },
+        
         {
             "DownstreamPathTemplate": "/api/pricecalendar/{id}",
             "DownstreamScheme": "http",

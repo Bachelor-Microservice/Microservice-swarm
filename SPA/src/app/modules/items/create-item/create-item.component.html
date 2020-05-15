@@ -47,9 +47,9 @@
   <div  *ngIf="this.groups.length > 0" class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Currency</mat-label>
+        <mat-label>Description</mat-label>
         <mat-select [(ngModel)]="data.PriceModelFrom" (selectionChange)="SelectChanged($event)" >
-          <mat-option *ngFor="let group of this.groups" [value]="group.description">
+          <mat-option *ngFor="let group of this.groups" [value]="group">
             {{group.description}}
           </mat-option>
         </mat-select>

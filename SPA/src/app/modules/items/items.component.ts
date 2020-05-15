@@ -67,12 +67,21 @@ private gridOptions;
       data: {data: this.ItemPriceAndCurrency}
     });
 
-    createMenuref.afterClosed().subscribe((result: Items) => {
-      delete result['data'];
-     this.itemService.addItem(result);
-    
+    createMenuref.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (typeof result.PriceModelFrom === 'object') {
+        let priceModelObjet = result.PriceModelFrom;
+        result.articleGroup = priceModelObjet['currencyId'];
+        result.priceModelFrom = priceModelObjet['description'];
+        result.relationNo = priceModelObjet['id'];
+     }else {
+       console.log(result);
+     }
+     //this.itemService.addItem(result);
+     if (result.quickPost === undefined) {
+       result.quickPost = false;
+     };
      console.log(result);
-    
     });
   }
 

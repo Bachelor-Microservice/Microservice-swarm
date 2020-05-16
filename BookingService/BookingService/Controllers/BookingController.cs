@@ -56,7 +56,7 @@ namespace BookingService.Controllers
             request.Id = existing.Id;
 
             var result = await _bookingService.Update(id, request);
-            return CreatedAtRoute("Get", new { id = request.Id.ToString() }, request);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

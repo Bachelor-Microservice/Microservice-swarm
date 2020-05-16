@@ -9,6 +9,7 @@
       "NUnitTestCustomerManager/1.0.0": {
         "dependencies": {
           "MassTransit.AspNetCore": "6.3.1",
+          "MassTransit.RabbitMQ": "6.3.1",
           "Microservice_Contracts_Bach": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.4.0",
           "NUnit3TestAdapter": "3.15.1",
@@ -87,6 +88,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll": {
+            "assemblyVersion": "6.3.1.0",
+            "fileVersion": "6.3.1.0"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/6.3.1": {
+        "dependencies": {
+          "MassTransit": "6.3.1",
+          "RabbitMQ.Client": "5.2.0",
+          "System.Threading.Channels": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll": {
             "assemblyVersion": "6.3.1.0",
             "fileVersion": "6.3.1.0"
           }
@@ -837,6 +851,14 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "RabbitMQ.Client/5.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.2.0.0"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -1121,6 +1143,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.Threading.Channels/4.7.0": {},
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -1255,6 +1278,13 @@
       "sha512": "sha512-wH86G5J3xiokb1DyKXhvYcH5tgcssKg5lZWzLkWfkG/dDvs2nRSnHG5U0fIwfc7nfV73IX74/iCdRaqE93wPIQ==",
       "path": "masstransit.extensions.dependencyinjection/6.3.1",
       "hashPath": "masstransit.extensions.dependencyinjection.6.3.1.nupkg.sha512"
+    },
+    "MassTransit.RabbitMQ/6.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LBYdJmIkeHNzDMr6ef65cFEn8HLqmP66WVJtEtnFhFHEAHvqHqjLNdzEbG0HlRcgmiO+sszR1JH5akJ8mDpUjg==",
+      "path": "masstransit.rabbitmq/6.3.1",
+      "hashPath": "masstransit.rabbitmq.6.3.1.nupkg.sha512"
     },
     "Microservice_Contracts_Bach/1.0.0": {
       "type": "package",
@@ -1592,6 +1622,13 @@
       "path": "nunit3testadapter/3.15.1",
       "hashPath": "nunit3testadapter.3.15.1.nupkg.sha512"
     },
+    "RabbitMQ.Client/5.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WY73qFhekwALxI+YTf97WkeWjnQXZFjkSc1oCwZ7Pz/XwOthBotr9ty3DhU2F7GuzU0HHyO9z9uW6AXr+TyhLQ==",
+      "path": "rabbitmq.client/5.2.0",
+      "hashPath": "rabbitmq.client.5.2.0.nupkg.sha512"
+    },
     "runtime.native.System/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1878,6 +1915,13 @@
       "sha512": "sha512-VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
+    },
+    "System.Threading.Channels/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gdOOXBhtt2UpTxYJm1DRmoqNfYg5ypvhzhVt0vxKhzxXFjS81r8yIOSFsJYLRa1Jc14GBAqCnjxJstO3zBN7gg==",
+      "path": "system.threading.channels/4.7.0",
+      "hashPath": "system.threading.channels.4.7.0.nupkg.sha512"
     },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookingService.DTO;
+using BookingService.MassTransit.Publishers;
 using BookingService.Models;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
@@ -25,13 +26,15 @@ namespace BookingService.Services
     {
         private readonly IMongoCollection<Booking> _bookingDB;
         private readonly IMapper _mapper;
-        
-        public BookingManagerService(IConfiguration config, IMapper mapper)
+        private readonly IPublishBookingCrud _publisher;
+
+        public BookingManagerService(IConfiguration config, IMapper mapper, IPublishBookingCrud publisher)
         {
             var client = new MongoClient(config.GetConnectionString("BookingDB"));
             var database = client.GetDatabase("BookingDB");
             _bookingDB = database.GetCollection<Booking>("Bookings");
             _mapper = mapper;
+            _publisher = publisher;
         }
 
         public async Task<List<Booking>> Get()
@@ -56,6 +59,8 @@ namespace BookingService.Services
         {
             var s = _mapper.Map<Booking>(dto);
             await _bookingDB.InsertOneAsync(s);
+            s.BookedDays = null;
+            _publisher.Created(s);
             return dto;
         }
 
@@ -63,6 +68,9 @@ namespace BookingService.Services
         public async Task<Booking> Update(string id, Booking s)
         {
             await _bookingDB.ReplaceOneAsync(su => su.Id == id, s);
+            var noDays = s;
+            noDays.BookedDays = null;
+            _publisher.Updated(noDays);
             return s;
         }
 
@@ -70,6 +78,7 @@ namespace BookingService.Services
         public async Task Remove(string id)
         {
             await _bookingDB.DeleteOneAsync(su => su.Id == id);
+            _publisher.Deleted(id);
         }
     }
 }

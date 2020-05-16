@@ -39,3 +39,8 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\NewId.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\MassTransit.RabbitMqTransport.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\CustomerManagerService\CustomerManagerService\obj\Debug\netcoreapp3.1\CustomerManagerService.MvcApplicationPartsAssemblyInfo.cache

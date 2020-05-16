@@ -77,5 +77,15 @@ namespace CustomerManagerService.Services
 
             return new String(stringChars);
         }
+
+        public Customer FindFromItemNo(string itemNo)
+        {
+            var customers = _customerContext.Find(s => true).ToList();
+            Console.WriteLine("Customers found...");
+            var re = customers.Where(c => c.Bookings.Any(b => b.ItemNo == itemNo)).ToList();
+            Console.WriteLine("Relevant found");
+            return re.First();
+        }
+
     }
 }

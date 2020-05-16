@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BookingService.MassTransit.Publishers;
 using BookingService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +38,7 @@ namespace BookingService
             });
 
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
+            services.AddSingleton<IPublishBookingCrud, PublishBookingCrud>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

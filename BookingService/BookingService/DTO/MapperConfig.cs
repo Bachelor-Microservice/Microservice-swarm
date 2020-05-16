@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookingService.MassTransit.Contracts;
 using BookingService.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace BookingService.DTO
                 .ForMember(s => s.BookedDays, c => c.MapFrom(m => m.BookedDays))
                 .ReverseMap();
             CreateMap<BookedDay, BookedDayDTO>().ReverseMap();
+
+            CreateMap<Booking, BookingCreatedContract>()
+                .ReverseMap();
+            CreateMap<Booking, BookingUpdatedContract>().ReverseMap();
         }
     }
 }

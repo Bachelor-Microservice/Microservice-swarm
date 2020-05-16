@@ -1,11 +1,11 @@
-﻿using CustomerManagerService.MassTransit.Consumers;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomerManagerService.MassTransit.Consumers;
 
 namespace CustomerManagerService.MassTransit.Config
 {
@@ -17,9 +17,9 @@ namespace CustomerManagerService.MassTransit.Config
             //services.AddScoped<OrderConsumer>();
             services.AddMassTransit(x =>
             {
-                x.AddConsumer<CreationOfItemEntityConsumer>();
-                x.AddConsumer<DeletionOfItemEntityConsumer>();
-                x.AddConsumer<UpdateOfItemEntityConsumer>();
+                x.AddConsumer<CreationOfBookingConsumer>();
+                x.AddConsumer<DeletionOfBookingConsumer>();
+                x.AddConsumer<UpdateOfBookingConsumer>();
 
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
@@ -28,9 +28,9 @@ namespace CustomerManagerService.MassTransit.Config
 
                     cfg.ReceiveEndpoint(ep =>
                     {
-                        ep.ConfigureConsumer<CreationOfItemEntityConsumer>(provider);
-                        ep.ConfigureConsumer<DeletionOfItemEntityConsumer>(provider);
-                        ep.ConfigureConsumer<UpdateOfItemEntityConsumer>(provider);
+                        ep.ConfigureConsumer<CreationOfBookingConsumer>(provider);
+                        ep.ConfigureConsumer<DeletionOfBookingConsumer>(provider);
+                        ep.ConfigureConsumer<UpdateOfBookingConsumer>(provider);
                     });
 
                 }));

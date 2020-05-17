@@ -48,9 +48,6 @@ services:
         image: caspha17/customer:latest
         depends_on:
             - mongo
-        volumes:
-            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongo
         environment: 
@@ -60,7 +57,7 @@ services:
         image: mongo
         restart: always
         volumes:
-            - ${WEBAPP_STORAGE_HOME}./si:/data/db/mongo
+            - ./data/mongo:/data/db/mongo
             #- ./data:/data/db
         ports:
             - "27018:27017"
@@ -70,7 +67,7 @@ services:
         image: mongo
         restart: always
         volumes:
-            - ${WEBAPP_STORAGE_HOME}./site:/data/db
+            - ./data/mango1:/data/db
             #- ./data:/data/
         ports:
             - "27017:27017"
@@ -80,8 +77,5 @@ services:
             - mongobooking
         environment: 
             - ASPNETCORE_URLS=http://+:5005
-        volumes:
-            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongobooking

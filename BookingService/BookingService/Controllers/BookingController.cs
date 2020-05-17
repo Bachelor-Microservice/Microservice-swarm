@@ -2,6 +2,7 @@
 using BookingService.Models;
 using BookingService.Services;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,18 @@ namespace BookingService.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
+        private readonly ILogger _logger;
 
         public BookingController(IBookingService bookingService)
         {
             _bookingService = bookingService;
+           // _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Booking>>> Get()
         {
+           // _logger.LogInformation("TESTLOGGIN");
             return await _bookingService.Get();
         }
 

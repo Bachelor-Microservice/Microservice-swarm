@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace CustomerManagerService
 {
@@ -46,6 +47,7 @@ namespace CustomerManagerService
             });
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
             services.AddApplicationInsightsTelemetry();
+            services.AddSingleton(Log.Logger);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +63,7 @@ namespace CustomerManagerService
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

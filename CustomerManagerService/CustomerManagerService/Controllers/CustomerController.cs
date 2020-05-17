@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Collections.Generic;
 using CustomerManagerService.DTOs;
+using Serilog;
 
 namespace CustomerManagerService.Controllers
 {
@@ -17,10 +18,13 @@ namespace CustomerManagerService.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly CustomerService _customerService;
+        private readonly ILogger _logger;
 
-        public CustomerController(CustomerService customerService)
+        public CustomerController(CustomerService customerService, ILogger logger)
         {
             _customerService = customerService;
+            _logger = logger;
+            _logger.Information("CustomerController Initiated");
         }
 
         [HttpGet]

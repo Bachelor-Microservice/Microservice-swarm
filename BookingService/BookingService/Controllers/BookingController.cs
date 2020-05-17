@@ -21,13 +21,12 @@ namespace BookingService.Controllers
         {
             _bookingService = bookingService;
             _logger = logger;
-            Log.Logger.Information("Controller initiated.");
+            Log.Logger.Information("Controller initiated");
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Booking>>> Get()
         {
-            _logger.Information("*** SERILOG *** We just called the Index action");
             return await _bookingService.Get();
         }
 
@@ -35,7 +34,13 @@ namespace BookingService.Controllers
         public async Task<IActionResult> Get(string id)
         {
             var result = await _bookingService.Get(id);
-            if (result == null) return NotFound();
+            if (result == null) {
+                _logger.Error("GetAll failed");
+                _logger.Error("Service unavailable: {res}", _bookingService == null);
+                return NotFound();
+            }
+
+            _logger.Information("GetAll: Query successfull");
             return Ok(result);
         }
 
@@ -57,7 +62,11 @@ namespace BookingService.Controllers
         public async Task<IActionResult> Put(string id, [FromBody] Booking request)
         {
             var existing = await _bookingService.Get(id);
-            if (existing == null) return NotFound();
+            if (existing == null)
+            {
+                _logger.Warning("Update: Existing is null: {res}", existing == null);
+                return NotFound();
+            }
             request.Id = existing.Id;
 
             var result = await _bookingService.Update(id, request);
@@ -68,8 +77,13 @@ namespace BookingService.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var existing = await _bookingService.Get(id);
-            if (existing == null) return NotFound();
+            if (existing == null)
+            {
+                _logger.Warning("Delete: Failed, existing is null: {res}", existing == null);
+                return NotFound();
+            }
             await _bookingService.Remove(id);
+            _logger.Information("Delete is successful, item with id: {id} is removed", id);
             return NoContent();
         }
     }

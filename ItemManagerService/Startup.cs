@@ -19,6 +19,7 @@ using ItemContracts;
 using ItemManagerService.MassTransit.Config;
 using AutoMapper;
 using ItemManagerService.MassTransit.Publishers;
+using Serilog;
 
 namespace ItemManagerService
 {
@@ -59,7 +60,9 @@ namespace ItemManagerService
             services.AddAutoMapper(typeof(Startup));
             InitiateAndInject.ConnectToQueue(services);
             services.AddTransient<IPublishItemCrud, PublishItemCrud>();
-            
+            services.AddApplicationInsightsTelemetry();
+            services.AddSingleton(Log.Logger);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +82,8 @@ namespace ItemManagerService
             app.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
 
             app.UseRouting();
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

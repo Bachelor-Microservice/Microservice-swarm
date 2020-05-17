@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using MassTransit;
 using Shared.MassTransit.Contracts;
 using ItemContracts;
+using Serilog;
 
 namespace ItemManagerService.Controllers
 {
@@ -16,10 +17,13 @@ namespace ItemManagerService.Controllers
     public class ItemManagerController : ControllerBase
     {
         private readonly IItemService _itemservice;
-        
-        public ItemManagerController(IItemService service)
+        private readonly ILogger _logger;
+
+        public ItemManagerController(IItemService service, ILogger logger)
         {
             _itemservice = service;
+            _logger = logger;
+            _logger.Information("ItemManagerController Initiated");
         }
 
         [HttpGet]

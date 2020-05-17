@@ -43,9 +43,26 @@ import { EmailComponent } from 'src/app/modules/profile/email/email.component';
 import { CreateUserComponent } from 'src/app/modules/profile/create-user/create-user.component';
 import { UsersComponent } from 'src/app/modules/profile/users/users.component';
 import { DeleteUserComponent } from 'src/app/modules/profile/delete-user/delete-user.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CustomerComponent } from 'src/app/modules/Customer/Customer.component';
+import { DetailCustomerComponent } from 'src/app/modules/Customer/detail-customer/detail-customer.component';
+import { CreateCustomerComponent } from 'src/app/modules/Customer/create-customer/create-customer.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { BookingComponent } from 'src/app/modules/Booking/Booking.component';
+import { BookingsComponent } from 'src/app/modules/Booking/bookings/bookings.component';
+import {MatIconModule} from '@angular/material/icon';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+import { SessionStore } from 'src/app/state/SessionStore';
+import { DetailBookingComponent } from 'src/app/modules/Booking/bookings/detail-booking/detail-booking.component';
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
+
 
 @NgModule({
   declarations: [
@@ -57,6 +74,7 @@ export function storageFactory(): OAuthStorage {
     CreateItemComponent,
     EditItemComponent,
     SignalRComponent,
+    
     ExcelDownloadComponent,
     HomeComponent,
     AppstartComponent,
@@ -67,12 +85,25 @@ export function storageFactory(): OAuthStorage {
     EmailComponent,
     CreateUserComponent,
     UsersComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    CustomerComponent,
+    DetailCustomerComponent,
+    CreateCustomerComponent,
+    BookingComponent,
+    BookingsComponent,
+    DetailBookingComponent
   ],
   imports: [
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatStepperModule,
+    NgxChartsModule,
+    GoogleChartsModule.forRoot(),
+    MatIconModule,
     CommonModule,
     RouterModule,
     FormsModule,
+    MatCheckboxModule,
     MatNativeDateModule ,
     MatInputModule,
     MatFormFieldModule,
@@ -80,6 +111,7 @@ export function storageFactory(): OAuthStorage {
     MatDatepickerModule,
     SharedModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatListModule,
     MatDividerModule,
     BrowserAnimationsModule,

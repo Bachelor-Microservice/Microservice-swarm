@@ -21,3 +21,5 @@ IdentityServer/.idea
 IdentityServer/IdentityServer/bin
 IdentityServer/IdentityServer/.DS_Store
 IdentityServer/IdentityServer/obj
+CustomerManagerService/CustomerManagerService/obj
+site

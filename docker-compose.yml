@@ -2,16 +2,12 @@ version: '3.7'
 
 services: 
     rabbitmq:
-        networks: 
-            - microservice
         image: rabbitmq
         command: rabbitmq-server
         expose:
             - "5672"
             - "15672"
     pricecalendarservice:
-        networks: 
-            - microservice
         build: 
             context: ./PriceCalendarService
         environment: 
@@ -20,8 +16,6 @@ services:
         depends_on: 
             - rabbitmq
     gateway:
-        networks: 
-            - microservice
         build: 
             context: ./Gateway/
         environment: 
@@ -29,33 +23,62 @@ services:
             - ID_URL=http://identityservice
             - IDENTITY_AUTHORITY="http://identityservice:5000"
     frontend:
-        networks: 
-            - microservice
         build:
             context: ./SPA
             dockerfile: staging.dockerfile
     itemmanagerservice: 
-        networks: 
-            - microservice
         build:
             ./ItemManagerService
         environment: 
             - ASPNETCORE_URLS=http://+:5003
             - IdentityUrl=http://identityservice
+    customerservice: 
+        build: ./Customermanagerservice
+        depends_on:
+            - mongo
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongo
+        environment: 
+            - ASPNETCORE_URLS=http://+:5004
     proxy:
-        networks: 
-            - microservice
         build:
             context: ./proxy
         ports: 
             - 80:80
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}./si:/data/db/mongo
+            #- ./data:/data/db
+        ports:
+            - "27018:27017"
+            
+    mongobooking:
+        container_name: mongobooking
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}./site:/data/db
+            #- ./data:/data/db
+        ports:
+            - "27017:27017"
+    bookingservice:
+        build: ./BookingService
+        depends_on:
+            - mongobooking
+        environment: 
+            - ASPNETCORE_URLS=http://+:5005
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongobooking
     redis:
-        networks: 
-            - microservice
         image: redis
         ports: 
             - 6379:6379
-
-networks: 
-    microservice:
-        name: microservice-network

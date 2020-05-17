@@ -1,47 +1,97 @@
-<div class="container">
-    <div class="row">
-        <div class="col col-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="container">
-                        <form [formGroup]="form" (ngSubmit)="submitForm()">
-                    
-                            <div class="form-group input-group-lg">
-                                <input class="form-control" placeholder="Name" formControlName="name">
-                            </div>
-
-                            <div class="form-group input-group-lg">
-                                <input class="form-control" placeholder="Age" formControlName="age">
-                            </div>
-                    
-                            <div class="form-group">
-                                <button class="btn btn-danger btn-block btn-lg">Create</button>
-                            </div>
-                        </form>
+<div class="row">
+    <div class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card >
+            <div class="cont">
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <mat-icon class="mr-1">cloud_download</mat-icon>
+                        <mat-icon class="mr-1" >share</mat-icon>
+                        <mat-icon class="mr-1" >fullscreen</mat-icon>
                     </div>
                 </div>
-              </div>
-        </div>
-
-        <div class="col col-6">
-            <div class="card">
-                <div class="card-body">
-                  
-                    <h1>
-                        users <small>(click to delete)</small>
-                    </h1>
-
-                    <ul *ngFor="let user of userArray">
-                        <div (click)="remove(user)">
-
-                        
-                        <li>
-                            {{user.name}} & {{user.age}}
-                        </li>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h2>Arrivals today</h2>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let booking of arrivalsToday" >
+                                <td>{{booking.customerName}}</td>
+                                <td>{{booking.arrival}}</td>
+                                <td>{{booking.itemName}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                     </div>
-                    </ul>
                 </div>
-              </div>
-        </div>
+            </div>
+        </mat-card>
     </div>
+    <div class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card >
+            <div class="cont">
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <mat-icon class="mr-1">cloud_download</mat-icon>
+                        <mat-icon class="mr-1" >share</mat-icon>
+                        <mat-icon class="mr-1" >fullscreen</mat-icon>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h2>Departures today</h2>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let booking of departueToday" >
+                                <td>{{booking.customerName}}</td>
+                                <td>{{booking.arrival}}</td>
+                                <td>{{booking.itemName}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card >
+            <div class="cont">
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <mat-icon class="mr-1">cloud_download</mat-icon>
+                        <mat-icon class="mr-1" >share</mat-icon>
+                        <mat-icon class="mr-1" >fullscreen</mat-icon>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h2>Antal ankomster i denne uge</h2>
+                        <google-chart #chart
+   [title]="title"
+   [type]="type"
+   [data]="data"
+   [options]="options"
+   [width]="width"
+   [height]="height">
+</google-chart>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidenavService } from 'src/app/services/sidenav.service';
 import { onMainContentChange, onSideNavChange } from '../../shared/animations/animations';
+import { akitaDevtools } from '@datorama/akita';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class DefaultComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    akitaDevtools();
   }
 
 

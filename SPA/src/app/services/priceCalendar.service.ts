@@ -30,5 +30,10 @@ export class PriceCalendarService {
     return this.http.get(this.pricecalendarApi + '/excel'  , {responseType: 'blob' , params: params});
   }
 
+  getPriceAndCurrencyWithoutItems()
+  {
+    return this.http.get(this.pricecalendarApi + '/allwithoutitems' );
+  }
+
 
 }

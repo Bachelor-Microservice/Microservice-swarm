@@ -14,7 +14,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 COPY PriceCalendarService.sln ./PriceCalendarService.sln
 COPY PriceCalendarService/PriceCalendarService.csproj ./PriceCalendarService/PriceCalendarService.csproj
-COPY NUnitTestPriceCalendar/NUnitTestPriceCalendar.csproj ./NUnitTestPriceCalendar/NUnitTestPriceCalendar.csproj
+#COPY NUnitTestPriceCalendar/NUnitTestPriceCalendar.csproj ./NUnitTestPriceCalendar/NUnitTestPriceCalendar.csproj
 RUN dotnet restore
 
 COPY . ./

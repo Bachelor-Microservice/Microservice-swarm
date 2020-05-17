@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
 using PriceCalendarService.Dtos;
 using PriceCalendarService.Models;
+using Serilog;
+using Serilog.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,12 @@ namespace PriceCalendarService.Services
     {
         private readonly PriceCalendarServiceContext _context;
         private readonly IMapper _mapper;
-        public ItemDayService(PriceCalendarServiceContext context, IMapper mapper)
+        private readonly ILogger _logger;
+        public ItemDayService(PriceCalendarServiceContext context, IMapper mapper, ILogger logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ServiceResponse<ItemDayListDTO>> Add(ItemDayListDTO cmd)
@@ -54,6 +58,7 @@ namespace PriceCalendarService.Services
             if(toCreate.Count != 0) await _context.ItemDay.AddRangeAsync(toCreate);
             if(toUpdate.Count != 0) _context.ItemDay.UpdateRange(toUpdate);
             await _context.SaveChangesAsync();
+            _logger.Information("PriceService: Added itemday list");
             return new ServiceResponse<ItemDayListDTO>{ Data = cmd };
         }
 

@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.SignalR;
 using PriceCalendarService.Hubs;
 using Groups = PriceCalendarService.Models.Groups;
 using Item = PriceCalendarService.Models.Item;
-
+using Serilog;
 
 namespace PriceCalendarService.Services
 {
@@ -24,12 +24,15 @@ namespace PriceCalendarService.Services
         private readonly PriceCalendarServiceContext _context;
         private readonly IMapper _mapper;
         private readonly IHubContext<ChatHub> _hubContext;
+        private readonly ILogger _logger;
 
-        public ItemPriceAndCurrencyResponseService(PriceCalendarServiceContext context, IMapper mapper, IHubContext<ChatHub> hubContext)
+        public ItemPriceAndCurrencyResponseService(PriceCalendarServiceContext context, IMapper mapper
+            , IHubContext<ChatHub> hubContext, ILogger logger)
         {
             _context = context;
             _mapper = mapper;
             _hubContext = hubContext;
+            _logger = logger;
         }
         public async Task<ServiceResponse<ItemPriceAndCurrencyResponseDTO>> Add(ItemPriceAndCurrencyResponseDTO dto)
         {
@@ -38,6 +41,7 @@ namespace PriceCalendarService.Services
             await _context.ItemPriceAndCurrencyResponse.AddAsync(cmd);
             await _context.SaveChangesAsync();
             serviceResponse.Data = dto;
+            _logger.Information("PriceService - added itempriceandcurrencyresponse with currency: {Currency}", dto.Currency);
             return serviceResponse;
         }
 
@@ -47,7 +51,9 @@ namespace PriceCalendarService.Services
             var toBeDeleted = await _context.ItemPriceAndCurrencyResponse.FirstAsync(c => c.Id == Id);
             _context.ItemPriceAndCurrencyResponse.Remove(toBeDeleted);
             await _context.SaveChangesAsync();
-            serviceResponse.Data = this.MapManuallyFromModelToDto(toBeDeleted);
+            _logger.Information("PriceService - deleted itempriceandcurrencyresponse with currency: {Currency} and Id: {Id]"
+                , toBeDeleted.Currency, toBeDeleted.Id); 
+           serviceResponse.Data = this.MapManuallyFromModelToDto(toBeDeleted);
             return serviceResponse;
         }
 
@@ -181,6 +187,8 @@ namespace PriceCalendarService.Services
                 .ThenInclude(i => i.ItemDay)
                 .FirstOrDefaultAsync(c => c.Id == id);
             serviceResponse.Data = this.MapManuallyFromModelToDto(model);
+            _logger.Information("PriceService - returned itempriceandcurrencyresponse with currency: {Currency} and Id: {Id]"
+                , model.Currency, model.Id);
             return serviceResponse;
         }
 
@@ -191,6 +199,8 @@ namespace PriceCalendarService.Services
             _context.ItemPriceAndCurrencyResponse.Update(cmd);
             await _context.SaveChangesAsync();
             serviceResponse.Data = dto;
+            _logger.Information("PriceService - updated itempriceandcurrencyresponse with currency: {Currency} and Id: {Id]"
+                , cmd.Currency, cmd.Id);
             return serviceResponse;
         }
 

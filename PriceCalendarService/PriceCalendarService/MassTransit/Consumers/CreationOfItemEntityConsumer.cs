@@ -5,6 +5,7 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.CompilerServices;
 using PriceCalendarService.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,23 +17,24 @@ namespace PriceCalendarService.MassTransit.Consumers
     {
         private readonly PriceCalendarServiceContext _serviceContext;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public CreationOfItemEntityConsumer(PriceCalendarServiceContext context, IMapper mapper)
+        public CreationOfItemEntityConsumer(PriceCalendarServiceContext context, IMapper mapper, ILogger logger)
         {
             _serviceContext = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         //public CreationOfItemEntityConsumer() { }
 
         public Task Consume(ConsumeContext<IItemEntityCreated> consumedContext)
         {
-            Console.WriteLine($"Received Create Event...");
+            _logger.Information("PriceService - Received IItemEntityCreated event with itemNo: {ItemNo} ", consumedContext.Message.ItemNo);
             Console.WriteLine("Context received: " + consumedContext.Message + "\nCreating....");
 
             this.CreateFromContext(consumedContext);
 
-            Console.WriteLine("Event reaction done...");
             return Task.CompletedTask;
         }
 

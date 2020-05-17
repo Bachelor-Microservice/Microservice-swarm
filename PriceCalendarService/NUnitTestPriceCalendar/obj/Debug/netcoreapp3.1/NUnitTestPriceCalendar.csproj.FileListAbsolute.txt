@@ -772,4 +772,26 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NU
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CopyComplete
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.genruntimeconfig.cache
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\ContractsV2.dll
-C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Connected Services\Application Insights\ConnectedService.json
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.AspNetCore.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.AI.DependencyCollector.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.AI.EventCounterCollector.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.AI.WindowsServer.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.ApplicationInsights.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Settings.Configuration.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.ApplicationInsights.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Environment.dll

@@ -8,6 +8,7 @@ using ClosedXML.Excel;
 using Hangfire;
 using Microsoft.AspNetCore.SignalR;
 using PriceCalendarService.Hubs;
+using Serilog;
 
 namespace PriceCalendarService.Controllers
 {
@@ -17,10 +18,13 @@ namespace PriceCalendarService.Controllers
     public class PriceCalendarController : ControllerBase
     {
         private readonly IItemPriceAndCurrencyResponseService _service;
+        private readonly ILogger _logger;
 
-        public PriceCalendarController(IItemPriceAndCurrencyResponseService service)
+        public PriceCalendarController(IItemPriceAndCurrencyResponseService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
+            _logger.Information("PriceCalendarController Initiated");
         }
 
         [HttpGet]

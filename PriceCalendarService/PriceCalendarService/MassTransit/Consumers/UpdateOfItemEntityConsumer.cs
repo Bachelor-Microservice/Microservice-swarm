@@ -5,6 +5,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PriceCalendarService.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,19 @@ namespace PriceCalendarService.MassTransit.Consumers
     {
         private readonly PriceCalendarServiceContext _serviceContext;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public UpdateOfItemEntityConsumer(PriceCalendarServiceContext context, IMapper mapper)
+        public UpdateOfItemEntityConsumer(PriceCalendarServiceContext context, IMapper mapper, ILogger logger)
         {
             _serviceContext = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public Task Consume(ConsumeContext<IItemEntityUpdated> context)
         {
-            Console.WriteLine("Received UpdateItemEntity Event...");
+            Console.WriteLine("PriceService - Received UpdateItemEntity Event...");
+            _logger.Information("PriceService - Received UpdateItemEntity Event with Id: {ItemNo} ", context.Message.ItemNo);
             UpdateFromContext(context);
             return Task.CompletedTask;
         }

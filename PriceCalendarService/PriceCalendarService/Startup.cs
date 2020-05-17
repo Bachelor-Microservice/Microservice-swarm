@@ -19,6 +19,7 @@ using Hangfire.MemoryStorage;
 using Hangfire.SqlServer;
 using PriceCalendarService.Hubs;
 using Microsoft.AspNetCore.Http.Connections;
+using Serilog;
 
 namespace PriceCalendarService
 {
@@ -68,6 +69,7 @@ namespace PriceCalendarService
 
         MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
             services.AddApplicationInsightsTelemetry();
+            services.AddSingleton(Log.Logger);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,7 +93,7 @@ namespace PriceCalendarService
             app.UseCors("CorsPolicy");
             app.UseRouting();
 
-
+            app.UseSerilogRequestLogging();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

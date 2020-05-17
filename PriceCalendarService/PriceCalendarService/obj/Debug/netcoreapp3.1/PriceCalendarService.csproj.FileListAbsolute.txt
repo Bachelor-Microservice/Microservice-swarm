@@ -556,3 +556,7 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\Pr
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\Serilog.Sinks.ApplicationInsights.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Environment.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Process.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.csproj.CoreCompileInputs.cache
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\PriceCalendarService\obj\Debug\netcoreapp3.1\PriceCalendarService.MvcApplicationPartsAssemblyInfo.cache

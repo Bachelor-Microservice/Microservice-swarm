@@ -9,6 +9,7 @@ using PriceCalendarService.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Serilog;
 
 namespace NUnitTestPriceCalendar.MassTransitTests
 {
@@ -30,7 +31,8 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
             var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
-            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
+            var loggerMock = new Mock<ILogger>();
+            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object, loggerMock.Object);
 
             //Arrange Mocked object
             consumeContextMock.Setup(p => p.Message.ArticleGroup).Returns(2222);
@@ -82,7 +84,8 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
             var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
-            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
+            var loggerMock = new Mock<ILogger>();
+            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object, loggerMock.Object);
 
             //Arrange Mocked object
             consumeContextMock.Setup(p => p.Message.ArticleGroup).Returns(2222);
@@ -133,14 +136,15 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             }
         }
 
-        /*[Test]
+        [Test]
         public void CanBeTranslatedTest()
         {
             //Arrange Dependencies
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
             var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
-            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
+            var loggerMock = new Mock<ILogger>();
+            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object, loggerMock.Object);
 
             //Arrange Mocked object
             consumeContextMock.Setup(p => p.Message.ArticleGroup).Returns(2222);
@@ -159,7 +163,8 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             var mapperMock = new Mock<IMapper>();
             var serviceContextMock = new Mock<PriceCalendarServiceContext>();
             var consumeContextMock = new Mock<ConsumeContext<IItemEntityCreated>>();
-            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object);
+            var loggerMock = new Mock<ILogger>();
+            var creationOfItemEntityConsumer = new CreationOfItemEntityConsumer(serviceContextMock.Object, mapperMock.Object, loggerMock.Object);
 
             //Arrange Mocked object
             consumeContextMock.Setup(p => p.Message.ArticleGroup).Returns(2222);
@@ -169,6 +174,6 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             var result = creationOfItemEntityConsumer.CanBeTranslated(consumeContextMock.Object);
 
             Assert.IsFalse(result);
-        }*/
+        }
     }
 }

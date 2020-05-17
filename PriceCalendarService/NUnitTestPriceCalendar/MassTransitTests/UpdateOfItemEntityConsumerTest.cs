@@ -10,6 +10,7 @@ using PriceCalendarService.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Serilog;
 
 namespace NUnitTestPriceCalendar.MassTransitTests
 {
@@ -26,6 +27,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         Item DesiredItem;
         Item ArgumentItem;
         Mock<ConsumeContext<IItemEntityUpdated>> context;
+        Mock<ILogger> _logger;
 
         /*
          Note that setup is called before every test - meaning they wont interfere with each other.
@@ -36,6 +38,9 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         public void SetUp()
         {
             context = new Mock<ConsumeContext<IItemEntityUpdated>>();
+
+            _logger = new Mock<ILogger>();
+
             context.Setup(p => p.Message.Unit).Returns("Unit");
             context.Setup(p => p.Message.ArticleGroup).Returns(222);
             context.Setup(p => p.Message.Name).Returns("Name");
@@ -80,7 +85,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
             //Most of the setup is done in [SetUp]
             //Actual class is set up here, as to not interfere with changes due to non-conformity
             //Arrange
-            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock);
+            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock, _logger.Object);
             //Act
             testingClass.MapFromContext(this.context.Object, this.ArgumentModel);
             //Assert
@@ -100,7 +105,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [Test]
         public void TestMapFromContextWithItem()
         {
-            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock);
+            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock, _logger.Object);
             testingClass.MapFromContext(this.context.Object, this.ArgumentItem);
             Assert.AreEqual(ArgumentItem.Name, DesiredItem.Name);
             Assert.AreEqual(ArgumentItem.Price, DesiredItem.Price);
@@ -109,7 +114,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [Test]
         public void TestCheckForSuitabilityWithCorrectValues()
         {
-            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock);
+            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock, _logger.Object);
             context.Setup(p => p.Message.RelationNo).Returns(999); //Only one not set in setup (not needed for most tests here)
             var result = testingClass.CheckForSuitability(context.Object);
             Assert.IsTrue(result);
@@ -118,7 +123,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [Test]
         public void TestCheckForSuitabilityWithIncorrectValueArticleGroup()
         {
-            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock);
+            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock, _logger.Object);
             context.Setup(p => p.Message.ArticleGroup).Returns(0); //Only one not set in setup (not needed for most tests here)
             var result = testingClass.CheckForSuitability(context.Object);
             Assert.IsFalse(result);
@@ -127,7 +132,7 @@ namespace NUnitTestPriceCalendar.MassTransitTests
         [Test]
         public void TestCheckForSuitabilityWithIncorrectValueRelationNo()
         {
-            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock);
+            var testingClass = new UpdateOfItemEntityConsumer(serviceContextMock, mapperMock, _logger.Object);
             context.Setup(p => p.Message.RelationNo).Returns(0); //Only one not set in setup (not needed for most tests here)
             var result = testingClass.CheckForSuitability(context.Object);
             Assert.IsFalse(result);

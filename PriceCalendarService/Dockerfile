@@ -18,7 +18,7 @@ COPY NUnitTestPriceCalendar/NUnitTestPriceCalendar.csproj ./NUnitTestPriceCalend
 RUN dotnet restore
 
 COPY . ./
-RUN dotnet test . -c Release
+#RUN dotnet test . -c Release
 RUN dotnet publish PriceCalendarService -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1

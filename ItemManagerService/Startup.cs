@@ -19,6 +19,7 @@ using ItemContracts;
 using ItemManagerService.MassTransit.Config;
 using AutoMapper;
 using ItemManagerService.MassTransit.Publishers;
+using Serilog;
 
 namespace ItemManagerService
 {
@@ -60,7 +61,7 @@ namespace ItemManagerService
             InitiateAndInject.ConnectToQueue(services);
             services.AddTransient<IPublishItemCrud, PublishItemCrud>();
             services.AddApplicationInsightsTelemetry();
-            services.AddApplicationInsightsTelemetry();
+            services.AddSingleton(Log.Logger);
 
         }
 
@@ -81,6 +82,8 @@ namespace ItemManagerService
             app.UseCors(e => e.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
 
             app.UseRouting();
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

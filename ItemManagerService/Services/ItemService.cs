@@ -9,6 +9,7 @@ using ItemContracts;
 using Shared.MassTransit.Contracts;
 using AutoMapper;
 using ItemManagerService.MassTransit.Publishers;
+using Serilog;
 
 namespace ItemManagerService.Services
 {
@@ -18,13 +19,16 @@ namespace ItemManagerService.Services
         private readonly IBus _bus;
         private readonly IMapper _mapper;
         private readonly IPublishItemCrud _publisher;
+        private readonly ILogger _logger;
 
-        public ItemService(ItemManagerServiceContext context, IBus bus, IMapper mapper, IPublishItemCrud publisher)
+        public ItemService(ItemManagerServiceContext context, IBus bus, IMapper mapper, IPublishItemCrud publisher, 
+            ILogger logger)
         {
             _context = context;
             _bus = bus;
             _mapper = mapper;
             _publisher = publisher;
+            _logger = logger;
         }
 
         public async Task<ServiceResponse<Items>> AddItem(Items item)
@@ -36,6 +40,9 @@ namespace ItemManagerService.Services
             var serviceResponse = new ServiceResponse<Items>();
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
+
+            _logger.Information("ItemManagerService - Added item with Id: {ItemNo}", item.ItemNo);
+
             serviceResponse.Data = item;
             _publisher.Created(item);
             return serviceResponse;
@@ -47,6 +54,8 @@ namespace ItemManagerService.Services
             var toBeDeleted = await _context.Items.FirstAsync(c => c.Id == Id);
             _context.Items.Remove(toBeDeleted);
             await _context.SaveChangesAsync();
+
+            _logger.Information("ItemManagerService - removed item with Id: {Id}", Id);
 
             _publisher.Deleted(Id, toBeDeleted.ItemNo);
 

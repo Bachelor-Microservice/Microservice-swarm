@@ -1,0 +1,58 @@
+
+<div class="row">
+  <div class="col-xl-4">
+    <div *ngIf="!editMode">
+    <h2>Customer information</h2>
+    <p>Id : {{this.booking.id}}</p>
+    <p>Customer : {{this.booking.customerName}}</p>
+    <p>Email : {{this.booking.email}}</p>
+    <p>Price : {{this.booking.price}}</p>
+    <p>Arrival : {{this.booking.arrival}}</p>
+    <p>Departue : {{this.booking.depature}}</p>
+    <p>Name of booking : {{this.booking.itemName}}</p>
+    </div>
+
+    <div *ngIf="editMode">
+      <h2>Customer information</h2>
+      <p>Id : <mat-form-field>
+        <input [(ngModel)]="this.booking.id" matInput >
+      </mat-form-field></p>
+      <p>Customer : <mat-form-field>
+        <input [(ngModel)]="this.booking.customerName" matInput >
+      </mat-form-field></p>
+      <p>Email : <mat-form-field>
+        <input [(ngModel)]="this.booking.email" matInput >
+      </mat-form-field></p>
+      <p>Price : <mat-form-field>
+        <input [(ngModel)]="this.booking.price" matInput >
+      </mat-form-field></p>
+      <p>Arrival : <mat-form-field>
+        <input [(ngModel)]="this.booking.arrival" matInput >
+      </mat-form-field></p>
+      <p>Departue : <mat-form-field>
+        <input [(ngModel)]="this.booking.depature" matInput >
+      </mat-form-field></p>
+      <p>Name of booking : <mat-form-field>
+        <input [(ngModel)]="this.booking.itemName" matInput >
+      </mat-form-field></p>
+      </div>
+  <div>
+    <button *ngIf="!editMode" (click)="onEditCustomer()" mat-raised-button color="primary">Edit</button>
+    <button  *ngIf="editMode" (click)="onApplyEditCustomer()" mat-raised-button color="primary">Apply Changes</button>
+    <button (click)="onDeleteCustomer()" class="ml-5" mat-raised-button color="warn">Delete</button>
+  </div>
+  </div>
+
+  <div class="col-xl-8">
+    <h2>Days of booking</h2>
+    <ag-grid-angular
+    style="width: 80%; height: 500px;"
+    class="ag-theme-alpine"
+    agGrid={}
+    [rowData]="this.booking.bookedDays"
+    [columnDefs]="columnDefs"
+    (rowClicked)="onRowClicked($event)"
+    >
+</ag-grid-angular>
+  </div>
+</div>

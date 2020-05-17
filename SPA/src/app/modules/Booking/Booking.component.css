@@ -12,3 +12,8 @@
     font-size: smaller;
     text-decoration-line: line-through;
 }
+
+.redNewPrice {
+    color: red;
+    font-size: larger;
+}

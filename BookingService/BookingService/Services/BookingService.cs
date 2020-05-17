@@ -21,6 +21,9 @@ namespace BookingService.Services
         public  Task<Booking> Update(string id, Booking s);
 
         public  Task Remove(string id);
+
+        public  Task<List<Booking>> GetArrivalsToday();
+        public  Task<List<Booking>> GetDepartueToday();
     }
     public class BookingManagerService : IBookingService
     {
@@ -55,6 +58,7 @@ namespace BookingService.Services
             return s;
         }*/
 
+
         public async Task<CreateBookingDTO> Create(CreateBookingDTO dto)
         {
             var s = _mapper.Map<Booking>(dto);
@@ -79,6 +83,19 @@ namespace BookingService.Services
         {
             await _bookingDB.DeleteOneAsync(su => su.Id == id);
             _publisher.Deleted(id);
+        }
+
+        public async Task<List<Booking>> GetArrivalsToday() 
+        {
+            var date = DateTime.Now.Date;
+            
+            return await _bookingDB.Find(s => s.Arrival.Date == date).ToListAsync();
+        }
+
+        public async Task<List<Booking>> GetDepartueToday()
+        {
+            var date = DateTime.Now.Date;
+            return await _bookingDB.Find(s => s.Depature == date).ToListAsync();
         }
     }
 }

@@ -1,0 +1,36 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/api/customer",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerservice",
+                    "Port": 5004
+                }
+            ],
+            "UpstreamPathTemplate": "/api/customer",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/customer/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerservice",
+                    "Port": 5004
+                }
+            ],
+            "UpstreamPathTemplate": "/api/customer/{id}",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+        }     
+    ]
+}

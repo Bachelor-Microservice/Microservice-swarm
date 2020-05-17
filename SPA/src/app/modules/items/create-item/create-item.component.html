@@ -19,24 +19,51 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Currency</mat-label>
-        <input type="text"  matInput [(ngModel)]="data.unit">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-form-field>
         <mat-label>Pris</mat-label>
         <input type="number" matInput [(ngModel)]="data.price">
       </mat-form-field>
     </div>
   </div>
-  <div class="row">
+  <div  *ngIf="!this.newGroup" class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Pris model</mat-label>
-        <input type="text" matInput [(ngModel)]="data.priceModel">
+        <mat-label>Currency</mat-label>
+        <mat-select [(ngModel)]="data.unit" (selectionChange)="SelectChanged($event)" >
+          <mat-option *ngFor="let currency of this.currency" [value]="currency.currency">
+            {{currency.currency}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div  *ngIf="this.groups.length > 0" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <mat-select [(ngModel)]="data.PriceModelFrom" (selectionChange)="SelectChanged($event)" >
+          <mat-option *ngFor="let group of this.groups" [value]="group">
+            {{group.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngIf="this.newGroup" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input type="text" matInput [(ngModel)]="data.unit">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <p class="existing-group" (click)="OnChooseExistingGroup()"> Choose a existing Currency instead </p>
+    </div>
+  </div>
+  <div *ngIf="this.newGroup" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Group Description</mat-label>
+        <input type="text" matInput [(ngModel)]="data.PriceModelFrom">
       </mat-form-field>
     </div>
   </div>

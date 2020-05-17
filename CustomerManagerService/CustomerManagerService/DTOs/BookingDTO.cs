@@ -7,7 +7,7 @@ namespace CustomerManagerService.DTOs
 {
     public class BookingDTO
     {
-        public string Id { get; set; }
+        
         
         public DateTime Arrival { get; set; }
         

@@ -22,6 +22,7 @@ import { DetailCustomerComponent } from './modules/Customer/detail-customer/deta
 import { CreateCustomerComponent } from './modules/Customer/create-customer/create-customer.component';
 import { BookingComponent } from './modules/Booking/Booking.component';
 import { BookingsComponent } from './modules/Booking/bookings/bookings.component';
+import { DetailBookingComponent } from './modules/Booking/bookings/detail-booking/detail-booking.component';
 
 
 
@@ -49,6 +50,9 @@ const routes: Routes = [{
     path: 'bookings',
     component: BookingsComponent
   },
+  {
+    path: 'bookings/:id' ,
+   component: DetailBookingComponent},
   {
     path: 'customers',
     component: CustomerComponent

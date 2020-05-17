@@ -33,10 +33,14 @@ services:
             - ASPNETCORE_URLS=http://+:5003
             - IdentityUrl=http://identityservice
     customerservice: 
+        build: ./Customermanagerservice
         depends_on:
             - mongo
-        build:
-            context: ./CustomerManagerService
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongo
         environment: 
             - ASPNETCORE_URLS=http://+:5004
     proxy:
@@ -49,11 +53,31 @@ services:
         image: mongo
         restart: always
         volumes:
+            - ${WEBAPP_STORAGE_HOME}./si:/data/db/mongo
+            #- ./data:/data/db
+        ports:
+            - "27018:27017"
+            
+    mongobooking:
+        container_name: mongobooking
+        image: mongo
+        restart: always
+        volumes:
             - ${WEBAPP_STORAGE_HOME}./site:/data/db
             #- ./data:/data/db
         ports:
             - "27017:27017"
-            
+    bookingservice:
+        build: ./BookingService
+        depends_on:
+            - mongobooking
+        environment: 
+            - ASPNETCORE_URLS=http://+:5005
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongobooking
     redis:
         image: redis
         ports: 

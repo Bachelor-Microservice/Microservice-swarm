@@ -5,6 +5,8 @@ import { Customer } from '../_models/customer.model';
 import { Booking } from '../_models/booking.model';
 import {   Observable, Subject, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,44 +15,9 @@ export class CustomersService {
   customersAPI = environment.api + 'customer' ;
   private CustomersSubjcet$ = new BehaviorSubject<Customer[]>(null);
   public Customers$ = this.CustomersSubjcet$.asObservable();
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private router: Router , private notifier: NotificationsService) {
 
-    let booking1: Booking = {
-      arrival: new Date,
-      depature: new Date,
-      id: '123-3434',
-      itemName: 'Hytte1',
-      itemNo: '5342'
-    }
-    var bookings: Booking[] = [];
-    bookings.push(booking1);
-    let customer1: Customer = {
-      address: 'testAddress',
-      email: 'test@test.dk',
-      id: '1243-24322',
-      mobilePhone: '+4545454545',
-      registrationDate: new Date(),
-      supplementName: 'Peter',
-      telephonePrimary: 'telephone',
-      type: 'customer1',
-      bookings: bookings
-    };
-    
-    let customer2: Customer = {
-      address: 'testAddress',
-      email: 'test@test.dk',
-      id: '125543-24322',
-      mobilePhone: '+4545454545',
-      registrationDate: new Date(),
-      supplementName: 'Frederik',
-      telephonePrimary: 'telephone',
-      type: 'customer2',
-      bookings: bookings
-    };
 
-    
-    //this.customers.push(customer1);
-    //this.customers.push(customer2);
    }
   public getCustomers() {
      this.http.get(this.customersAPI).subscribe( (data: Customer[]) => {
@@ -75,8 +42,28 @@ export class CustomersService {
   }
 
   deleteCustomer(id) {
-   // this.http.delete(this.customersAPI)
+    this.http.delete(this.customersAPI + '/' + id).subscribe( e  => {
+      
+      this.notifier.success('Customer Deleted' , '' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+      this.router.navigate(['/app/customers']);
+    });
   }
 
- 
+  editCustomer(model: Customer) {
+    this.http.put(this.customersAPI + '/' + model.id , model ).subscribe( e => {
+      this.notifier.success('Customer Updated' , '' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+      this.router.navigate(['/app/customers']);
+      
+    })
+  }
 }

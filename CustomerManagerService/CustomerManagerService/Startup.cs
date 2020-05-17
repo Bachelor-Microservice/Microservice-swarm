@@ -45,6 +45,7 @@ namespace CustomerManagerService
                 swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
             });
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,6 +10,8 @@ import { DefaultModule } from './layouts/default/default.module';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { SilentRefreshComponent } from './silent-refresh/silent-refresh.component';
 
+import { environment } from 'src/environments/environment';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 
 
 
@@ -19,13 +21,15 @@ import { SilentRefreshComponent } from './silent-refresh/silent-refresh.componen
       AppComponent,
       SilentRefreshComponent
    ],
-   imports: [
+   imports: [ 
+      AkitaNgDevtools,
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
       OAuthModule.forRoot(),
       BrowserAnimationsModule,
-      DefaultModule.forRoot()
+      DefaultModule.forRoot(),
+     
    ],
    providers: [],
    bootstrap: [

@@ -14,9 +14,11 @@ namespace BookingService.Models
         public string Id { get; set; }
 
         [BsonElement("Arrival")]
+        [BsonDateTimeOptions]
         public DateTime Arrival { get; set; }
 
         [BsonElement("Depature")]
+        [BsonDateTimeOptions]
         public DateTime Depature { get; set; }
 
         [BsonElement("Price")]

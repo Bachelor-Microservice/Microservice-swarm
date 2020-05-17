@@ -1,3 +1,10 @@
-<p>
-  bookings works!
-</p>
+<h2>Bookings</h2>
+
+<ag-grid-angular
+style="width: 80%; height: 500px;"
+class="ag-theme-alpine"
+agGrid={}
+[rowData]="bookings$"
+[columnDefs]="columnDefs"
+(rowClicked)="onRowClicked($event)"
+>

@@ -3,6 +3,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 import { Customer } from 'src/app/_models/customer.model';
 import { rowData } from '../price-calendar/price-calendar.component';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-Customer',
@@ -13,8 +14,7 @@ export class CustomerComponent implements OnInit {
 
   columnDefs;
   customers: Customer[];
-  constructor(private customersService: CustomersService, private router: Router) { }
-
+  constructor(private customersService: CustomersService, private router: Router , private notifier: NotificationsService) { }
   ngOnInit() {
     this.columnDefs = [
       {field: 'supplementName' , filter: 'agTextColumnFilter' },
@@ -35,5 +35,7 @@ export class CustomerComponent implements OnInit {
   onRowClicked(event) {
     this.router.navigate(['/app/customers/' + event.data.id]);
   }
+
+  
 
 }

@@ -68,20 +68,22 @@ private gridOptions;
     });
 
     createMenuref.afterClosed().subscribe((result) => {
-      console.log(result);
+      delete result['data']
       if (typeof result.PriceModelFrom === 'object') {
         let priceModelObjet = result.PriceModelFrom;
+        delete result.PriceModelFrom;
         result.articleGroup = priceModelObjet['currencyId'];
-        result.priceModelFrom = priceModelObjet['description'];
+        result.priceModel = priceModelObjet['description'];
         result.relationNo = priceModelObjet['id'];
      }else {
-       console.log(result);
+       delete result['data']
+       result.priceModel = result.PriceModelFrom
      }
-     //this.itemService.addItem(result);
      if (result.quickPost === undefined) {
        result.quickPost = false;
      };
      console.log(result);
+     this.itemService.addItem(result);
     });
   }
 

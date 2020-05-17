@@ -1,0 +1,92 @@
+{
+    "ReRoutes": [
+         
+        {
+            "DownstreamPathTemplate": "/api/hub",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/hub",
+            "UpstreamHttpMethod": [  ],
+            "LoadBalancerOptions": {
+                "Type": "CookieStickySessions",
+                "Key": "ASP.NET_SessionId",
+                "Expiry": 1800000
+            },
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+          } ,
+          {
+            "DownstreamPathTemplate": "/api/pricecalendar",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/pricecalendar",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/pricecalendar/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/pricecalendar/{id}",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/itemday/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "pricecalendarservice",
+                    "Port": 5002
+                }
+            ]
+            ,
+            "UpstreamPathTemplate": "/api/itemday/",
+            "UpstreamHttpMethod": [],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+           
+        },
+        {
+            "DownstreamPathTemplate": "/api/hub/{catchAll}",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "pricecalendarservice",
+                "Port": 5002
+              }
+            ],
+            "UpstreamPathTemplate": "/api/hub/{catchAll}",
+            "UpstreamHttpMethod": [ ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+          }
+    ]
+}

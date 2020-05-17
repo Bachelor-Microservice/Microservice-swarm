@@ -33,7 +33,7 @@ namespace Gateway
                {
                    config
                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                       .AddJsonFile("ocelot.json")
+                       .AddOcelot(hostingContext.HostingEnvironment)
                        .AddEnvironmentVariables();
                })
                .ConfigureServices(s =>

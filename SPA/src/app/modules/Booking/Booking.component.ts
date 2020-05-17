@@ -10,6 +10,10 @@ import { PriceCalendarService } from 'src/app/services/priceCalendar.service';
 import { ItemPriceAndCurrencyResponse } from 'src/app/_models/ItemPriceAndCurrencyResponse.model';
 import { Item } from 'src/app/_models/Item.model';
 import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
+import { BookingService } from 'src/app/services/booking.service';
+import { CreateBookingDTO } from 'src/app/_models/CreateBookingDTO.model';
+import { Customer } from 'src/app/_models/customer.model';
+import { BookedDayDTO } from 'src/app/_models/BookedDayDTO.model';
 
 
 @Component({
@@ -20,6 +24,7 @@ import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
 export class BookingComponent implements OnInit {
 
   myControl = new FormControl();
+  customers: Customer[] = [];
   options: string[] = [];
   filteredOptions: Observable<string[]>;
   isLinear = false;
@@ -30,10 +35,13 @@ export class BookingComponent implements OnInit {
   chosenItemPriceAndCurrencyResponse: Item;
   bookingItems: any[] = [];
   columnDefs;
-  BookedItem: Items;
+  BookedItem: any;
   items: Items[] = [];
   createCustomerForm: FormGroup;
-  constructor(private _formBuilder: FormBuilder , private customerService: CustomersService , private itemService: ItemService , private PricecalendarService: PriceCalendarService) { 
+  constructor(private _formBuilder: FormBuilder , private customerService: CustomersService ,
+     private itemService: ItemService , private PricecalendarService: PriceCalendarService ,
+     private BookingService: BookingService
+     ) { 
     this.customerService.getCustomers();
   }
 
@@ -58,8 +66,9 @@ export class BookingComponent implements OnInit {
 
     this.options.push('New Customer');
     this.customerService.Customers$.subscribe(e => {
-      console.log(e);
+      
       if (e !== null) {
+        this.customers = e;
       e.forEach(element => {
         this.options.push(element.supplementName);
       });
@@ -93,6 +102,22 @@ export class BookingComponent implements OnInit {
   onClickBooking(item , stepper: MatStepper) {
     this.BookedItem = item;
     stepper.next();
+
+    let customer = this.customers.find(e => e.supplementName === this.myControl.value);
+    if (customer === undefined) {
+      customer = {
+        address: this.createCustomerForm.value.address,
+        email: this.createCustomerForm.value.email,
+        supplementName: this.createCustomerForm.value.supplementName,
+        mobilePhone: this.createCustomerForm.value.mobilePhone,
+        telephonePrimary: this.createCustomerForm.value.telephonePrimary,
+        id: 'new',
+        bookings: null,
+        registrationDate: new Date(),
+        type: 'customer'
+      };
+    }
+    /*
     this.itemPriceAndCurrencyResponse.forEach(element => {
     element.groups.forEach(group => {
       group.items.forEach( priceCalendarItem => {
@@ -102,6 +127,23 @@ export class BookingComponent implements OnInit {
       });
     });
   });
+  */
+    
+    let createBooking: CreateBookingDTO = 
+    {
+      arrival: this.BookedItem.arrival,
+      currency: this.BookedItem.currency,
+      customerName: customer.supplementName,
+      customerid: customer.id,
+      bookedDays: this.getDates(this.BookedItem.arrival , this.BookedItem.departue , this.BookedItem.price),
+      depature: this.BookedItem.departue,
+      email: customer.email,
+      itemDescription: this.BookedItem.description,
+      itemName: this.BookedItem.itemName,
+      itemNo: this.BookedItem.itemNo,
+      price: this.BookedItem.totalPrice
+    };
+    this.BookingService.addBooking(createBooking);
   }
 
   private _filter(value: string): string[] {
@@ -133,18 +175,20 @@ export class BookingComponent implements OnInit {
         group.items.forEach( priceCalendarItem => {          
           var item = this.items.find( e => e.articleGroup === priceCalendarItem.groupId );
           if (item !== undefined) {
-          console.log(item);
           let totalPrice = 0;
+          
           const oneDay = 24 * 60 * 60 * 1000;
           let daysChoosen = Math.round(Math.abs((this.datesForm.value.arrival - this.datesForm.value.departue) / oneDay))+1;
-          console.log("Neqw itemday");
           this.bookingItems.push({
               itemName: item.name,
               days: daysChoosen,
               arrival: this.datesForm.value.arrival,
               departue: this.datesForm.value.departue,
               standardPrice: item.price,
-              itemDays: priceCalendarItem.itemDays
+              itemDays: priceCalendarItem.itemDays,
+              currency: element.currency,
+              description: group.description,
+              itemNo: item.itemNo
             });
           }
       });
@@ -159,8 +203,10 @@ export class BookingComponent implements OnInit {
         console.log(itemDay);
         if (itemDay !== undefined) {
           item['totalPrice'] += +itemDay.price;
+          item['price'] = +itemDay.price;
         }else {
           item['totalPrice'] += +item.standardPrice;
+          item['price'] = +item.standardPrice;
         }
         item['totalstandardPrice'] += +item.standardPrice ;
       }
@@ -168,9 +214,20 @@ export class BookingComponent implements OnInit {
    console.log(this.bookingItems);
   }
 
+   getDates(startDate, stopDate , price) {
+     let dateArray = new Array<BookedDayDTO>();
+     for (var d = new Date(startDate); d <= stopDate; d.setDate(d.getDate() + 1)) {
+      dateArray.push({
+        date: d.toISOString(),
+        discountDescription: 'ss',
+        itemDayId: 0,
+        priceForDay: price
+      })
+     }
+     return dateArray;
 }
 
-/*
 
-            }
-*/
+
+}
+

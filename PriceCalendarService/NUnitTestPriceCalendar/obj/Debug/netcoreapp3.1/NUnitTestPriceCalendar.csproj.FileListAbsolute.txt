@@ -795,3 +795,5 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NU
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Sinks.ApplicationInsights.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Environment.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Process.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\PriceCalendarService\NUnitTestPriceCalendar\obj\Debug\netcoreapp3.1\NUnitTestPriceCalendar.csproj.CoreCompileInputs.cache

@@ -31,6 +31,7 @@ namespace BookingService
                 .Enrich.WithMachineName()
                 .Enrich.WithProcessId()
                 .Enrich.FromLogContext()
+                .Enrich.WithEnvironmentUserName()
                 .CreateLogger();
             try
             {

@@ -21,7 +21,7 @@ namespace BookingService.Controllers
         {
             _bookingService = bookingService;
             _logger = logger;
-            Log.Logger.Information("Controller initiated");
+            Log.Logger.Information("BookingController initiated");
         }
 
         [HttpGet]

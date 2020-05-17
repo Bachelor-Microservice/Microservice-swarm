@@ -67,7 +67,7 @@ services:
         image: mongo
         restart: always
         volumes:
-            - ./data/mango1:/data/db
+            - ./data/mongo1:/data/db
             #- ./data:/data/
         ports:
             - "27017:27017"

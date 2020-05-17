@@ -58,7 +58,8 @@ namespace PriceCalendarService.Services
             if(toCreate.Count != 0) await _context.ItemDay.AddRangeAsync(toCreate);
             if(toUpdate.Count != 0) _context.ItemDay.UpdateRange(toUpdate);
             await _context.SaveChangesAsync();
-            _logger.Information("PriceService: Added itemday list");
+            var log = Log.ForContext<ItemDayService>();
+            log.Information("PriceService: Added itemday list");
             return new ServiceResponse<ItemDayListDTO>{ Data = cmd };
         }
 

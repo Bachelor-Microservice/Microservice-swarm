@@ -51,11 +51,25 @@ jobs:
         - docker push caspha17/pricecalendarservice:latest 
     - stage: Build and deploy proxy
       script:
-          - cd proxy
-          - docker build -t proxy . 
-          - docker tag proxy caspha17/proxy:latest
+        - cd proxy
+        - docker build -t proxy . 
+        - docker tag proxy caspha17/proxy:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/proxy:latest 
+    - stage: Build and deploy customer
+      script:
+        - cd CustomerManagerService
+        - docker build -t customer . 
+        - docker tag customer caspha17/customer:latest
+        - docker login -u caspha17 --password $dockerLogin
+        - docker push caspha17/customer:latest 
+    - stage: Build and deploy booking
+      script:
+          - cd BookingService
+          - docker build -t booking . 
+          - docker tag booking caspha17/booking:latest
           - docker login -u caspha17 --password $dockerLogin
-          - docker push caspha17/proxy:latest 
+          - docker push caspha17/booking:latest 
     - stage: Deploy Cloud
       script:
           - gcloud version || true

@@ -8,7 +8,7 @@ services:
             - RedisConnection=redis
         deploy:
             mode: replicated
-            replicas: 10
+            replicas: 2
         labels:
             - "com.docker.lb.hosts=demo.local"
             - "com.docker.lb.sticky_session_cookie=session" 
@@ -18,7 +18,7 @@ services:
         image: caspha17/itemmanagerservice:latest
         deploy:
             mode: replicated
-            replicas: 4
+            replicas: 2
         environment: 
             - ASPNETCORE_URLS=http://+:5003
         depends_on: 
@@ -44,3 +44,44 @@ services:
         expose:
             - "5672"
             - "15672"
+    customerservice: 
+        image: caspha17/customer:latest
+        depends_on:
+            - mongo
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongo
+        environment: 
+            - ASPNETCORE_URLS=http://+:5004
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}./si:/data/db/mongo
+            #- ./data:/data/db
+        ports:
+            - "27018:27017"
+            
+    mongobooking:
+        container_name: mongobooking
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}./site:/data/db
+            #- ./data:/data/db
+        ports:
+            - "27017:27017"
+    bookingservice:
+        image: caspha17/booking:latest
+        depends_on:
+            - mongobooking
+        environment: 
+            - ASPNETCORE_URLS=http://+:5005
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        links:
+            - mongobooking

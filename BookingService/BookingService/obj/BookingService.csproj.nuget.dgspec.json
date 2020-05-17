@@ -81,6 +81,10 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.4.1, )"

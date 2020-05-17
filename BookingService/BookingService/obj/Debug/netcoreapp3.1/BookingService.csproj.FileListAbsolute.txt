@@ -73,3 +73,4 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\BookingS
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\BookingService\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\BookingService\bin\Debug\netcoreapp3.1\Serilog.Sinks.ApplicationInsights.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\BookingService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Environment.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\BookingService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Process.dll

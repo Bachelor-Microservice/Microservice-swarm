@@ -77,6 +77,10 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "nunit": {
               "target": "Package",
               "version": "[3.12.0, )"

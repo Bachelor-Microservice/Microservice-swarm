@@ -149,3 +149,4 @@ C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\NUnitTes
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\NUnitTestBookingService\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\NUnitTestBookingService\bin\Debug\netcoreapp3.1\Serilog.Sinks.ApplicationInsights.dll
 C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\NUnitTestBookingService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Environment.dll
+C:\Users\skakk\Documents\projects2020\Microservice-swarm\BookingService\NUnitTestBookingService\bin\Debug\netcoreapp3.1\Serilog.Enrichers.Process.dll

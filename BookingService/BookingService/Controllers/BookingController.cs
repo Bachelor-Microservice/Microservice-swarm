@@ -17,16 +17,17 @@ namespace BookingService.Controllers
         private readonly IBookingService _bookingService;
         private readonly ILogger _logger;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, ILogger logger)
         {
             _bookingService = bookingService;
-           // _logger = logger;
+            _logger = logger;
+            Log.Logger.Information("Controller initiated.");
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Booking>>> Get()
         {
-           // _logger.LogInformation("TESTLOGGIN");
+            _logger.Information("*** SERILOG *** We just called the Index action");
             return await _bookingService.Get();
         }
 

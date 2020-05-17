@@ -41,6 +41,7 @@ namespace BookingService
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
             services.AddSingleton<IPublishBookingCrud, PublishBookingCrud>();
             services.AddApplicationInsightsTelemetry();
+            services.AddSingleton(Log.Logger);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +57,7 @@ namespace BookingService
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

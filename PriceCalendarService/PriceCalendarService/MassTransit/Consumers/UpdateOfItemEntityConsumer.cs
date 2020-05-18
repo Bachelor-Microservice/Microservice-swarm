@@ -49,7 +49,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         private void UpdateFromContext(ConsumeContext<IItemEntityUpdated> consumedContext)
         {
             Console.WriteLine("Checking for suitability...");
-            if (CheckForSuitability(consumedContext) == false) return;
+            if (!CheckForSuitability(consumedContext)) return;
             Console.WriteLine("Message is suited...");
             var model = _serviceContext.ItemPriceAndCurrencyResponse
                 .Include(o => o.Groups)

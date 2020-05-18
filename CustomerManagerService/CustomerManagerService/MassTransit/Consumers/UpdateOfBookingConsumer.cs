@@ -25,15 +25,16 @@ namespace CustomerManagerService.MassTransit.Consumers
 
         public async Task Consume(ConsumeContext<IBookingUpdated> context)
         {
-            Console.WriteLine("Received UpdateBooking Event...");
+            Console.WriteLine("Received UpdateBooking Event..." + context.Message.Customerid);
             var existing = await _service.Get(context.Message.Customerid);
-            
+            Console.WriteLine("Existing is ..." + existing);
             if(existing != null)
             {
                 if (existing.Bookings != null)
                 {
                     foreach(var booking in existing.Bookings)
                     {
+                        Console.WriteLine("Booking ITemNo ..." +  booking.ItemNo + " Event ID   " +   context.Message.Id );
                         if (booking.ItemNo == context.Message.Id)
                         {
                             var phy = context.Message;
@@ -46,7 +47,10 @@ namespace CustomerManagerService.MassTransit.Consumers
                         }
                     }
                 }
+                Console.WriteLine("Bookings is null ..." + existing);
+
             }
+            Console.WriteLine("Existing is null ..." + existing);
         }
     }
 }

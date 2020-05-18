@@ -19,7 +19,8 @@ namespace CustomerManagerService.MassTransit.Consumers
                 RegistrationDate = cons.Arrival,
                 Email = cons.Email,
                 Address = "N/A",
-                Bookings = new List<Booking>()
+                Bookings = new List<Booking>(),
+                Id = cons.Customerid
             };
 
             var booking = new Booking

@@ -41,7 +41,7 @@ namespace ItemManagerService.Services
             await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
 
-            _logger.Information("ItemManagerService - Added item with Id: {ItemNo}", item.ItemNo);
+            _logger.Information("ItemManagerService - Added item with Id: {ItemNo}, RelationNo: {RelationNo}, ArticleGroup {ArticleGroup}, Id: {Id}", item.ItemNo, item.RelationNo, item.ArticleGroup, item.Id);
 
             serviceResponse.Data = item;
             _publisher.Created(item);
@@ -66,7 +66,7 @@ namespace ItemManagerService.Services
         public async Task<ServiceResponse<List<Items>>> GetItems()
         {
             var serviceResponse = new ServiceResponse<List<Items>>();
-            serviceResponse.Data = await _context.Items.ToListAsync();
+            serviceResponse.Data = await _context.Items.ToListAsync(); 
             return serviceResponse;
         }
 

@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/casperhasnsen/Documents/SDU/semester6/bachelor/Bachelor-Microservice/BookingService/NUnitTestBookingService/NUnitTestBookingService.csproj": {}
+    "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\BookingService\\NUnitTestBookingService\\NUnitTestBookingService.csproj": {}
   },
   "projects": {
-    "/Users/casperhasnsen/Documents/SDU/semester6/bachelor/Bachelor-Microservice/BookingService/NUnitTestBookingService/NUnitTestBookingService.csproj": {
+    "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\BookingService\\NUnitTestBookingService\\NUnitTestBookingService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/casperhasnsen/Documents/SDU/semester6/bachelor/Bachelor-Microservice/BookingService/NUnitTestBookingService/NUnitTestBookingService.csproj",
+        "projectUniqueName": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\BookingService\\NUnitTestBookingService\\NUnitTestBookingService.csproj",
         "projectName": "NUnitTestBookingService",
-        "projectPath": "/Users/casperhasnsen/Documents/SDU/semester6/bachelor/Bachelor-Microservice/BookingService/NUnitTestBookingService/NUnitTestBookingService.csproj",
-        "packagesPath": "/Users/casperhasnsen/.nuget/packages/",
-        "outputPath": "/Users/casperhasnsen/Documents/SDU/semester6/bachelor/Bachelor-Microservice/BookingService/NUnitTestBookingService/obj/",
+        "projectPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\BookingService\\NUnitTestBookingService\\NUnitTestBookingService.csproj",
+        "packagesPath": "C:\\Users\\skakk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\skakk\\Documents\\projects2020\\Microservice-swarm\\BookingService\\NUnitTestBookingService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/casperhasnsen/.config/NuGet/NuGet.Config"
+          "C:\\Users\\skakk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +95,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

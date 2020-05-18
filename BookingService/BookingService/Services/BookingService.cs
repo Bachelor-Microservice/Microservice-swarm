@@ -3,7 +3,12 @@ using BookingService.DTO;
 using BookingService.MassTransit.Publishers;
 using BookingService.Models;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +67,7 @@ namespace BookingService.Services
         public async Task<CreateBookingDTO> Create(CreateBookingDTO dto)
         {
             var s = _mapper.Map<Booking>(dto);
+            if (string.IsNullOrWhiteSpace(s.Customerid)) s.Customerid = ObjectId.GenerateNewId().ToString();
             await _bookingDB.InsertOneAsync(s);
             s.BookedDays = null;
             _publisher.Created(s);

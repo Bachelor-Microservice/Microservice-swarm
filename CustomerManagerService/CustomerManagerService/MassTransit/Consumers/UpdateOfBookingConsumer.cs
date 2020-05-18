@@ -38,7 +38,7 @@ namespace CustomerManagerService.MassTransit.Consumers
                         {
                             var phy = context.Message;
                             if (!string.IsNullOrWhiteSpace(phy.CustomerName)) existing.SupplementName = phy.CustomerName;
-                            if (!string.IsNullOrWhiteSpace(phy.Email)) existing.SupplementName = phy.Email;
+                            if (!string.IsNullOrWhiteSpace(phy.Email)) existing.Email = phy.Email;
                             if (phy.Arrival != null) booking.Arrival = phy.Arrival;
                             if (phy.Depature != null) booking.Depature = phy.Depature;
                             if (phy.Price != default && !string.IsNullOrWhiteSpace(phy.Currency)) booking.Price = phy.Currency + ": " + phy.Price.ToString();

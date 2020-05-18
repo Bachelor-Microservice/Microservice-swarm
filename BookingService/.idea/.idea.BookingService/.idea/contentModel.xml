@@ -14,6 +14,7 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="BookingService.csproj" t="IncludeRecursive" />
+        <e p="BusService.cs" t="Include" />
         <e p="Controllers" t="Include">
           <e p="BookingController.cs" t="Include" />
           <e p="Dashboard.cs" t="Include" />
@@ -23,6 +24,28 @@
           <e p="BookedDayDTO.cs" t="Include" />
           <e p="CreateBookingDTO.cs" t="Include" />
           <e p="MapperConfig.cs" t="Include" />
+        </e>
+        <e p="LoggingConfig" t="Include">
+          <e p="ConfigurationHelper.cs" t="Include" />
+        </e>
+        <e p="MassTransit" t="Include">
+          <e p="Config" t="Include">
+            <e p="InitiateAndInject.cs" t="Include" />
+          </e>
+          <e p="Consumers" t="Include">
+            <e p="CreationOfItemEntityConsumer.cs" t="Include" />
+            <e p="DeletionOfItemEntityConsumer.cs" t="Include" />
+            <e p="UpdateOfItemEntityConsumer.cs" t="Include" />
+          </e>
+          <e p="Contracts" t="Include">
+            <e p="BookedDayHelper.cs" t="Include" />
+            <e p="BookingCreatedContract.cs" t="Include" />
+            <e p="BookingDeletedContract.cs" t="Include" />
+            <e p="BookingUpdatedContract.cs" t="Include" />
+          </e>
+          <e p="Publishers" t="Include">
+            <e p="PublishBookingCrud.cs" t="Include" />
+          </e>
         </e>
         <e p="Models" t="Include">
           <e p="BookedDay.cs" t="Include" />

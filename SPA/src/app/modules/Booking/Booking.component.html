@@ -2,7 +2,7 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
   <mat-step [completed]="firstStepDone" [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Select Sustomer</ng-template>
+      <ng-template matStepLabel>Select Customer</ng-template>
       <div class="row">
         <div class="col">
           <span>Select the customer for this booking</span>
@@ -18,7 +18,7 @@
                    [formControl]="myControl"
                    [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              <mat-option *ngFor="let option of options " [value]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>
@@ -89,7 +89,7 @@
     <div class="row">
       <div class="col d-flex justify-content-center">
         <form [formGroup]="datesForm" >
-          <ng-template matStepLabel>Fill out your address</ng-template>
+          <ng-template matStepLabel>Select arrival and departure</ng-template>
           <mat-form-field class="ml-3">
             <mat-label>Choose a Arrival Date</mat-label>
             <input matInput  formControlName="arrival"  [matDatepicker]="arrival"  >
@@ -115,7 +115,7 @@
   
   </mat-step>
   <mat-step >
-    <ng-template matStepLabel>Vælg vare</ng-template>
+    <ng-template matStepLabel>Choose item</ng-template>
 
 
     <div class="row">
@@ -156,9 +156,10 @@
           <p>The duration of the stay is from {{this.datesForm.value.arrival|date:'shortDate'}} to {{this.datesForm.value.departue|date:'shortDate'}} </p>
           <p>The total price is {{this.BookedItem?.price}} </p>
           <p>The total price is {{this.chosenItemPriceAndCurrencyResponse?.price}} </p>
+          <h2>An Email will be sent with the informations</h2>
         </mat-card>
 
-        <h2>An Email will be sent with the informations</h2>
+        
       </div>
       <div class="col-2"></div>
     </div>

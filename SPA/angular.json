@@ -33,7 +33,7 @@
             
 
             ],
-            "scripts": ["./node_modules/moment/min/moment.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Navn</mat-label>
+        <mat-label>Name</mat-label>
         <input type="text" matInput [(ngModel)]="data.name">
       </mat-form-field>
     </div>
@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Pris</mat-label>
+        <mat-label>Price</mat-label>
         <input type="number" matInput [(ngModel)]="data.price">
       </mat-form-field>
     </div>
@@ -70,19 +70,19 @@
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Varekode</mat-label>
+        <mat-label>Item Code</mat-label>
         <input type="text" matInput [(ngModel)]="data.itemCode">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
-        <mat-label>Skal vare kunne bookes</mat-label>
+        <mat-label>Is allowed to book</mat-label>
         <mat-checkbox class="ml-3" [(ngModel)]="data.quickPost"></mat-checkbox>
     </div>
   </div>
   <div class="row">
-    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Tilføj</button>
+    <button  (click)="onNoClick()" class="ml-5" mat-raised-button>Add</button>
   </div>
 </div>
 

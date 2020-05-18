@@ -19,7 +19,9 @@ export class CustomerComponent implements OnInit {
     this.columnDefs = [
       {field: 'supplementName' , filter: 'agTextColumnFilter' },
       {field: 'type' },
-      {field: 'registrationDate' },
+      {field: 'registrationDate' , cellRenderer: (data) => {
+        return data.value ? (new Date(data.value)).toLocaleDateString() : '';
+    }  },
       {field: 'email' },
       {field: 'address' },
       {field: 'telephonePrimary' },

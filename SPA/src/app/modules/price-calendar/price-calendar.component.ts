@@ -6,7 +6,7 @@ import { Item } from 'src/app/_models/Item.model';
 import { ItemDay } from 'src/app/_models/ItemDay.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
-import moment from "moment";
+import * as  moment from "moment";
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
 import { environment } from 'src/environments/environment';
@@ -44,6 +44,7 @@ export class PriceCalendarComponent implements OnInit {
   ngOnInit() {
     const InitialDateEndDate = this.setDefaultDateRangeInForm();
     this.setInitialForm(InitialDateEndDate);
+    this.OnGetDateRange();
   }
 
   setInitialForm(date: Date) {

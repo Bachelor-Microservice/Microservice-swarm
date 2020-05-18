@@ -38,22 +38,22 @@ export class DashboardComponent implements OnInit {
         } else if (new Date().getDate() === new Date(e.depature).getDate()) {
           this.departueToday.push(e);
         }
-      })
+      });
+      var days = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
+      this.getCurrentWeek().forEach(date => {
+        let arrival = 0;
+        this.bookings.forEach( booking => {
+          arrival = 0;
+          if (date.getDate() === new Date(booking.arrival).getDate()) {
+            arrival++;
+          }
+        })
+        this.data.push([days[date.getDay()] , arrival])
+      });
+
     });
-    var days = ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
-    
-  this.getCurrentWeek().forEach(date => {
-    let arrival = 0;
-    this.bookings.forEach( booking => {
-      arrival = 0;
-      if (date.getDate() === new Date(booking.arrival).getDate()) {
-        arrival++;
-      }
-    })
-    this.data.push([days[date.getDay()] , arrival])
-  });
-  
    
+
   }
 
   getCurrentWeek() {

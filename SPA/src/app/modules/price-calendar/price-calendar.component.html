@@ -1,25 +1,25 @@
 <form [formGroup]="form">
 <mat-form-field>
-    <mat-label>Choose a date</mat-label>
+    <mat-label>Choose a start date</mat-label>
     <input    formControlName="from" matInput [matDatepicker]="start">
     <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
     <mat-datepicker #start></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="ml-3">
-    <mat-label>Choose a date</mat-label>
+    <mat-label>Choose an end date</mat-label>
     <input matInput  [matDatepicker]="end"  formControlName="to">
     <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
     <mat-datepicker  #end></mat-datepicker>
 </mat-form-field>
-  <button (click)="OnGetDateRange()" class="ml-5" mat-raised-button>Get Data</button>
+  <button (click)="OnGetDateRange()" class="ml-5" mat-raised-button>Get Data between dates</button>
   <button (click)="OnExportToExcel()" class="ml-5" mat-raised-button>Export to Excel</button>
 
 </form>
 <div class="d-flex justify-content-end">
 <button mat-raised-button 
 class="mr-5 mb-3" 
-(click)="submitGrid()" > Send </button>
+(click)="submitGrid()" > Apply changes </button>
 </div>
 <ag-grid-angular
     style="width: 80%; height: 500px;"

@@ -61,16 +61,19 @@ export class BookingComponent implements OnInit {
     this.PricecalendarService.getPriceCalendar().subscribe( (itemPriceAndCurrency) => {
       console.log(itemPriceAndCurrency);
       this.itemPriceAndCurrencyResponse = itemPriceAndCurrency.data;
-      
     });
 
     this.options.push('New Customer');
     this.customerService.Customers$.subscribe(e => {
-      
       if (e !== null) {
+        console.log("CUSTOMER");
+        
         this.customers = e;
       e.forEach(element => {
-        this.options.push(element.supplementName);
+        if (!this.options.find(e => e === element.supplementName))  {
+          this.options.push(element.supplementName);
+        }
+        
       });
     }
     });

@@ -3,6 +3,7 @@ import { BookingService } from 'src/app/services/booking.service';
 import { Observable } from 'rxjs';
 import { Booking } from 'src/app/_models/booking.model';
 import { Router } from '@angular/router';
+import moment from "moment";
 
 @Component({
   selector: 'app-bookings',
@@ -23,13 +24,21 @@ export class BookingsComponent implements OnInit {
 
   ngOnInit() {
     this.columnDefs = [
-      {field: 'arrival'  },
-      {field: 'depature' },
+      {field: 'arrival' , cellRenderer: (data) => {
+        return data.value ? (new Date(data.value)).toLocaleDateString() : '';
+    } },
+      {field: 'depature' , cellRenderer: (data) => {
+        return data.value ? (new Date(data.value)).toLocaleDateString() : '';
+   }  },
       {field: 'price' },
       {field: 'customerName' },
       {field: 'email' },
       {field: 'itemName' },
   ];
+  }
+
+  dateFormatter(params) {
+    return moment(params.value).format('DD/MM/YYYY');
   }
 
   onRowClicked(event) {

@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Booking } from '../_models/booking.model';
 import { HttpClient } from '@angular/common/http';
 import { CreateBookingDTO } from '../_models/CreateBookingDTO.model';
+import { NotificationsService } from 'angular2-notifications';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class BookingService {
 
   private bookingAPI = environment.api + 'booking';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private notifier: NotificationsService, private router: Router) {
     
   }
 
@@ -30,6 +32,7 @@ export class BookingService {
   addBooking(createdBooking: CreateBookingDTO) {
     this.http.post(this.bookingAPI , createdBooking).subscribe(e => {
       this.loadBookings();
+     
     });
   }
 
@@ -41,12 +44,26 @@ export class BookingService {
   updateBooking(booking: Booking) {
     this.http.put(this.bookingAPI + '/' + booking.id , booking).subscribe(e => {
       this.loadBookings();
+      this.notifier.success('Booking updated successfully' , '' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+      this.router.navigate(['/app/bookings']);
     });
   }
 
   deleteBooking(booking: Booking) {
     this.http.delete(this.bookingAPI + '/' + booking.id).subscribe(e => {
       this.loadBookings();
+      this.notifier.success('Booking deleted successfully' , '' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
+      this.router.navigate(['/app/bookings']);
     });
   }
   }

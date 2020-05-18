@@ -141,7 +141,7 @@ namespace IdentityServer
                     {
                        
                          //Environment ,
-                          "http://34.77.231.255" ,
+                          "http://34.78.110.236" ,
                           "http://localhost",
                          "http://localhost:4200" 
                     },
@@ -149,7 +149,7 @@ namespace IdentityServer
                     {
                         
                         //Environment + "" ,
-                        "http://34.77.231.255",
+                        "http://34.78.110.236",
                         "http://localhost" ,
                         "http://localhost:4200" 
                         
@@ -158,7 +158,7 @@ namespace IdentityServer
                     {
                         
                        // Environment,
-                        "http://34.77.231.255",
+                        "http://34.78.110.236",
                         "http://localhost",
                        "http://localhost:4200" 
                     },

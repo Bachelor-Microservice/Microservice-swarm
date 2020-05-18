@@ -30,7 +30,7 @@ services:
         image: mongo
         restart: always
         volumes:
-            - ${WEBAPP_STORAGE_HOME}/.site:/data/db
+            - ${WEBAPP_STORAGE_HOME}./site:/data/db
             #- ./data:/data/db
         ports:
             - "27017:27017"

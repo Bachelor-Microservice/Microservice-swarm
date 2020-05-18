@@ -18,6 +18,10 @@ export class DetailBookingComponent implements OnInit {
     this.route.params.subscribe( params => {
       var id = params['id'];
       this.booking = this.bookingService.getBookingById(id);
+      console.log('Gettting booking');
+      console.log(this.booking);
+      
+      
     });
     this.columnDefs = [
       {field: 'date'  },

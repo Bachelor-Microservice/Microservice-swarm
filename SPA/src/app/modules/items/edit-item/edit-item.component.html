@@ -1,59 +1,75 @@
 <div class="container">
-
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Id</mat-label>
-        <input disabled type="number" matInput [(ngModel)]="data.id">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput [(ngModel)]="data.item.name">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Item Number</mat-label>
-        <input  matInput [(ngModel)]="data.itemNo">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput [(ngModel)]="data.item.price">
+      </mat-form-field>
+    </div>
+  </div>
+  <div  *ngIf="!this.newGroup" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <mat-select [(ngModel)]="data.item.unit" (selectionChange)="SelectChanged($event)" >
+          <mat-option *ngFor="let currency of this.currency" [value]="currency.currency">
+            {{currency.currency}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div  class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <mat-select [(ngModel)]="data.item.priceModel" (selectionChange)="SelectChanged($event)" >
+          <mat-option *ngFor="let group of this.groups" [value]="data.item.priceModel">
+            {{group.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngIf="this.newGroup" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input type="text" matInput [(ngModel)]="data.item.unit">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <p class="existing-group" (click)="OnChooseExistingGroup()"> Choose a existing Currency instead </p>
+    </div>
+  </div>
+  <div *ngIf="this.newGroup" class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Group Description</mat-label>
+        <input type="text" matInput [(ngModel)]="data.item.priceModel">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field>
-        <mat-label>Navn</mat-label>
-        <input matInput [(ngModel)]="data.name">
+        <mat-label>Item Code</mat-label>
+        <input type="text" matInput [(ngModel)]="data.item.itemCode">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <mat-form-field>
-        <mat-label>Enhed</mat-label>
-        <input  matInput [(ngModel)]="data.unit">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-form-field>
-        <mat-label>Pris</mat-label>
-        <input type="number" matInput [(ngModel)]="data.price">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-form-field>
-        <mat-label>Pris model</mat-label>
-        <input matInput [(ngModel)]="data.priceModel">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <mat-form-field>
-        <mat-label>Varekode</mat-label>
-        <input matInput [(ngModel)]="data.itemCode">
-      </mat-form-field>
+        <mat-label>Is allowed to book</mat-label>
+        <mat-checkbox class="ml-3" [(ngModel)]="data.item.quickPost"></mat-checkbox>
     </div>
   </div>
   <div class="row">

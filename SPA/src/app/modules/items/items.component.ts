@@ -23,6 +23,10 @@ export class ItemsComponent implements OnInit {
     {headerName: 'Prismodel', field: 'priceModel'},
     {headerName: 'Varekode', field: 'itemCode'},
     {headerName: 'Varegruppe', field: 'itemNo'},
+    {headerName: 'ArticleGroupe', field: 'articleGroup' , hide: true},
+    {headerName: 'RelationNo', field: 'relationNo' , hide: true},
+
+
 ];
 
 private gridApi;
@@ -42,6 +46,8 @@ private gridOptions;
     this.createItem = new Items();
     this.itemService.getItems().subscribe((res: any) => {
       this.items = res;
+      console.log(res);
+      
       this.initTable();
     });
     this.priceeCalendarService.getPriceAndCurrencyWithoutItems().subscribe((e: ItemPriceAndCurrencyResponse[]) => {
@@ -55,7 +61,8 @@ private gridOptions;
     this.rowData = [];
     this.items.forEach((e: Items) => {
       this.rowData.push(
-        {id: e.id , name: e.name , unit: e.unit , price: e.price , priceModel: e.priceModel , itemCode: e.itemCode , itemNo: e.itemNo }
+        {id: e.id , name: e.name , unit: e.unit , price: e.price , priceModel: e.priceModel , itemCode: e.itemCode ,
+           itemNo: e.itemNo , articleGroup: e.articleGroup , relationNo: e.relationNo   }
         );
     });
   }
@@ -98,7 +105,7 @@ private gridOptions;
     console.log(event.data);
     const editMenuRef = this.dialog.open(EditItemComponent , {
       width: '30%',
-      data: event.data
+      data: {data: this.ItemPriceAndCurrency , item: event.data}
     });
 
     editMenuRef.afterClosed().subscribe((result) => {
@@ -121,4 +128,6 @@ export class itemRowData {
   priceModel: string;
   itemCode: string;
   itemNo: string;
+  articleGroup: number;
+  relationNo: number
 }

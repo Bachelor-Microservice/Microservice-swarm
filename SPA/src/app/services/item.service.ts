@@ -37,6 +37,8 @@ export class ItemService {
   }
 
   addItem(item: any) {
+    console.log("IIIIITTTTEEEEEEMMMMMMM");
+    console.log(item);
     this.http.post(this.itemManagerApi , item).subscribe( e=> {
       this.loadItems();
       this.notifier.success('Item created successfully' , '' ,{
@@ -49,6 +51,7 @@ export class ItemService {
   }
 
   editItem(item) {
+    console.log(item);
     this.http.put(this.itemManagerApi , item).subscribe( e=> {
       this.loadItems()
       this.notifier.success('Item changed sucessfully' , '' ,{
@@ -61,6 +64,7 @@ export class ItemService {
   }
 
   deleteItem(item) {
+    console.log(item);
     var itemId = {id: item.id}
     this.http.delete(this.itemManagerApi + '/' + item.id).subscribe( e=> {this.loadItems();
       this.notifier.success('Item deleted sucessfully' , '' ,{

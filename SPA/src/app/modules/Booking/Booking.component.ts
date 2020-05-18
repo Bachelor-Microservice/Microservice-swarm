@@ -114,7 +114,7 @@ export class BookingComponent implements OnInit {
         supplementName: this.createCustomerForm.value.supplementName,
         mobilePhone: this.createCustomerForm.value.mobilePhone,
         telephonePrimary: this.createCustomerForm.value.telephonePrimary,
-        id: 'new',
+        id: null,
         bookings: null,
         registrationDate: new Date(),
         type: 'customer'

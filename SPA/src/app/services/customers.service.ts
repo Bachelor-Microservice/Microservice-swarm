@@ -38,6 +38,12 @@ export class CustomersService {
   createCustomer(model) {
     this.http.post(this.customersAPI , model).subscribe( (result ) => {
       this.CustomersSubjcet$.next(model);
+      this.notifier.success('Customer Created' , '' ,{
+        timeOut: 3000,
+        showProgressBar: true,
+        pauseOnHover: false,
+        clickToClose: true
+      });
     });
   }
 

@@ -96,13 +96,12 @@ namespace PriceCalendarService.MassTransit.Consumers
                 {
                     MapFromContext(from, group);
                 }
-            }
+            } 
         }
 
         public void MapFromContext(ConsumeContext<IItemEntityUpdated> from, Groups to)
         {
-            //No relevant information for groups, so simply redirects
-            //Included for ease in each step checking for differences
+            to.Description = from.Message.PriceModel;
             foreach(var item in to.Item)
             {
                 if (item.Id == from.Message.ItemNo) MapFromContext(from, item);

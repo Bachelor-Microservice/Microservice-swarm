@@ -56,7 +56,10 @@ export class BookingComponent implements OnInit {
         if (item.quickPost === true) {
           this.items.push(item);
         }
-      })
+       
+        
+      });
+      console.log(this.items);
     });
     this.PricecalendarService.getPriceCalendar().subscribe( (itemPriceAndCurrency) => {
       console.log(itemPriceAndCurrency);
@@ -131,15 +134,19 @@ export class BookingComponent implements OnInit {
     });
   });
   */
+    let arrival = new Date(this.BookedItem.arrival);
+    arrival.setHours(2);
     
+    let departure = new Date(this.BookedItem.departue);
+    departure.setHours(2);
     let createBooking: CreateBookingDTO = 
     {
-      arrival: this.BookedItem.arrival,
+      arrival: arrival.toISOString(),
       currency: this.BookedItem.currency,
       customerName: customer.supplementName,
       customerid: customer.id,
       bookedDays: this.getDates(this.BookedItem.arrival , this.BookedItem.departue , this.BookedItem.price),
-      depature: this.BookedItem.departue,
+      depature: departure.toISOString(),
       email: customer.email,
       itemDescription: this.BookedItem.description,
       itemName: this.BookedItem.itemName,
@@ -171,15 +178,13 @@ export class BookingComponent implements OnInit {
 
   
   CreateItems() {
-    
-
+    console.log(this.items);
     this.itemPriceAndCurrencyResponse.forEach(element => {
       element.groups.forEach(group => {
-        group.items.forEach( priceCalendarItem => {          
-          var item = this.items.find( e => e.articleGroup === priceCalendarItem.groupId );
+        group.items.forEach( (priceCalendarItem: Item )=> {
+          var item = this.items.find( e => e.itemNo === priceCalendarItem.id );
           if (item !== undefined) {
           let totalPrice = 0;
-          
           const oneDay = 24 * 60 * 60 * 1000;
           let daysChoosen = Math.round(Math.abs((this.datesForm.value.arrival - this.datesForm.value.departue) / oneDay))+1;
           this.bookingItems.push({
@@ -194,9 +199,14 @@ export class BookingComponent implements OnInit {
               itemNo: item.itemNo
             });
           }
+        
       });
     });
   });
+
+  console.log('after sort');
+  console.log(this.bookingItems);
+  
 
     this.bookingItems.forEach(item => {
       item['totalPrice'] = 0;

@@ -83,7 +83,61 @@
                         <google-chart #chart
    [title]="title"
    [type]="type"
-   [data]="data"
+   [data]="arrivalsThisWeek"
+   [options]="options"
+   [width]="width"
+   [height]="height">
+</google-chart>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card >
+            <div class="cont">
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <mat-icon class="mr-1">cloud_download</mat-icon>
+                        <mat-icon class="mr-1" >share</mat-icon>
+                        <mat-icon class="mr-1" >fullscreen</mat-icon>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h2>Numbers of departures this week</h2>
+                        <google-chart #chart
+   [title]="title"
+   [type]="type"
+   [data]="departureThisWeek"
+   [options]="options"
+   [width]="width"
+   [height]="height">
+</google-chart>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class=" mb-3 col-xl-4 col-md-6 col-sm-12">
+        <mat-card >
+            <div class="cont">
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <mat-icon class="mr-1">cloud_download</mat-icon>
+                        <mat-icon class="mr-1" >share</mat-icon>
+                        <mat-icon class="mr-1" >fullscreen</mat-icon>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <h2>Types of items booked</h2>
+                        <google-chart #chart
+   [title]="title"
+    type="PieChart"
+   [data]="typesOfBookingItemChart"
    [options]="options"
    [width]="width"
    [height]="height">

@@ -37,6 +37,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         {
             var existing = _serviceContext.Item.FirstOrDefault(x => x.Id == context.Message.ItemNo);
             if (existing != null) _serviceContext.Item.Remove(existing);
+            _serviceContext.SaveChanges();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace PriceCalendarService.MassTransit.Consumers
         private void UpdateFromContext(ConsumeContext<IItemEntityUpdated> consumedContext)
         {
             Console.WriteLine("Checking for suitability...");
-            if (CheckForSuitability(consumedContext) == false) return;
+            if (!CheckForSuitability(consumedContext)) return;
             Console.WriteLine("Message is suited...");
             var model = _serviceContext.ItemPriceAndCurrencyResponse
                 .Include(o => o.Groups)
@@ -96,13 +96,12 @@ namespace PriceCalendarService.MassTransit.Consumers
                 {
                     MapFromContext(from, group);
                 }
-            }
+            } 
         }
 
         public void MapFromContext(ConsumeContext<IItemEntityUpdated> from, Groups to)
         {
-            //No relevant information for groups, so simply redirects
-            //Included for ease in each step checking for differences
+            to.Description = from.Message.PriceModel;
             foreach(var item in to.Item)
             {
                 if (item.Id == from.Message.ItemNo) MapFromContext(from, item);

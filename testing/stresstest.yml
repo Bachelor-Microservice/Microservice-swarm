@@ -1,0 +1,11 @@
+config:
+    target: 'https://artillery.io'
+    phases:
+      - duration: 20
+        arrivalRate: 20
+    defaults:
+      headers:
+scenarios:
+    - flow:
+      - get:
+          url: "/"

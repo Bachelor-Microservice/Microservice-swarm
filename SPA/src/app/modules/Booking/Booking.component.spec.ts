@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { BookingComponent } from './Booking.component';
+import { element, by } from 'protractor';
+import { id } from '@swimlane/ngx-charts';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
@@ -24,5 +26,6 @@ describe('BookingComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    element(by.id('span')).isPresent();
   });
 });

@@ -1,7 +1,7 @@
 FROM nginx
 
 WORKDIR /
-COPY ./loader.txt /usr/share/nginx/html/loader
+COPY ./silent-refresh.html /usr/share/nginx/html/
 
 # copy artifact build from the 'build environment'
 COPY nginx.conf /etc/nginx/nginx.conf

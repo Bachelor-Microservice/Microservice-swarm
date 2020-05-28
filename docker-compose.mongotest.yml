@@ -7,6 +7,11 @@ services:
         expose:
             - "5672"
             - "15672"
+    mailservice:
+        build:
+            context: ./MailService
+        expose:
+            - "80"
     pricecalendarservice:
         build: 
             context: ./PriceCalendarService

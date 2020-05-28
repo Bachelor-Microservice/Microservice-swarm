@@ -35,7 +35,7 @@ namespace BookingService
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v3", new OpenApiInfo { Title = "My API" , Version = "v3"});
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Booking Service" });
             });
 
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
@@ -67,7 +67,7 @@ namespace BookingService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "My Booking V2");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking Service");
             });
         }
     }

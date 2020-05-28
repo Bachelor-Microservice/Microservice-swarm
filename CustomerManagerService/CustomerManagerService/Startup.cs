@@ -43,7 +43,7 @@ namespace CustomerManagerService
                 }));
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "My API" });
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Customer Service" });
             });
             MassTransit.Config.InitiateAndInject.ConnectToQueue(services);
             services.AddApplicationInsightsTelemetry();
@@ -73,7 +73,7 @@ namespace CustomerManagerService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Customer Service");
             });
         }
     }

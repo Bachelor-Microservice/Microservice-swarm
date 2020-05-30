@@ -14,6 +14,7 @@ import { BookingService } from 'src/app/services/booking.service';
 import { CreateBookingDTO } from 'src/app/_models/CreateBookingDTO.model';
 import { Customer } from 'src/app/_models/customer.model';
 import { BookedDayDTO } from 'src/app/_models/BookedDayDTO.model';
+import { MailService } from 'src/app/services/mail.service';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class BookingComponent implements OnInit {
   createCustomerForm: FormGroup;
   constructor(private _formBuilder: FormBuilder , private customerService: CustomersService ,
      private itemService: ItemService , private PricecalendarService: PriceCalendarService ,
-     private BookingService: BookingService
+     private BookingService: BookingService , private MailService: MailService
      ) { 
     this.customerService.getCustomers();
   }
@@ -144,6 +145,7 @@ export class BookingComponent implements OnInit {
       price: this.BookedItem.totalPrice
     };
     this.BookingService.addBooking(createBooking);
+    this.MailService.sendMailNewBooking(createBooking);
   }
 
   private _filter(value: string): string[] {

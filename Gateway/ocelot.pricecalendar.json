@@ -87,6 +87,38 @@
                 "AuthenticationProviderKey": "TestKey",
                 "AllowedScopes": []
             }
+          },
+          {
+            "DownstreamPathTemplate": "/newbooking",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "mailservice",
+                "Port": 80
+              }
+            ],
+            "UpstreamPathTemplate": "/api/email/newbooking",
+            "UpstreamHttpMethod": [ ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
+          },
+          {
+            "DownstreamPathTemplate": "/newcustomer",
+            "DownstreamScheme": "ws",
+            "DownstreamHostAndPorts": [
+              {
+                "Host": "mailservice",
+                "Port": 80
+              }
+            ],
+            "UpstreamPathTemplate": "/api/email/newcustomer",
+            "UpstreamHttpMethod": [ ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "TestKey",
+                "AllowedScopes": []
+            }
           }
     ]
 }

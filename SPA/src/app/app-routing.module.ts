@@ -29,6 +29,7 @@ import { DetailBookingComponent } from './modules/Booking/bookings/detail-bookin
 const routes: Routes = [{
   path: 'app',
   component: DefaultComponent,
+  canActivate: [AuthGuard],
   children: [
     {
       path: 'dashboard',

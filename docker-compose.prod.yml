@@ -48,6 +48,10 @@ services:
         image: caspha17/customer:latest
         depends_on:
             - mongo
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongo
         environment: 
@@ -58,24 +62,29 @@ services:
         restart: always
         volumes:
             - ./data/mongo:/data/db/mongo
-            #- ./data:/data/db
         ports:
             - "27018:27017"
-            
+    mailservice:
+        build:
+            context: ./MailService
+        expose:
+            - "80"        
     mongobooking:
         container_name: mongobooking
         image: mongo
         restart: always
         volumes:
             - ./data/mongo1:/data/db
-            #- ./data:/data/
         ports:
             - "27017:27017"
     bookingservice:
         image: caspha17/booking:latest
         depends_on:
             - mongobooking
+            - rabbitmq
         environment: 
             - ASPNETCORE_URLS=http://+:5005
         links:
             - mongobooking
+    mailservice:
+        image: caspha17/mailservice:latest

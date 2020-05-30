@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Booking } from 'src/app/_models/booking.model';
 import { CustomersService } from 'src/app/services/customers.service';
+import { MailService } from 'src/app/services/mail.service';
 
 @Component({
   selector: 'app-create-customer',
@@ -10,7 +11,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 })
 export class CreateCustomerComponent implements OnInit {
 
-  constructor(private customerService: CustomersService) { }
+  constructor(private customerService: CustomersService , private mailService: MailService) { }
   createCustomerForm = new FormGroup({
     supplementName: new FormControl(''),
     email: new FormControl(''),
@@ -19,7 +20,6 @@ export class CreateCustomerComponent implements OnInit {
     mobilePhone: new FormControl('')
   });
   ngOnInit() {
-    
   }
 
   submitForm() {
@@ -30,6 +30,7 @@ export class CreateCustomerComponent implements OnInit {
     createCustomerCommand['registrationDate'] = new Date();
     console.log(createCustomerCommand);
     this.customerService.createCustomer(createCustomerCommand);
+    this.mailService.sendMailNewCustomer(createCustomerCommand);
   }
 
 }

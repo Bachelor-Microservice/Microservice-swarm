@@ -67,7 +67,7 @@ jobs:
       script:
           - cd MailService
           - docker build -t mailservice . 
-          - docker tag booking caspha17/mailservice:latest
+          - docker tag mailservice caspha17/mailservice:latest
           - docker login -u caspha17 --password $dockerLogin
           - docker push caspha17/mailservice:latest 
     - stage: Build and deploy MailService

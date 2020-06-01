@@ -63,14 +63,14 @@ jobs:
         - docker tag customer caspha17/customer:latest
         - docker login -u caspha17 --password $dockerLogin
         - docker push caspha17/customer:latest 
-    - stage: Build and deploy booking
+    - stage: Build and deploy MailService
       script:
           - cd MailService
           - docker build -t mailservice . 
           - docker tag mailservice caspha17/mailservice:latest
           - docker login -u caspha17 --password $dockerLogin
           - docker push caspha17/mailservice:latest 
-    - stage: Build and deploy MailService
+    - stage: Build and deploy Booking
       script:
           - cd BookingService
           - docker build -t booking . 

@@ -34,7 +34,6 @@ services:
         ports: 
             - 80:80
     redis:
-        # Pull the image from Docker Hub
         image: redis
         ports: 
             - 6379:6379
@@ -49,9 +48,6 @@ services:
         depends_on:
             - mongo
             - rabbitmq
-        volumes:
-            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongo
         environment: 

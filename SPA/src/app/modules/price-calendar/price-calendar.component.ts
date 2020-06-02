@@ -9,9 +9,8 @@ import { ItemDayDTO } from 'src/app/_models/ItemDayDTO.model';
 import * as  moment from "moment";
 import { ItemDayService } from 'src/app/services/itemDay.service';
 import { NotificationsService } from 'angular2-notifications';
-import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component';
+
 
 
 @Component({
@@ -22,10 +21,11 @@ import { ExcelDownloadComponent } from './ExcelDownload/ExcelDownload.component'
 export class PriceCalendarComponent implements OnInit {
 
   
-  constructor(private priceCalendarService: PriceCalendarService , private itemDayService: ItemDayService, 
-    private notifier: NotificationsService, public dialog: MatDialog) {
-      
-    
+  constructor(
+    private priceCalendarService: PriceCalendarService,
+    private itemDayService: ItemDayService,
+    private notifier: NotificationsService, 
+    public dialog: MatDialog) {
    }
 
   priceCalendar: ItemPriceAndCurrencyResponse[];
@@ -62,7 +62,7 @@ export class PriceCalendarComponent implements OnInit {
 
 
   OnGetDateRange( ) {
-    this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe((e: any) => {
+    this.priceCalendarService.getPriceCalendarInInterval().subscribe((e: any) => {
       this.priceCalendar = [];
       e.data.forEach(element => {
         this.priceCalendar.push(element);
@@ -121,7 +121,7 @@ export class PriceCalendarComponent implements OnInit {
      itemDayDTO.date
    })
    this.itemDayService.AddItemDays(itemDayListDTO).subscribe(e => {
-     this.priceCalendarService.getPriceCalendarInInterval(this.form.value).subscribe((e: any) => {
+     this.priceCalendarService.getPriceCalendarInInterval().subscribe((e: any) => {
       this.notifier.success('Updated Succesfully' , null ,{
         timeOut: 3000,
         showProgressBar: true,

@@ -17,7 +17,6 @@ export class BookingService {
   private bookingAPI = environment.api + 'booking';
 
   constructor(private http: HttpClient , private notifier: NotificationsService, private router: Router) {
-    
   }
 
   loadBookings() {

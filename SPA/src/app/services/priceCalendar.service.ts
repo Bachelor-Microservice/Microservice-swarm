@@ -4,21 +4,30 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ItemPriceAndCurrencyResponse } from '../_models/ItemPriceAndCurrencyResponse.model';
 import { ItemPriceDTO } from '../_models/itemPriceDTO.model';
 import { ItemDayDTO } from '../_models/ItemDayDTO.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PriceCalendarService {
-
   pricecalendarApi = environment.api + 'pricecalendar';
+  private ItemAndCurrencyResponse$ = new BehaviorSubject<ItemPriceDTO[]>([]);
 
   constructor(private http: HttpClient) { }
 
-  getPriceCalendar() {
-    return this.http.get<ItemPriceDTO>(this.pricecalendarApi);
+  LoadPriceCalendar() {
+    return this.http.get(this.pricecalendarApi).subscribe((data: any) => {
+      console.log(data);
+      this.ItemAndCurrencyResponse$.next(data.data);
+    });
   }
 
-  getPriceCalendarInInterval(interval) {
+  getPriceCalendar() {
+    this.LoadPriceCalendar();
+    return this.ItemAndCurrencyResponse$.asObservable();
+  }
+
+  getPriceCalendarInInterval() {
     return this.http.get(this.pricecalendarApi);
   }
 

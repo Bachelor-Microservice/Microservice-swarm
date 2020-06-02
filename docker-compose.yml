@@ -41,9 +41,6 @@ services:
         build: ./Customermanagerservice
         depends_on:
             - mongo
-        volumes:
-            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongo
         environment: 
@@ -59,7 +56,6 @@ services:
         restart: always
         volumes:
             - ${WEBAPP_STORAGE_HOME}./si:/data/db/mongo
-            #- ./data:/data/db
         ports:
             - "27018:27017"
             
@@ -69,7 +65,6 @@ services:
         restart: always
         volumes:
             - ${WEBAPP_STORAGE_HOME}./site:/data/db
-            #- ./data:/data/db
         ports:
             - "27017:27017"
     bookingservice:
@@ -78,9 +73,6 @@ services:
             - mongobooking
         environment: 
             - ASPNETCORE_URLS=http://+:5005
-        volumes:
-            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
-            - ${HOME}/.aspnet/https:/root/.aspnet/https/
         links:
             - mongobooking
     redis:

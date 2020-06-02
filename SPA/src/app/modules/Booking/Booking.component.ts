@@ -64,7 +64,7 @@ export class BookingComponent implements OnInit {
     });
     this.PricecalendarService.getPriceCalendar().subscribe( (itemPriceAndCurrency) => {
       console.log(itemPriceAndCurrency);
-      this.itemPriceAndCurrencyResponse = itemPriceAndCurrency.data;
+      this.itemPriceAndCurrencyResponse = itemPriceAndCurrency;
     });
 
     this.options.push('New Customer');

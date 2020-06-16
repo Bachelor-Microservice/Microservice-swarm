@@ -43,9 +43,9 @@ namespace Gateway
                  s.AddAuthentication()
                 .AddJwtBearer("TestKey", x =>
                 {
-                    x.Authority = "http://34.68.24.37";
+                    x.Authority = "http://34.70.149.204";
                     x.RequireHttpsMetadata = false;
-                    x.Audience = "http://34.68.24.37/resources";
+                    x.Audience = "http://34.70.149.204/resources";
                    // x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
                    // {
                       //  ValidAudiences = new[] { "orders", "basket", "locations", "marketing", "mobileshoppingagg", "webshoppingagg" }

@@ -1,5 +1,5 @@
 Flask==1.0.2
 Flask-Mail
-waitress==1.2.1
+waitress==2.1.1
 flask-swagger-ui
 datetime
